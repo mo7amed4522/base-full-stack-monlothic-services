@@ -1,9 +1,10 @@
 package ast
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"path/filepath"
 	"testing"
+
+	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
 func TestPluginInitializeRouter_Injection(t *testing.T) {
@@ -24,7 +25,7 @@ func TestPluginInitializeRouter_Injection(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "测试 Gva插件User 注入",
+			name: "Test GvaPluginUser Injection",
 			fields: fields{
 				Type:                 TypePluginInitializeRouter,
 				Path:                 filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "plugin", "gva", "initialize", "router.go"),
@@ -39,7 +40,7 @@ func TestPluginInitializeRouter_Injection(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "测试 中文 注入",
+			name: "Test Chinese Injection",
 			fields: fields{
 				Type:                 TypePluginInitializeRouter,
 				Path:                 filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "plugin", "gva", "initialize", "router.go"),
@@ -98,7 +99,7 @@ func TestPluginInitializeRouter_Rollback(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "测试 Gva插件User 回滚",
+			name: "Test GvaPluginUser Rollback",
 			fields: fields{
 				Type:                 TypePluginInitializeRouter,
 				Path:                 filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "plugin", "gva", "initialize", "router.go"),
@@ -113,7 +114,7 @@ func TestPluginInitializeRouter_Rollback(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "测试 中文 注入",
+			name: "Test Chinese Rollback",
 			fields: fields{
 				Type:                 TypePluginInitializeRouter,
 				Path:                 filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "plugin", "gva", "initialize", "router.go"),

@@ -2,6 +2,7 @@ package initialize
 
 import (
 	"fmt"
+
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/plugin/email"
 	"github.com/flipped-aurora/gin-vue-admin/server/utils/plugin"
@@ -10,10 +11,10 @@ import (
 
 func PluginInit(group *gin.RouterGroup, Plugin ...plugin.Plugin) {
 	for i := range Plugin {
-		fmt.Println(Plugin[i].RouterPath(), "注册开始!")
+		fmt.Println(Plugin[i].RouterPath(), "Plugin registration started!")
 		PluginGroup := group.Group(Plugin[i].RouterPath())
 		Plugin[i].Register(PluginGroup)
-		fmt.Println(Plugin[i].RouterPath(), "注册成功!")
+		fmt.Println(Plugin[i].RouterPath(), "Plugin registration successful!")
 	}
 }
 

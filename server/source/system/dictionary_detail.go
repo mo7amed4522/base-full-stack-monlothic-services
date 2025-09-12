@@ -3,6 +3,7 @@ package system
 import (
 	"context"
 	"fmt"
+
 	sysModel "github.com/flipped-aurora/gin-vue-admin/server/model/system"
 	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
 	"github.com/pkg/errors"
@@ -46,7 +47,7 @@ func (i *initDictDetail) InitializeData(ctx context.Context) (context.Context, e
 	dicts, ok := ctx.Value(new(initDict).InitializerName()).([]sysModel.SysDictionary)
 	if !ok {
 		return ctx, errors.Wrap(system.ErrMissingDependentContext,
-			fmt.Sprintf("未找到 %s 表初始化数据", sysModel.SysDictionary{}.TableName()))
+			fmt.Sprintf("%s table initialization data not found", sysModel.SysDictionary{}.TableName()))
 	}
 	True := true
 	dicts[0].SysDictionaryDetails = []sysModel.SysDictionaryDetail{
@@ -101,7 +102,7 @@ func (i *initDictDetail) InitializeData(ctx context.Context) (context.Context, e
 	for _, dict := range dicts {
 		if err := db.Model(&dict).Association("SysDictionaryDetails").
 			Replace(dict.SysDictionaryDetails); err != nil {
-			return ctx, errors.Wrap(err, sysModel.SysDictionaryDetail{}.TableName()+"表数据初始化失败!")
+			return ctx, errors.Wrap(err, sysModel.SysDictionaryDetail{}.TableName()+" data initialization failed!")
 		}
 	}
 	return ctx, nil
@@ -114,7 +115,7 @@ func (i *initDictDetail) DataInserted(ctx context.Context) bool {
 	}
 	var dict sysModel.SysDictionary
 	if err := db.Preload("SysDictionaryDetails").
-		First(&dict, &sysModel.SysDictionary{Name: "数据库bool类型"}).Error; err != nil {
+		First(&dict, &sysModel.SysDictionary{Name: "database bool type"}).Error; err != nil {
 		return false
 	}
 	return len(dict.SysDictionaryDetails) > 0 && dict.SysDictionaryDetails[0].Label == "tinyint"

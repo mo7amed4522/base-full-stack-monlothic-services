@@ -4,12 +4,13 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"net/url"
 	"reflect"
 	"sort"
 	"strings"
 	"unicode"
+
+	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
 const signkey = "sMDB3mOS00NDk3w8LTfg1"
@@ -41,13 +42,13 @@ func Sign(treeMap map[string]interface{}, signKey string) string {
 
 	// 记录 MD5 前的明文
 	plainText := sb.String()
-	global.GVA_LOG.Info("MD5 前的明文: " + plainText)
+	global.GVA_LOG.Info("MD5 Plain text before: " + plainText)
 
 	hasher := md5.New()
 	hasher.Write([]byte(sb.String()))
 	signature := hex.EncodeToString(hasher.Sum(nil))
 	// 记录最终的签名
-	global.GVA_LOG.Info("生成的签名: " + strings.ToUpper(signature))
+	global.GVA_LOG.Info("Generated signature: " + strings.ToUpper(signature))
 
 	return strings.ToUpper(signature)
 }
@@ -98,13 +99,13 @@ func OrderSign(treeMap map[string]interface{}, signKey string) string {
 
 	// 记录 MD5 前的明文
 	plainText := sb.String()
-	global.GVA_LOG.Info("MD5 前的明文: " + plainText)
+	global.GVA_LOG.Info("MD5 Plain text before: " + plainText)
 
 	hasher := md5.New()
 	hasher.Write([]byte(sb.String()))
 	signature := hex.EncodeToString(hasher.Sum(nil))
 	// 记录最终的签名
-	global.GVA_LOG.Info("生成的签名: " + signature)
+	global.GVA_LOG.Info("Generated signature: " + signature)
 
 	return signature
 }

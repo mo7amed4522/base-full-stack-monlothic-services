@@ -2,6 +2,7 @@ package system
 
 import (
 	"context"
+
 	sysModel "github.com/flipped-aurora/gin-vue-admin/server/model/system"
 	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
 	"github.com/pkg/errors"
@@ -44,16 +45,16 @@ func (i *initDict) InitializeData(ctx context.Context) (next context.Context, er
 	}
 	True := true
 	entities := []sysModel.SysDictionary{
-		{Name: "性别", Type: "gender", Status: &True, Desc: "性别字典"},
-		{Name: "数据库int类型", Type: "int", Status: &True, Desc: "int类型对应的数据库类型"},
-		{Name: "数据库时间日期类型", Type: "time.Time", Status: &True, Desc: "数据库时间日期类型"},
-		{Name: "数据库浮点型", Type: "float64", Status: &True, Desc: "数据库浮点型"},
-		{Name: "数据库字符串", Type: "string", Status: &True, Desc: "数据库字符串"},
-		{Name: "数据库bool类型", Type: "bool", Status: &True, Desc: "数据库bool类型"},
+		{Name: "gender", Type: "gender", Status: &True, Desc: "gender dictionary"},
+		{Name: "int", Type: "int", Status: &True, Desc: "int type corresponding to database type"},
+		{Name: "time.Time", Type: "time.Time", Status: &True, Desc: "database time date type"},
+		{Name: "float64", Type: "float64", Status: &True, Desc: "database floating point type"},
+		{Name: "string", Type: "string", Status: &True, Desc: "database string type"},
+		{Name: "bool", Type: "bool", Status: &True, Desc: "database bool type"},
 	}
 
 	if err = db.Create(&entities).Error; err != nil {
-		return ctx, errors.Wrap(err, sysModel.SysDictionary{}.TableName()+"表数据初始化失败!")
+		return ctx, errors.Wrap(err, sysModel.SysDictionary{}.TableName()+" data initialization failed!")
 	}
 	next = context.WithValue(ctx, i.InitializerName(), entities)
 	return next, nil

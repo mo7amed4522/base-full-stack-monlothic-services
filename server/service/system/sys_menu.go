@@ -2,11 +2,12 @@ package system
 
 import (
 	"errors"
+	"strconv"
+
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
 	"gorm.io/gorm"
-	"strconv"
 )
 
 //@author: [piexlmax](https://github.com/piexlmax)
@@ -135,7 +136,7 @@ func (menuService *MenuService) getBaseChildrenList(menu *system.SysBaseMenu, tr
 
 func (menuService *MenuService) AddBaseMenu(menu system.SysBaseMenu) error {
 	if !errors.Is(global.GVA_DB.Where("name = ?", menu.Name).First(&system.SysBaseMenu{}).Error, gorm.ErrRecordNotFound) {
-		return errors.New("存在重复name，请修改name")
+		return errors.New("Same name exists, please modify the name")
 	}
 	return global.GVA_DB.Create(&menu).Error
 }
@@ -230,7 +231,7 @@ func (menuService *MenuService) AddMenuAuthority(menus []system.SysBaseMenu, adm
 				}
 			}
 			if !hasMenu {
-				return errors.New("添加失败,请勿跨级操作")
+				return errors.New("Add failed, cross-level operation is not allowed")
 			}
 		}
 	}

@@ -31,10 +31,10 @@ const docTemplate = `{
                 "tags": [
                     "SysApi"
                 ],
-                "summary": "创建基础api",
+                "summary": "Create base api",
                 "parameters": [
                     {
-                        "description": "api路径, api中文描述, api组, 方法",
+                        "description": "api path, api chinese description, api group, method",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -45,7 +45,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "创建基础api",
+                        "description": "Create base api",
                         "schema": {
                             "allOf": [
                                 {
@@ -81,7 +81,7 @@ const docTemplate = `{
                 "tags": [
                     "SysApi"
                 ],
-                "summary": "删除api",
+                "summary": "Delete api",
                 "parameters": [
                     {
                         "description": "ID",
@@ -95,7 +95,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除api",
+                        "description": "Delete api",
                         "schema": {
                             "allOf": [
                                 {
@@ -131,7 +131,7 @@ const docTemplate = `{
                 "tags": [
                     "SysApi"
                 ],
-                "summary": "删除选中Api",
+                "summary": "Delete selected Api",
                 "parameters": [
                     {
                         "description": "ID",
@@ -145,7 +145,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除选中Api",
+                        "description": "Delete selected Api",
                         "schema": {
                             "allOf": [
                                 {
@@ -181,10 +181,10 @@ const docTemplate = `{
                 "tags": [
                     "SysApi"
                 ],
-                "summary": "确认同步API",
+                "summary": "Enter sync api",
                 "responses": {
                     "200": {
-                        "description": "确认同步API",
+                        "description": "Enter sync api",
                         "schema": {
                             "allOf": [
                                 {
@@ -215,10 +215,10 @@ const docTemplate = `{
                 "tags": [
                     "SysApi"
                 ],
-                "summary": "刷新casbin缓存",
+                "summary": "Fresh casbin cache",
                 "responses": {
                     "200": {
-                        "description": "刷新成功",
+                        "description": "Fresh success",
                         "schema": {
                             "allOf": [
                                 {
@@ -254,10 +254,10 @@ const docTemplate = `{
                 "tags": [
                     "SysApi"
                 ],
-                "summary": "获取所有的Api 不分页",
+                "summary": "Get all api no paging",
                 "responses": {
                     "200": {
-                        "description": "获取所有的Api 不分页,返回包括api列表",
+                        "description": "Get all pi no paging,Returns the API list",
                         "schema": {
                             "allOf": [
                                 {
@@ -296,10 +296,10 @@ const docTemplate = `{
                 "tags": [
                     "SysApi"
                 ],
-                "summary": "根据id获取api",
+                "summary": "Get api by id",
                 "parameters": [
                     {
-                        "description": "根据id获取api",
+                        "description": "Get api by id",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -310,7 +310,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "根据id获取api,返回包括api详情",
+                        "description": "Get api by id,Returns the API details",
                         "schema": {
                             "allOf": [
                                 {
@@ -346,10 +346,10 @@ const docTemplate = `{
                 "tags": [
                     "SysApi"
                 ],
-                "summary": "获取API分组",
+                "summary": "Get API group",
                 "responses": {
                     "200": {
-                        "description": "获取API分组",
+                        "description": "Get API group",
                         "schema": {
                             "allOf": [
                                 {
@@ -385,10 +385,10 @@ const docTemplate = `{
                 "tags": [
                     "SysApi"
                 ],
-                "summary": "分页获取API列表",
+                "summary": "Get API list paging",
                 "parameters": [
                     {
-                        "description": "分页获取API列表",
+                        "description": "Get API list paging",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -399,7 +399,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "分页获取API列表,返回包括列表,总数,页码,每页数量",
+                        "description": "Get API list paging,Returns the list,total,page,pageSize",
                         "schema": {
                             "allOf": [
                                 {
@@ -438,10 +438,10 @@ const docTemplate = `{
                 "tags": [
                     "IgnoreApi"
                 ],
-                "summary": "忽略API",
+                "summary": "Ignore API",
                 "responses": {
                     "200": {
-                        "description": "同步API",
+                        "description": "Ignore API",
                         "schema": {
                             "allOf": [
                                 {
@@ -477,10 +477,10 @@ const docTemplate = `{
                 "tags": [
                     "SysApi"
                 ],
-                "summary": "同步API",
+                "summary": "Sync API",
                 "responses": {
                     "200": {
-                        "description": "同步API",
+                        "description": "Sync API",
                         "schema": {
                             "allOf": [
                                 {
@@ -516,10 +516,10 @@ const docTemplate = `{
                 "tags": [
                     "SysApi"
                 ],
-                "summary": "修改基础api",
+                "summary": "Update base api",
                 "parameters": [
                     {
-                        "description": "api路径, api中文描述, api组, 方法",
+                        "description": "Update base api",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -530,7 +530,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "修改基础api",
+                        "description": "Update base api",
                         "schema": {
                             "allOf": [
                                 {
@@ -566,10 +566,10 @@ const docTemplate = `{
                 "tags": [
                     "Authority"
                 ],
-                "summary": "拷贝角色",
+                "summary": "Copy role",
                 "parameters": [
                     {
-                        "description": "旧角色id, 新权限id, 新权限名, 新父角色id",
+                        "description": "Old role id, new role id, new role name, new parent role id",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -580,7 +580,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "拷贝角色,返回包括系统角色详情",
+                        "description": "Copy role,Returns the system role details",
                         "schema": {
                             "allOf": [
                                 {
@@ -619,10 +619,10 @@ const docTemplate = `{
                 "tags": [
                     "Authority"
                 ],
-                "summary": "创建角色",
+                "summary": "Create role",
                 "parameters": [
                     {
-                        "description": "权限id, 权限名, 父角色id",
+                        "description": "Permission id, permission name, parent role id",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -633,7 +633,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "创建角色,返回包括系统角色详情",
+                        "description": "Create role,Returns the system role details",
                         "schema": {
                             "allOf": [
                                 {
@@ -672,10 +672,10 @@ const docTemplate = `{
                 "tags": [
                     "Authority"
                 ],
-                "summary": "删除角色",
+                "summary": "Delete role",
                 "parameters": [
                     {
-                        "description": "删除角色",
+                        "description": "Delete role",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -686,7 +686,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除角色",
+                        "description": "Delete role",
                         "schema": {
                             "allOf": [
                                 {
@@ -722,10 +722,10 @@ const docTemplate = `{
                 "tags": [
                     "Authority"
                 ],
-                "summary": "分页获取角色列表",
+                "summary": "Get role list",
                 "parameters": [
                     {
-                        "description": "页码, 每页大小",
+                        "description": "Page number, page size",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -736,7 +736,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "分页获取角色列表,返回包括列表,总数,页码,每页数量",
+                        "description": "Get role list,Returns the list, total number, page number, page size",
                         "schema": {
                             "allOf": [
                                 {
@@ -775,10 +775,10 @@ const docTemplate = `{
                 "tags": [
                     "Authority"
                 ],
-                "summary": "设置角色资源权限",
+                "summary": "Set role resource permission",
                 "parameters": [
                     {
-                        "description": "设置角色资源权限",
+                        "description": "Set role resource permission",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -789,7 +789,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "设置角色资源权限",
+                        "description": "Set role resource permission",
                         "schema": {
                             "allOf": [
                                 {
@@ -825,10 +825,10 @@ const docTemplate = `{
                 "tags": [
                     "Authority"
                 ],
-                "summary": "更新角色信息",
+                "summary": "Update role information",
                 "parameters": [
                     {
-                        "description": "权限id, 权限名, 父角色id",
+                        "description": "Permission id, permission name, parent role id",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -839,7 +839,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "更新角色信息,返回包括系统角色详情",
+                        "description": "Update role information,Returns the system role details",
                         "schema": {
                             "allOf": [
                                 {
@@ -881,7 +881,7 @@ const docTemplate = `{
                 "summary": "设置权限按钮",
                 "responses": {
                     "200": {
-                        "description": "删除成功",
+                        "description": "Delete success",
                         "schema": {
                             "allOf": [
                                 {
@@ -917,10 +917,10 @@ const docTemplate = `{
                 "tags": [
                     "AuthorityBtn"
                 ],
-                "summary": "获取权限按钮",
+                "summary": "Get permission button",
                 "parameters": [
                     {
-                        "description": "菜单id, 角色id, 选中的按钮id",
+                        "description": "Menu id, role id, selected button id",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -931,7 +931,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "返回列表成功",
+                        "description": "Return list success",
                         "schema": {
                             "allOf": [
                                 {
@@ -970,10 +970,10 @@ const docTemplate = `{
                 "tags": [
                     "AuthorityBtn"
                 ],
-                "summary": "设置权限按钮",
+                "summary": "Set permission button",
                 "parameters": [
                     {
-                        "description": "菜单id, 角色id, 选中的按钮id",
+                        "description": "Menu id, role id, selected button id",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -984,7 +984,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "返回列表成功",
+                        "description": "Return list success",
                         "schema": {
                             "allOf": [
                                 {
@@ -1020,10 +1020,10 @@ const docTemplate = `{
                 "tags": [
                     "AddFunc"
                 ],
-                "summary": "增加方法",
+                "summary": "Add method",
                 "parameters": [
                     {
-                        "description": "增加方法",
+                        "description": "Add method",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1034,7 +1034,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"success\":true,\"data\":{},\"msg\":\"创建成功\"}",
+                        "description": "{\"success\":true,\"data\":{},\"msg\":\"Created successfully\"}",
                         "schema": {
                             "type": "string"
                         }
@@ -1058,10 +1058,10 @@ const docTemplate = `{
                 "tags": [
                     "AutoCodePackage"
                 ],
-                "summary": "创建package",
+                "summary": "Create package",
                 "parameters": [
                     {
-                        "description": "创建package",
+                        "description": "Create package",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1072,7 +1072,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "创建package成功",
+                        "description": "Create package success",
                         "schema": {
                             "allOf": [
                                 {
@@ -1112,10 +1112,10 @@ const docTemplate = `{
                 "tags": [
                     "AutoCodeTemplate"
                 ],
-                "summary": "自动代码模板",
+                "summary": "Create auto code template",
                 "parameters": [
                     {
-                        "description": "创建自动代码",
+                        "description": "Create auto code",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1126,7 +1126,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"success\":true,\"data\":{},\"msg\":\"创建成功\"}",
+                        "description": "{\"success\":true,\"data\":{},\"msg\":\"Created successfully\"}",
                         "schema": {
                             "type": "string"
                         }
@@ -1150,10 +1150,10 @@ const docTemplate = `{
                 "tags": [
                     "AutoCode"
                 ],
-                "summary": "删除package",
+                "summary": "Delete package",
                 "parameters": [
                     {
-                        "description": "创建package",
+                        "description": "Create package",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1164,7 +1164,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除package成功",
+                        "description": "Delete package success",
                         "schema": {
                             "allOf": [
                                 {
@@ -1204,10 +1204,10 @@ const docTemplate = `{
                 "tags": [
                     "AutoCode"
                 ],
-                "summary": "删除回滚记录",
+                "summary": "Delete rollback record",
                 "parameters": [
                     {
-                        "description": "请求参数",
+                        "description": "Delete rollback record",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1218,7 +1218,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除回滚记录",
+                        "description": "Delete rollback record success",
                         "schema": {
                             "allOf": [
                                 {
@@ -1254,10 +1254,10 @@ const docTemplate = `{
                 "tags": [
                     "AutoCode"
                 ],
-                "summary": "获取当前表所有字段",
+                "summary": "Get all fields of the current table",
                 "responses": {
                     "200": {
-                        "description": "获取当前表所有字段",
+                        "description": "Get all fields of the current table",
                         "schema": {
                             "allOf": [
                                 {
@@ -1297,10 +1297,10 @@ const docTemplate = `{
                 "tags": [
                     "AutoCode"
                 ],
-                "summary": "获取当前所有数据库",
+                "summary": "Get all databases",
                 "responses": {
                     "200": {
-                        "description": "获取当前所有数据库",
+                        "description": "Get all databases",
                         "schema": {
                             "allOf": [
                                 {
@@ -1340,10 +1340,10 @@ const docTemplate = `{
                 "tags": [
                     "AutoCode"
                 ],
-                "summary": "获取meta信息",
+                "summary": "Get meta information",
                 "parameters": [
                     {
-                        "description": "请求参数",
+                        "description": "Get meta information",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1354,7 +1354,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "获取meta信息",
+                        "description": "Get meta information",
                         "schema": {
                             "allOf": [
                                 {
@@ -1397,7 +1397,7 @@ const docTemplate = `{
                 "summary": "获取package",
                 "responses": {
                     "200": {
-                        "description": "创建package成功",
+                        "description": "Get package success",
                         "schema": {
                             "allOf": [
                                 {
@@ -1437,7 +1437,7 @@ const docTemplate = `{
                 "tags": [
                     "AutoCode"
                 ],
-                "summary": "查询回滚记录",
+                "summary": "Get rollback record",
                 "parameters": [
                     {
                         "description": "请求参数",
@@ -1451,7 +1451,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "查询回滚记录,返回包括列表,总数,页码,每页数量",
+                        "description": "Get rollback record,return includes list,total,page,pageSize",
                         "schema": {
                             "allOf": [
                                 {
@@ -1490,10 +1490,10 @@ const docTemplate = `{
                 "tags": [
                     "AutoCode"
                 ],
-                "summary": "获取当前数据库所有表",
+                "summary": "Get all tables in current database",
                 "responses": {
                     "200": {
-                        "description": "获取当前数据库所有表",
+                        "description": "Get all tables in current database",
                         "schema": {
                             "allOf": [
                                 {
@@ -1533,10 +1533,10 @@ const docTemplate = `{
                 "tags": [
                     "AutoCodePackage"
                 ],
-                "summary": "获取package",
+                "summary": "Get all templates",
                 "responses": {
                     "200": {
-                        "description": "创建package成功",
+                        "description": "Get all templates",
                         "schema": {
                             "allOf": [
                                 {
@@ -1576,10 +1576,10 @@ const docTemplate = `{
                 "tags": [
                     "AutoCodePlugin"
                 ],
-                "summary": "打包插件",
+                "summary": "Init api",
                 "responses": {
                     "200": {
-                        "description": "打包插件成功",
+                        "description": "Init api success",
                         "schema": {
                             "allOf": [
                                 {
@@ -1619,10 +1619,10 @@ const docTemplate = `{
                 "tags": [
                     "AutoCodePlugin"
                 ],
-                "summary": "打包插件",
+                "summary": "Init menu",
                 "responses": {
                     "200": {
-                        "description": "打包插件成功",
+                        "description": "Init menu success",
                         "schema": {
                             "allOf": [
                                 {
@@ -1662,7 +1662,7 @@ const docTemplate = `{
                 "tags": [
                     "AutoCodePlugin"
                 ],
-                "summary": "安装插件",
+                "summary": "Install plugin",
                 "parameters": [
                     {
                         "type": "file",
@@ -1674,7 +1674,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "安装插件成功",
+                        "description": "Install plugin success",
                         "schema": {
                             "allOf": [
                                 {
@@ -1714,10 +1714,10 @@ const docTemplate = `{
                 "tags": [
                     "AutoCodeTemplate"
                 ],
-                "summary": "预览创建后的代码",
+                "summary": "Preview code",
                 "parameters": [
                     {
-                        "description": "预览创建代码",
+                        "description": "Preview code",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1728,7 +1728,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "预览创建后的代码",
+                        "description": "Preview code",
                         "schema": {
                             "allOf": [
                                 {
@@ -1768,11 +1768,11 @@ const docTemplate = `{
                 "tags": [
                     "AutoCodePlugin"
                 ],
-                "summary": "打包插件",
+                "summary": "Publish plugin",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "插件名称",
+                        "description": "Plugin name",
                         "name": "plugName",
                         "in": "query",
                         "required": true
@@ -1780,7 +1780,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "打包插件成功",
+                        "description": "Publish plugin success",
                         "schema": {
                             "allOf": [
                                 {
@@ -1820,10 +1820,10 @@ const docTemplate = `{
                 "tags": [
                     "AutoCode"
                 ],
-                "summary": "回滚自动生成代码",
+                "summary": "Rollback auto code",
                 "parameters": [
                     {
-                        "description": "请求参数",
+                        "description": "Request params",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1834,7 +1834,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "回滚自动生成代码",
+                        "description": "Rollback auto code",
                         "schema": {
                             "allOf": [
                                 {
@@ -1870,10 +1870,10 @@ const docTemplate = `{
                 "tags": [
                     "Base"
                 ],
-                "summary": "生成验证码",
+                "summary": "Generate captcha",
                 "responses": {
                     "200": {
-                        "description": "生成验证码,返回包括随机数id,base64,验证码长度,是否开启验证码",
+                        "description": "Generate captcha,return includes random number id,base64,captcha length,whether to enable captcha",
                         "schema": {
                             "allOf": [
                                 {
@@ -1904,10 +1904,10 @@ const docTemplate = `{
                 "tags": [
                     "Base"
                 ],
-                "summary": "用户登录",
+                "summary": "User login",
                 "parameters": [
                     {
-                        "description": "用户名, 密码, 验证码",
+                        "description": "Username, password, captcha",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1918,7 +1918,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "返回包括用户信息,token,过期时间",
+                        "description": "Return includes user info,token,expire time",
                         "schema": {
                             "allOf": [
                                 {
@@ -1957,10 +1957,10 @@ const docTemplate = `{
                 "tags": [
                     "CDominManage"
                 ],
-                "summary": "创建cDominManage表",
+                "summary": "Create cDominManage table",
                 "parameters": [
                     {
-                        "description": "创建cDominManage表",
+                        "description": "Create cDominManage table",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1971,7 +1971,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "创建成功",
+                        "description": "Create cDominManage table success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2007,10 +2007,10 @@ const docTemplate = `{
                 "tags": [
                     "CDominManage"
                 ],
-                "summary": "删除cDominManage表",
+                "summary": "Delete cDominManage table",
                 "parameters": [
                     {
-                        "description": "删除cDominManage表",
+                        "description": "Delete cDominManage table",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -2021,7 +2021,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除成功",
+                        "description": "Delete cDominManage table success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2057,10 +2057,10 @@ const docTemplate = `{
                 "tags": [
                     "CDominManage"
                 ],
-                "summary": "批量删除cDominManage表",
+                "summary": "Delete cDominManage table by ids",
                 "responses": {
                     "200": {
-                        "description": "批量删除成功",
+                        "description": "Delete cDominManage table success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2096,11 +2096,11 @@ const docTemplate = `{
                 "tags": [
                     "CDominManage"
                 ],
-                "summary": "用id查询cDominManage表",
+                "summary": "Find cDominManage table by id",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "用id查询cDominManage表",
+                        "description": "Find cDominManage table by id",
                         "name": "data",
                         "in": "query",
                         "required": true
@@ -2108,7 +2108,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "查询成功",
+                        "description": "Find cDominManage table by id success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2147,7 +2147,7 @@ const docTemplate = `{
                 "tags": [
                     "CDominManage"
                 ],
-                "summary": "分页获取cDominManage表列表",
+                "summary": "Get cDominManage table list",
                 "parameters": [
                     {
                         "type": "string",
@@ -2161,7 +2161,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "description": "关键字",
+                        "description": "Keyword",
                         "name": "keyword",
                         "in": "query"
                     },
@@ -2177,13 +2177,13 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "页码",
+                        "description": "Page number",
                         "name": "page",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "每页大小",
+                        "description": "Page size",
                         "name": "pageSize",
                         "in": "query"
                     },
@@ -2194,14 +2194,14 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "1启用 2禁用",
+                        "description": "1 enabled 2 disabled",
                         "name": "status",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "获取成功",
+                        "description": "Get cDominManage table list success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2235,10 +2235,10 @@ const docTemplate = `{
                 "tags": [
                     "CDominManage"
                 ],
-                "summary": "不需要鉴权的cDominManage表接口",
+                "summary": "Public cDominManage table interface",
                 "responses": {
                     "200": {
-                        "description": "获取成功",
+                        "description": "Get cDominManage table list success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2277,10 +2277,10 @@ const docTemplate = `{
                 "tags": [
                     "CDominManage"
                 ],
-                "summary": "更新cDominManage表",
+                "summary": "Update cDominManage table",
                 "parameters": [
                     {
-                        "description": "更新cDominManage表",
+                        "description": "Update cDominManage table",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -2291,7 +2291,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "更新成功",
+                        "description": "Update cDominManage table success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2327,10 +2327,10 @@ const docTemplate = `{
                 "tags": [
                     "CDominManage"
                 ],
-                "summary": "隐藏cDominManage",
+                "summary": "Visible cDominManage",
                 "parameters": [
                     {
-                        "description": "隐藏cDominManage",
+                        "description": "Visible cDominManage",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -2341,7 +2341,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "更新成功",
+                        "description": "Update cDominManage table success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2377,10 +2377,10 @@ const docTemplate = `{
                 "tags": [
                     "CSubDominManage"
                 ],
-                "summary": "创建cSubDominManage表",
+                "summary": "Create cSubDominManage table",
                 "parameters": [
                     {
-                        "description": "创建cSubDominManage表",
+                        "description": "Create cSubDominManage table",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -2391,7 +2391,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "创建成功",
+                        "description": "Create cSubDominManage table success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2427,10 +2427,10 @@ const docTemplate = `{
                 "tags": [
                     "CSubDominManage"
                 ],
-                "summary": "删除cSubDominManage表",
+                "summary": "Delete cSubDominManage table",
                 "parameters": [
                     {
-                        "description": "删除cSubDominManage表",
+                        "description": "Delete cSubDominManage table",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -2441,7 +2441,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除成功",
+                        "description": "Delete cSubDominManage table success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2477,10 +2477,10 @@ const docTemplate = `{
                 "tags": [
                     "CSubDominManage"
                 ],
-                "summary": "批量删除cSubDominManage表",
+                "summary": "Delete cSubDominManage table by ids",
                 "responses": {
                     "200": {
-                        "description": "批量删除成功",
+                        "description": "Delete cSubDominManage table success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2516,19 +2516,19 @@ const docTemplate = `{
                 "tags": [
                     "CSubDominManage"
                 ],
-                "summary": "用id查询cSubDominManage表",
+                "summary": "Find cSubDominManage table by id",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "用id查询cSubDominManage表",
-                        "name": "data",
+                        "description": "Find cSubDominManage table by id",
+                        "name": "id",
                         "in": "query",
                         "required": true
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "查询成功",
+                        "description": "Find cSubDominManage table success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2567,11 +2567,11 @@ const docTemplate = `{
                 "tags": [
                     "CSubDominManage"
                 ],
-                "summary": "分页获取cSubDominManage表列表",
+                "summary": "Get cSubDominManage table list",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "关键字",
+                        "description": "Keyword",
                         "name": "keyword",
                         "in": "query"
                     },
@@ -2587,13 +2587,13 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "页码",
+                        "description": "Page number",
                         "name": "page",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "每页大小",
+                        "description": "Page size",
                         "name": "pageSize",
                         "in": "query"
                     },
@@ -2604,14 +2604,14 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "1启用 2禁用",
+                        "description": "1 enabled 2 disabled",
                         "name": "status",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "获取成功",
+                        "description": "Get cSubDominManage table list success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2645,10 +2645,10 @@ const docTemplate = `{
                 "tags": [
                     "CSubDominManage"
                 ],
-                "summary": "不需要鉴权的cSubDominManage表接口",
+                "summary": "Public cSubDominManage table interface",
                 "responses": {
                     "200": {
-                        "description": "获取成功",
+                        "description": "Get cSubDominManage table list success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2687,10 +2687,10 @@ const docTemplate = `{
                 "tags": [
                     "CSubDominManage"
                 ],
-                "summary": "更新cSubDominManage表",
+                "summary": "Update cSubDominManage table",
                 "parameters": [
                     {
-                        "description": "更新cSubDominManage表",
+                        "description": "Update cSubDominManage table",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -2701,7 +2701,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "更新成功",
+                        "description": "Update cSubDominManage table success",
                         "schema": {
                             "allOf": [
                                 {
@@ -2737,10 +2737,10 @@ const docTemplate = `{
                 "tags": [
                     "Casbin"
                 ],
-                "summary": "更新角色api权限",
+                "summary": "Update role api permission",
                 "parameters": [
                     {
-                        "description": "权限id, 权限模型列表",
+                        "description": "Permission id, permission model list",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -2751,7 +2751,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "更新角色api权限",
+                        "description": "Update role api permission",
                         "schema": {
                             "allOf": [
                                 {
@@ -2787,10 +2787,10 @@ const docTemplate = `{
                 "tags": [
                     "Casbin"
                 ],
-                "summary": "获取权限列表",
+                "summary": "Get permission list",
                 "parameters": [
                     {
-                        "description": "权限id, 权限模型列表",
+                        "description": "Permission id, permission model list",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -2801,7 +2801,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "获取权限列表,返回包括casbin详情列表",
+                        "description": "Get permission list, return including casbin detail list",
                         "schema": {
                             "allOf": [
                                 {
@@ -2837,7 +2837,7 @@ const docTemplate = `{
                 "tags": [
                     "System"
                 ],
-                "summary": "发送测试邮件",
+                "summary": "Send test email",
                 "responses": {
                     "200": {
                         "description": "{\"success\":true,\"data\":{},\"msg\":\"发送成功\"}",
@@ -2861,10 +2861,10 @@ const docTemplate = `{
                 "tags": [
                     "System"
                 ],
-                "summary": "发送邮件",
+                "summary": "Send email",
                 "parameters": [
                     {
-                        "description": "发送邮件必须的参数",
+                        "description": "Send email must parameters",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -2899,11 +2899,11 @@ const docTemplate = `{
                 "tags": [
                     "ExaFileUploadAndDownload"
                 ],
-                "summary": "上传文件示例",
+                "summary": "Upload file example",
                 "parameters": [
                     {
                         "type": "file",
-                        "description": "上传文件示例",
+                        "description": "Upload file example",
                         "name": "file",
                         "in": "formData",
                         "required": true
@@ -2911,7 +2911,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "上传文件示例,返回包括文件详情",
+                        "description": "Upload file example, return including file details",
                         "schema": {
                             "allOf": [
                                 {
@@ -2950,10 +2950,10 @@ const docTemplate = `{
                 "tags": [
                     "Info"
                 ],
-                "summary": "创建公告",
+                "summary": "Create notice",
                 "parameters": [
                     {
-                        "description": "创建公告",
+                        "description": "Create notice",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -2964,7 +2964,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "创建成功",
+                        "description": "Create success",
                         "schema": {
                             "allOf": [
                                 {
@@ -3000,10 +3000,10 @@ const docTemplate = `{
                 "tags": [
                     "Info"
                 ],
-                "summary": "删除公告",
+                "summary": "Delete notice",
                 "parameters": [
                     {
-                        "description": "删除公告",
+                        "description": "Delete notice",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -3014,7 +3014,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除成功",
+                        "description": "Delete success",
                         "schema": {
                             "allOf": [
                                 {
@@ -3050,10 +3050,10 @@ const docTemplate = `{
                 "tags": [
                     "Info"
                 ],
-                "summary": "批量删除公告",
+                "summary": "Delete notice by ids",
                 "responses": {
                     "200": {
-                        "description": "批量删除成功",
+                        "description": "Delete success",
                         "schema": {
                             "allOf": [
                                 {
@@ -3089,48 +3089,48 @@ const docTemplate = `{
                 "tags": [
                     "Info"
                 ],
-                "summary": "用id查询公告",
+                "summary": "Find notice by id",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "主键ID",
+                        "description": "Primary key ID",
                         "name": "ID",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "内容",
+                        "description": "Content",
                         "name": "content",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "创建时间",
+                        "description": "Create time",
                         "name": "createdAt",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "标题",
+                        "description": "Title",
                         "name": "title",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "更新时间",
+                        "description": "Update time",
                         "name": "updatedAt",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "作者",
+                        "description": "Author",
                         "name": "userID",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "查询成功",
+                        "description": "Query success",
                         "schema": {
                             "allOf": [
                                 {
@@ -3164,10 +3164,10 @@ const docTemplate = `{
                 "tags": [
                     "Info"
                 ],
-                "summary": "获取Info的数据源",
+                "summary": "Get info data source",
                 "responses": {
                     "200": {
-                        "description": "查询成功",
+                        "description": "Query success",
                         "schema": {
                             "allOf": [
                                 {
@@ -3206,7 +3206,7 @@ const docTemplate = `{
                 "tags": [
                     "Info"
                 ],
-                "summary": "分页获取公告列表",
+                "summary": "Get info list",
                 "parameters": [
                     {
                         "type": "string",
@@ -3215,7 +3215,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "description": "关键字",
+                        "description": "Keyword",
                         "name": "keyword",
                         "in": "query"
                     },
@@ -3226,13 +3226,13 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "页码",
+                        "description": "Page number",
                         "name": "page",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "每页大小",
+                        "description": "Page size",
                         "name": "pageSize",
                         "in": "query"
                     },
@@ -3243,14 +3243,14 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "1启用 2禁用",
+                        "description": "1Enable 2 Disable",
                         "name": "status",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "获取成功",
+                        "description": "Query success",
                         "schema": {
                             "allOf": [
                                 {
@@ -3284,7 +3284,7 @@ const docTemplate = `{
                 "tags": [
                     "Info"
                 ],
-                "summary": "不需要鉴权的公告接口",
+                "summary": "Get info public",
                 "parameters": [
                     {
                         "type": "string",
@@ -3293,7 +3293,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "description": "关键字",
+                        "description": "Keyword",
                         "name": "keyword",
                         "in": "query"
                     },
@@ -3304,13 +3304,13 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "页码",
+                        "description": "Page number",
                         "name": "page",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "每页大小",
+                        "description": "Page size",
                         "name": "pageSize",
                         "in": "query"
                     },
@@ -3321,14 +3321,14 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "1启用 2禁用",
+                        "description": "1Enable 2Disable",
                         "name": "status",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "获取成功",
+                        "description": "Query success",
                         "schema": {
                             "allOf": [
                                 {
@@ -3367,10 +3367,10 @@ const docTemplate = `{
                 "tags": [
                     "Info"
                 ],
-                "summary": "更新公告",
+                "summary": "Update info",
                 "parameters": [
                     {
-                        "description": "更新公告",
+                        "description": "Update info",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -3381,7 +3381,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "更新成功",
+                        "description": "Update success",
                         "schema": {
                             "allOf": [
                                 {
@@ -3409,10 +3409,10 @@ const docTemplate = `{
                 "tags": [
                     "CheckDB"
                 ],
-                "summary": "初始化用户数据库",
+                "summary": "Check db",
                 "responses": {
                     "200": {
-                        "description": "初始化用户数据库",
+                        "description": "Check db",
                         "schema": {
                             "allOf": [
                                 {
@@ -3444,10 +3444,10 @@ const docTemplate = `{
                 "tags": [
                     "InitDB"
                 ],
-                "summary": "初始化用户数据库",
+                "summary": "Init db",
                 "parameters": [
                     {
-                        "description": "初始化数据库参数",
+                        "description": "Init db params",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -3458,7 +3458,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "初始化用户数据库",
+                        "description": "Init db",
                         "schema": {
                             "allOf": [
                                 {
@@ -3494,10 +3494,10 @@ const docTemplate = `{
                 "tags": [
                     "Jwt"
                 ],
-                "summary": "jwt加入黑名单",
+                "summary": "Add jwt to blacklist",
                 "responses": {
                     "200": {
-                        "description": "jwt加入黑名单",
+                        "description": "Add jwt to blacklist",
                         "schema": {
                             "allOf": [
                                 {
@@ -3533,10 +3533,10 @@ const docTemplate = `{
                 "tags": [
                     "Menu"
                 ],
-                "summary": "新增菜单",
+                "summary": "Add base menu",
                 "parameters": [
                     {
-                        "description": "路由path, 父菜单ID, 路由name, 对应前端文件路径, 排序标记",
+                        "description": "Route path, parent menu ID, route name, corresponding front-end file path, sorting mark",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -3547,7 +3547,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "新增菜单",
+                        "description": "Add base menu",
                         "schema": {
                             "allOf": [
                                 {
@@ -3583,10 +3583,10 @@ const docTemplate = `{
                 "tags": [
                     "AuthorityMenu"
                 ],
-                "summary": "增加menu和角色关联关系",
+                "summary": "Add menu and role association relationship",
                 "parameters": [
                     {
-                        "description": "角色ID",
+                        "description": "Role ID",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -3597,7 +3597,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "增加menu和角色关联关系",
+                        "description": "Add menu and role association relationship",
                         "schema": {
                             "allOf": [
                                 {
@@ -3633,10 +3633,10 @@ const docTemplate = `{
                 "tags": [
                     "Menu"
                 ],
-                "summary": "删除菜单",
+                "summary": "Delete base menu",
                 "parameters": [
                     {
-                        "description": "菜单id",
+                        "description": "Menu ID",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -3647,7 +3647,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除菜单",
+                        "description": "Delete base menu",
                         "schema": {
                             "allOf": [
                                 {
@@ -3683,10 +3683,10 @@ const docTemplate = `{
                 "tags": [
                     "Menu"
                 ],
-                "summary": "根据id获取菜单",
+                "summary": "Get base menu by ID",
                 "parameters": [
                     {
-                        "description": "菜单id",
+                        "description": "Menu ID",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -3697,7 +3697,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "根据id获取菜单,返回包括系统菜单列表",
+                        "description": "Get base menu by ID, return including system menu list",
                         "schema": {
                             "allOf": [
                                 {
@@ -3733,10 +3733,10 @@ const docTemplate = `{
                 "tags": [
                     "AuthorityMenu"
                 ],
-                "summary": "获取用户动态路由",
+                "summary": "Get user dynamic routing",
                 "parameters": [
                     {
-                        "description": "空",
+                        "description": "Empty",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -3747,7 +3747,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "获取用户动态路由,返回包括系统菜单列表",
+                        "description": "Get user dynamic routing, return including system menu list",
                         "schema": {
                             "allOf": [
                                 {
@@ -3783,10 +3783,10 @@ const docTemplate = `{
                 "tags": [
                     "AuthorityMenu"
                 ],
-                "summary": "获取用户动态路由",
+                "summary": "Get user dynamic routing",
                 "parameters": [
                     {
-                        "description": "空",
+                        "description": "Empty",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -3797,7 +3797,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "获取用户动态路由,返回包括系统菜单详情列表",
+                        "description": "Get user dynamic routing, return including system menu details list",
                         "schema": {
                             "allOf": [
                                 {
@@ -3836,10 +3836,10 @@ const docTemplate = `{
                 "tags": [
                     "AuthorityMenu"
                 ],
-                "summary": "获取指定角色menu",
+                "summary": "Get menu by role ID",
                 "parameters": [
                     {
-                        "description": "角色ID",
+                        "description": "Role ID",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -3850,7 +3850,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "获取指定角色menu",
+                        "description": "Get menu by role ID",
                         "schema": {
                             "allOf": [
                                 {
@@ -3890,10 +3890,10 @@ const docTemplate = `{
                 "tags": [
                     "Menu"
                 ],
-                "summary": "分页获取基础menu列表",
+                "summary": "Get base menu list by pagination",
                 "parameters": [
                     {
-                        "description": "页码, 每页大小",
+                        "description": "Page number, page size",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -3904,7 +3904,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "分页获取基础menu列表,返回包括列表,总数,页码,每页数量",
+                        "description": "Get base menu list by pagination, return including list, total, page number, page size",
                         "schema": {
                             "allOf": [
                                 {
@@ -3943,10 +3943,10 @@ const docTemplate = `{
                 "tags": [
                     "Menu"
                 ],
-                "summary": "更新菜单",
+                "summary": "Update base menu",
                 "parameters": [
                     {
-                        "description": "路由path, 父菜单ID, 路由name, 对应前端文件路径, 排序标记",
+                        "description": "Route path, parent menu ID, route name, corresponding front-end file path, sort mark",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -3957,7 +3957,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "更新菜单",
+                        "description": "Update base menu",
                         "schema": {
                             "allOf": [
                                 {
@@ -3993,10 +3993,10 @@ const docTemplate = `{
                 "tags": [
                     "SysDictionary"
                 ],
-                "summary": "创建SysDictionary",
+                "summary": "Create SysDictionary",
                 "parameters": [
                     {
-                        "description": "SysDictionary模型",
+                        "description": "SysDictionary model",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -4007,7 +4007,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "创建SysDictionary",
+                        "description": "Create SysDictionary",
                         "schema": {
                             "allOf": [
                                 {
@@ -4043,10 +4043,10 @@ const docTemplate = `{
                 "tags": [
                     "SysDictionary"
                 ],
-                "summary": "删除SysDictionary",
+                "summary": "Delete SysDictionary",
                 "parameters": [
                     {
-                        "description": "SysDictionary模型",
+                        "description": "SysDictionary model",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -4057,7 +4057,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除SysDictionary",
+                        "description": "Delete SysDictionary",
                         "schema": {
                             "allOf": [
                                 {
@@ -4093,54 +4093,54 @@ const docTemplate = `{
                 "tags": [
                     "SysDictionary"
                 ],
-                "summary": "用id查询SysDictionary",
+                "summary": "Find SysDictionary by id",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "主键ID",
+                        "description": "Primary key ID",
                         "name": "ID",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "创建时间",
+                        "description": "Creation time",
                         "name": "createdAt",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "描述",
+                        "description": "Description",
                         "name": "desc",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "字典名（中）",
+                        "description": "Dictionary name (zh)",
                         "name": "name",
                         "in": "query"
                     },
                     {
                         "type": "boolean",
-                        "description": "状态",
+                        "description": "Status",
                         "name": "status",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "字典名（英）",
+                        "description": "Dictionary name (en)",
                         "name": "type",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "更新时间",
+                        "description": "Update time",
                         "name": "updatedAt",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "用id查询SysDictionary",
+                        "description": "Find SysDictionary by id",
                         "schema": {
                             "allOf": [
                                 {
@@ -4180,10 +4180,10 @@ const docTemplate = `{
                 "tags": [
                     "SysDictionary"
                 ],
-                "summary": "分页获取SysDictionary列表",
+                "summary": "Get SysDictionary list by page",
                 "responses": {
                     "200": {
-                        "description": "分页获取SysDictionary列表,返回包括列表,总数,页码,每页数量",
+                        "description": "Get SysDictionary list by page, return includes list, total, page, pageSize",
                         "schema": {
                             "allOf": [
                                 {
@@ -4222,10 +4222,10 @@ const docTemplate = `{
                 "tags": [
                     "SysDictionary"
                 ],
-                "summary": "更新SysDictionary",
+                "summary": "Update SysDictionary",
                 "parameters": [
                     {
-                        "description": "SysDictionary模型",
+                        "description": "SysDictionary model",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -4236,7 +4236,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "更新SysDictionary",
+                        "description": "Update SysDictionary",
                         "schema": {
                             "allOf": [
                                 {
@@ -4272,10 +4272,10 @@ const docTemplate = `{
                 "tags": [
                     "SysDictionaryDetail"
                 ],
-                "summary": "创建SysDictionaryDetail",
+                "summary": "Create SysDictionaryDetail",
                 "parameters": [
                     {
-                        "description": "SysDictionaryDetail模型",
+                        "description": "SysDictionaryDetail model",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -4286,7 +4286,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "创建SysDictionaryDetail",
+                        "description": "Create SysDictionaryDetail",
                         "schema": {
                             "allOf": [
                                 {
@@ -4322,10 +4322,10 @@ const docTemplate = `{
                 "tags": [
                     "SysDictionaryDetail"
                 ],
-                "summary": "删除SysDictionaryDetail",
+                "summary": "Delete SysDictionaryDetail",
                 "parameters": [
                     {
-                        "description": "SysDictionaryDetail模型",
+                        "description": "SysDictionaryDetail model",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -4336,7 +4336,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除SysDictionaryDetail",
+                        "description": "Delete SysDictionaryDetail",
                         "schema": {
                             "allOf": [
                                 {
@@ -4372,66 +4372,66 @@ const docTemplate = `{
                 "tags": [
                     "SysDictionaryDetail"
                 ],
-                "summary": "用id查询SysDictionaryDetail",
+                "summary": "Find SysDictionaryDetail by id",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "主键ID",
+                        "description": "Primary key ID",
                         "name": "ID",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "创建时间",
+                        "description": "Create time",
                         "name": "createdAt",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "扩展值",
+                        "description": "Extension value",
                         "name": "extend",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "展示值",
+                        "description": "Show value",
                         "name": "label",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "排序标记",
+                        "description": "Sort mark",
                         "name": "sort",
                         "in": "query"
                     },
                     {
                         "type": "boolean",
-                        "description": "启用状态",
+                        "description": "Enable status",
                         "name": "status",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "关联标记",
+                        "description": "Dictionary ID",
                         "name": "sysDictionaryID",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "更新时间",
+                        "description": "Update time",
                         "name": "updatedAt",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "字典值",
+                        "description": "Dictionary value",
                         "name": "value",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "用id查询SysDictionaryDetail",
+                        "description": "Find SysDictionaryDetail by id",
                         "schema": {
                             "allOf": [
                                 {
@@ -4471,35 +4471,35 @@ const docTemplate = `{
                 "tags": [
                     "SysDictionaryDetail"
                 ],
-                "summary": "分页获取SysDictionaryDetail列表",
+                "summary": "Find SysDictionaryDetail list",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "主键ID",
+                        "description": "Primary key ID",
                         "name": "ID",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "创建时间",
+                        "description": "Create time",
                         "name": "createdAt",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "扩展值",
+                        "description": "Extension value",
                         "name": "extend",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "关键字",
+                        "description": "Keyword",
                         "name": "keyword",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "展示值",
+                        "description": "Show value",
                         "name": "label",
                         "in": "query"
                     },
@@ -4510,50 +4510,50 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "页码",
+                        "description": "Page number",
                         "name": "page",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "每页大小",
+                        "description": "Page size",
                         "name": "pageSize",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "排序标记",
+                        "description": "Sort mark",
                         "name": "sort",
                         "in": "query"
                     },
                     {
-                        "type": "integer",
-                        "description": "1启用 2禁用",
+                        "type": "boolean",
+                        "description": "Enable status",
                         "name": "status",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "关联标记",
+                        "description": "Dictionary ID",
                         "name": "sysDictionaryID",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "更新时间",
+                        "description": "Update time",
                         "name": "updatedAt",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "字典值",
+                        "description": "Dictionary value",
                         "name": "value",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "分页获取SysDictionaryDetail列表,返回包括列表,总数,页码,每页数量",
+                        "description": "Get SysDictionaryDetail list by page, return list, total number, page number, number of pages",
                         "schema": {
                             "allOf": [
                                 {
@@ -4592,10 +4592,10 @@ const docTemplate = `{
                 "tags": [
                     "SysDictionaryDetail"
                 ],
-                "summary": "更新SysDictionaryDetail",
+                "summary": "Update SysDictionaryDetail",
                 "parameters": [
                     {
-                        "description": "更新SysDictionaryDetail",
+                        "description": "Update SysDictionaryDetail",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -4606,7 +4606,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "更新SysDictionaryDetail",
+                        "description": "Update SysDictionaryDetail",
                         "schema": {
                             "allOf": [
                                 {
@@ -4642,7 +4642,7 @@ const docTemplate = `{
                 "tags": [
                     "SysExportTemplate"
                 ],
-                "summary": "导出表格模板",
+                "summary": "Export template",
                 "responses": {}
             }
         },
@@ -4662,10 +4662,10 @@ const docTemplate = `{
                 "tags": [
                     "SysExportTemplate"
                 ],
-                "summary": "创建导出模板",
+                "summary": "Create export template",
                 "parameters": [
                     {
-                        "description": "创建导出模板",
+                        "description": "Create export template",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -4676,7 +4676,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"success\":true,\"data\":{},\"msg\":\"创建成功\"}",
+                        "description": "{\"success\":true,\"data\":{},\"msg\":\"Create export template success\"}",
                         "schema": {
                             "type": "string"
                         }
@@ -4700,10 +4700,10 @@ const docTemplate = `{
                 "tags": [
                     "SysExportTemplate"
                 ],
-                "summary": "删除导出模板",
+                "summary": "Delete export template",
                 "parameters": [
                     {
-                        "description": "删除导出模板",
+                        "description": "Delete export template",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -4714,7 +4714,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"success\":true,\"data\":{},\"msg\":\"删除成功\"}",
+                        "description": "{\"success\":true,\"data\":{},\"msg\":\"Delete export template success\"}",
                         "schema": {
                             "type": "string"
                         }
@@ -4738,10 +4738,10 @@ const docTemplate = `{
                 "tags": [
                     "SysExportTemplate"
                 ],
-                "summary": "批量删除导出模板",
+                "summary": "Delete export template by ids",
                 "parameters": [
                     {
-                        "description": "批量删除导出模板",
+                        "description": "Delete export template by ids",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -4752,7 +4752,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"success\":true,\"data\":{},\"msg\":\"批量删除成功\"}",
+                        "description": "{\"success\":true,\"data\":{},\"msg\":\"Delete export template success\"}",
                         "schema": {
                             "type": "string"
                         }
@@ -4776,7 +4776,7 @@ const docTemplate = `{
                 "tags": [
                     "SysExportTemplate"
                 ],
-                "summary": "导出表格",
+                "summary": "Export excel",
                 "responses": {}
             }
         },
@@ -4796,23 +4796,23 @@ const docTemplate = `{
                 "tags": [
                     "SysExportTemplate"
                 ],
-                "summary": "用id查询导出模板",
+                "summary": "Find export template by id",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "主键ID",
+                        "description": "Primary key ID",
                         "name": "ID",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "创建时间",
+                        "description": "Create time",
                         "name": "createdAt",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "数据库名称",
+                        "description": "Database name",
                         "name": "dbName",
                         "in": "query"
                     },
@@ -4823,7 +4823,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "description": "模板名称",
+                        "description": "Template name",
                         "name": "name",
                         "in": "query"
                     },
@@ -4834,25 +4834,25 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "description": "表名称",
+                        "description": "Table name",
                         "name": "tableName",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "模板标识",
+                        "description": "Template ID",
                         "name": "templateID",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "模板信息",
+                        "description": "Template info",
                         "name": "templateInfo",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "更新时间",
+                        "description": "Update time",
                         "name": "updatedAt",
                         "in": "query"
                     }
@@ -4883,23 +4883,23 @@ const docTemplate = `{
                 "tags": [
                     "SysExportTemplate"
                 ],
-                "summary": "分页获取导出模板列表",
+                "summary": "Get export template list",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "主键ID",
+                        "description": "Primary key ID",
                         "name": "ID",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "创建时间",
+                        "description": "Create time",
                         "name": "createdAt",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "数据库名称",
+                        "description": "Database name",
                         "name": "dbName",
                         "in": "query"
                     },
@@ -4910,7 +4910,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "description": "关键字",
+                        "description": "Keyword",
                         "name": "keyword",
                         "in": "query"
                     },
@@ -4921,7 +4921,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "description": "模板名称",
+                        "description": "Template name",
                         "name": "name",
                         "in": "query"
                     },
@@ -4937,13 +4937,13 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "页码",
+                        "description": "Page number",
                         "name": "page",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "每页大小",
+                        "description": "Page size",
                         "name": "pageSize",
                         "in": "query"
                     },
@@ -4954,31 +4954,31 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "1启用 2禁用",
+                        "description": "1 enabled 2 disabled",
                         "name": "status",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "表名称",
+                        "description": "Table name",
                         "name": "tableName",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "模板标识",
+                        "description": "Template ID",
                         "name": "templateID",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "模板信息",
+                        "description": "Template info",
                         "name": "templateInfo",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "更新时间",
+                        "description": "Update time",
                         "name": "updatedAt",
                         "in": "query"
                     }
@@ -5009,7 +5009,7 @@ const docTemplate = `{
                 "tags": [
                     "SysImportTemplate"
                 ],
-                "summary": "导入表格",
+                "summary": "Import excel",
                 "responses": {}
             }
         },
@@ -5029,10 +5029,10 @@ const docTemplate = `{
                 "tags": [
                     "SysExportTemplate"
                 ],
-                "summary": "更新导出模板",
+                "summary": "Update export template",
                 "parameters": [
                     {
-                        "description": "更新导出模板",
+                        "description": "Update export template",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -5043,7 +5043,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"success\":true,\"data\":{},\"msg\":\"更新成功\"}",
+                        "description": "{\"success\":true,\"data\":{},\"msg\":\"Update success\"}",
                         "schema": {
                             "type": "string"
                         }
@@ -5067,10 +5067,10 @@ const docTemplate = `{
                 "tags": [
                     "SysOperationRecord"
                 ],
-                "summary": "创建SysOperationRecord",
+                "summary": "Create sys operation record",
                 "parameters": [
                     {
-                        "description": "创建SysOperationRecord",
+                        "description": "Create sys operation record",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -5081,7 +5081,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "创建SysOperationRecord",
+                        "description": "Create sys operation record",
                         "schema": {
                             "allOf": [
                                 {
@@ -5117,10 +5117,10 @@ const docTemplate = `{
                 "tags": [
                     "SysOperationRecord"
                 ],
-                "summary": "删除SysOperationRecord",
+                "summary": "Delete sys operation record",
                 "parameters": [
                     {
-                        "description": "SysOperationRecord模型",
+                        "description": "Delete sys operation record",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -5131,7 +5131,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除SysOperationRecord",
+                        "description": "Delete sys operation record",
                         "schema": {
                             "allOf": [
                                 {
@@ -5167,10 +5167,10 @@ const docTemplate = `{
                 "tags": [
                     "SysOperationRecord"
                 ],
-                "summary": "批量删除SysOperationRecord",
+                "summary": "Delete sys operation record by ids",
                 "parameters": [
                     {
-                        "description": "批量删除SysOperationRecord",
+                        "description": "Delete sys operation record by ids",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -5181,7 +5181,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "批量删除SysOperationRecord",
+                        "description": "Delete sys operation record by ids",
                         "schema": {
                             "allOf": [
                                 {
@@ -5217,96 +5217,96 @@ const docTemplate = `{
                 "tags": [
                     "SysOperationRecord"
                 ],
-                "summary": "用id查询SysOperationRecord",
+                "summary": "Find sys operation record by id",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "主键ID",
+                        "description": "Primary key ID",
                         "name": "ID",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "代理",
+                        "description": "Agent",
                         "name": "agent",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "请求Body",
+                        "description": "Request body",
                         "name": "body",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "创建时间",
+                        "description": "Create time",
                         "name": "createdAt",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "错误信息",
+                        "description": "Error message",
                         "name": "error_message",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "请求ip",
+                        "description": "Request ip",
                         "name": "ip",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "延迟",
+                        "description": "Latency",
                         "name": "latency",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "请求方法",
+                        "description": "Request method",
                         "name": "method",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "请求路径",
+                        "description": "Request path",
                         "name": "path",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "响应Body",
+                        "description": "Response body",
                         "name": "resp",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "快捷搜索",
+                        "description": "Shortcut key",
                         "name": "shortcutKey",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "请求状态",
+                        "description": "Request status",
                         "name": "status",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "更新时间",
+                        "description": "Update time",
                         "name": "updatedAt",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "用户id",
+                        "description": "User id",
                         "name": "user_id",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "用id查询SysOperationRecord",
+                        "description": "Find sys operation record by id",
                         "schema": {
                             "allOf": [
                                 {
@@ -5346,29 +5346,29 @@ const docTemplate = `{
                 "tags": [
                     "SysOperationRecord"
                 ],
-                "summary": "分页获取SysOperationRecord列表",
+                "summary": "Get sys operation record list",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "主键ID",
+                        "description": "Primary key ID",
                         "name": "ID",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "代理",
+                        "description": "Agent",
                         "name": "agent",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "请求Body",
+                        "description": "Request body",
                         "name": "body",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "创建时间",
+                        "description": "Create time",
                         "name": "createdAt",
                         "in": "query"
                     },
@@ -5379,31 +5379,31 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "description": "错误信息",
+                        "description": "Error message",
                         "name": "error_message",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "请求ip",
+                        "description": "Request ip",
                         "name": "ip",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "关键字",
+                        "description": "Keyword",
                         "name": "keyword",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "延迟",
+                        "description": "Latency",
                         "name": "latency",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "请求方法",
+                        "description": "Request method",
                         "name": "method",
                         "in": "query"
                     },
@@ -5414,31 +5414,31 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "页码",
+                        "description": "Page",
                         "name": "page",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "每页大小",
+                        "description": "Page size",
                         "name": "pageSize",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "请求路径",
+                        "description": "Request path",
                         "name": "path",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "响应Body",
+                        "description": "Response body",
                         "name": "resp",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "快捷搜索",
+                        "description": "Shortcut key",
                         "name": "shortcutKey",
                         "in": "query"
                     },
@@ -5449,26 +5449,26 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "1启用 2禁用",
+                        "description": "1Enable 2 Disable",
                         "name": "status",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "更新时间",
+                        "description": "Update time",
                         "name": "updatedAt",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "用户id",
+                        "description": "User id",
                         "name": "user_id",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "分页获取SysOperationRecord列表,返回包括列表,总数,页码,每页数量",
+                        "description": "Find sys operation record list",
                         "schema": {
                             "allOf": [
                                 {
@@ -5507,10 +5507,10 @@ const docTemplate = `{
                 "tags": [
                     "SysParams"
                 ],
-                "summary": "创建参数",
+                "summary": "Create sys params",
                 "parameters": [
                     {
-                        "description": "创建参数",
+                        "description": "Create sys params",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -5521,7 +5521,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "创建成功",
+                        "description": "Create sys params success",
                         "schema": {
                             "allOf": [
                                 {
@@ -5557,10 +5557,10 @@ const docTemplate = `{
                 "tags": [
                     "SysParams"
                 ],
-                "summary": "删除参数",
+                "summary": "Delete sys params",
                 "parameters": [
                     {
-                        "description": "删除参数",
+                        "description": "Delete sys params",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -5571,7 +5571,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除成功",
+                        "description": "Delete sys params success",
                         "schema": {
                             "allOf": [
                                 {
@@ -5607,10 +5607,10 @@ const docTemplate = `{
                 "tags": [
                     "SysParams"
                 ],
-                "summary": "批量删除参数",
+                "summary": "Delete sys params by ids",
                 "responses": {
                     "200": {
-                        "description": "批量删除成功",
+                        "description": "Delete sys params by ids success",
                         "schema": {
                             "allOf": [
                                 {
@@ -5646,49 +5646,49 @@ const docTemplate = `{
                 "tags": [
                     "SysParams"
                 ],
-                "summary": "用id查询参数",
+                "summary": "Find sys params",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "主键ID",
+                        "description": "Primary key ID",
                         "name": "ID",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "创建时间",
+                        "description": "Create time",
                         "name": "createdAt",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "参数说明",
+                        "description": "Parameter description",
                         "name": "desc",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "参数键",
+                        "description": "Parameter key",
                         "name": "key",
                         "in": "query",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "参数名称",
+                        "description": "Parameter name",
                         "name": "name",
                         "in": "query",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "更新时间",
+                        "description": "Update time",
                         "name": "updatedAt",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "参数值",
+                        "description": "Parameter value",
                         "name": "value",
                         "in": "query",
                         "required": true
@@ -5696,7 +5696,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "查询成功",
+                        "description": "Find sys params success",
                         "schema": {
                             "allOf": [
                                 {
@@ -5735,7 +5735,7 @@ const docTemplate = `{
                 "tags": [
                     "SysParams"
                 ],
-                "summary": "根据key获取参数value",
+                "summary": "Get sys param by key",
                 "parameters": [
                     {
                         "type": "string",
@@ -5747,7 +5747,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "获取成功",
+                        "description": "Get sys param by key success",
                         "schema": {
                             "allOf": [
                                 {
@@ -5786,7 +5786,7 @@ const docTemplate = `{
                 "tags": [
                     "SysParams"
                 ],
-                "summary": "分页获取参数列表",
+                "summary": "Get sys params list",
                 "parameters": [
                     {
                         "type": "string",
@@ -5800,7 +5800,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "description": "关键字",
+                        "description": "Parameter name",
                         "name": "keyword",
                         "in": "query"
                     },
@@ -5816,13 +5816,13 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "页码",
+                        "description": "Page number",
                         "name": "page",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "每页大小",
+                        "description": "Page size",
                         "name": "pageSize",
                         "in": "query"
                     },
@@ -5833,14 +5833,14 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "1启用 2禁用",
+                        "description": "Enable 1 Disable 2",
                         "name": "status",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "获取成功",
+                        "description": "Get sys params list success",
                         "schema": {
                             "allOf": [
                                 {
@@ -5879,10 +5879,10 @@ const docTemplate = `{
                 "tags": [
                     "SysParams"
                 ],
-                "summary": "更新参数",
+                "summary": "Update sys param",
                 "parameters": [
                     {
-                        "description": "更新参数",
+                        "description": "Update sys param",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -5893,7 +5893,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "更新成功",
+                        "description": "Update sys param success",
                         "schema": {
                             "allOf": [
                                 {
@@ -5926,10 +5926,10 @@ const docTemplate = `{
                 "tags": [
                     "System"
                 ],
-                "summary": "获取服务器信息",
+                "summary": "Get server info",
                 "responses": {
                     "200": {
-                        "description": "获取服务器信息",
+                        "description": "Get server info",
                         "schema": {
                             "allOf": [
                                 {
@@ -5966,10 +5966,10 @@ const docTemplate = `{
                 "tags": [
                     "System"
                 ],
-                "summary": "获取配置文件内容",
+                "summary": "Get system config",
                 "responses": {
                     "200": {
-                        "description": "获取配置文件内容,返回包括系统配置",
+                        "description": "Get system config,return includes system config",
                         "schema": {
                             "allOf": [
                                 {
@@ -6005,10 +6005,10 @@ const docTemplate = `{
                 "tags": [
                     "System"
                 ],
-                "summary": "重启系统",
+                "summary": "Reload system",
                 "responses": {
                     "200": {
-                        "description": "重启系统",
+                        "description": "Reload system",
                         "schema": {
                             "allOf": [
                                 {
@@ -6041,10 +6041,10 @@ const docTemplate = `{
                 "tags": [
                     "System"
                 ],
-                "summary": "设置配置文件内容",
+                "summary": "Set system config",
                 "parameters": [
                     {
-                        "description": "设置配置文件内容",
+                        "description": "Set system config",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -6055,7 +6055,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "设置配置文件内容",
+                        "description": "Set system config",
                         "schema": {
                             "allOf": [
                                 {
@@ -6091,10 +6091,10 @@ const docTemplate = `{
                 "tags": [
                     "SysUser"
                 ],
-                "summary": "设置用户信息",
+                "summary": "Set self info",
                 "parameters": [
                     {
-                        "description": "ID, 用户名, 昵称, 头像链接",
+                        "description": "ID, Username, Nickname, Avatar URL",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -6105,7 +6105,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "设置用户信息",
+                        "description": "Set self info",
                         "schema": {
                             "allOf": [
                                 {
@@ -6145,10 +6145,10 @@ const docTemplate = `{
                 "tags": [
                     "SysUser"
                 ],
-                "summary": "设置用户配置",
+                "summary": "Set self setting",
                 "parameters": [
                     {
-                        "description": "用户配置数据",
+                        "description": "Self setting data",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -6160,7 +6160,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "设置用户配置",
+                        "description": "Set self setting",
                         "schema": {
                             "allOf": [
                                 {
@@ -6192,10 +6192,10 @@ const docTemplate = `{
                 "tags": [
                     "SysUser"
                 ],
-                "summary": "用户注册账号",
+                "summary": "User registration account number",
                 "parameters": [
                     {
-                        "description": "用户名, 昵称, 密码, 角色ID",
+                        "description": "Username, Nickname, Password, Role ID",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -6206,7 +6206,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "用户注册账号,返回包括用户信息",
+                        "description": "User registration account number,return includes user information",
                         "schema": {
                             "allOf": [
                                 {
@@ -6242,10 +6242,10 @@ const docTemplate = `{
                 "tags": [
                     "SysUser"
                 ],
-                "summary": "用户修改密码",
+                "summary": "User change password",
                 "parameters": [
                     {
-                        "description": "用户名, 原密码, 新密码",
+                        "description": "Username, Old password, New password",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -6256,7 +6256,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "用户修改密码",
+                        "description": "User change password",
                         "schema": {
                             "allOf": [
                                 {
@@ -6292,10 +6292,10 @@ const docTemplate = `{
                 "tags": [
                     "SysUser"
                 ],
-                "summary": "删除用户",
+                "summary": "User delete",
                 "parameters": [
                     {
-                        "description": "用户ID",
+                        "description": "User ID",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -6306,7 +6306,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "删除用户",
+                        "description": "User delete",
                         "schema": {
                             "allOf": [
                                 {
@@ -6342,10 +6342,10 @@ const docTemplate = `{
                 "tags": [
                     "SysUser"
                 ],
-                "summary": "获取用户信息",
+                "summary": "User get info",
                 "responses": {
                     "200": {
-                        "description": "获取用户信息",
+                        "description": "User get info",
                         "schema": {
                             "allOf": [
                                 {
@@ -6385,10 +6385,10 @@ const docTemplate = `{
                 "tags": [
                     "SysUser"
                 ],
-                "summary": "分页获取用户列表",
+                "summary": "User get list",
                 "parameters": [
                     {
-                        "description": "页码, 每页大小",
+                        "description": "Page number, Page size",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -6399,7 +6399,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "分页获取用户列表,返回包括列表,总数,页码,每页数量",
+                        "description": "User get list,return includes list,total,page,pageSize",
                         "schema": {
                             "allOf": [
                                 {
@@ -6435,7 +6435,7 @@ const docTemplate = `{
                 "tags": [
                     "SysUser"
                 ],
-                "summary": "重置用户密码",
+                "summary": "User reset password",
                 "parameters": [
                     {
                         "description": "ID",
@@ -6449,7 +6449,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "重置用户密码",
+                        "description": "User reset password",
                         "schema": {
                             "allOf": [
                                 {
@@ -6485,10 +6485,10 @@ const docTemplate = `{
                 "tags": [
                     "SysUser"
                 ],
-                "summary": "设置用户权限",
+                "summary": "User set authorities",
                 "parameters": [
                     {
-                        "description": "用户UUID, 角色ID",
+                        "description": "User UUID, Role ID",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -6499,7 +6499,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "设置用户权限",
+                        "description": "User set authorities",
                         "schema": {
                             "allOf": [
                                 {
@@ -6535,10 +6535,10 @@ const docTemplate = `{
                 "tags": [
                     "SysUser"
                 ],
-                "summary": "更改用户权限",
+                "summary": "User set authority",
                 "parameters": [
                     {
-                        "description": "用户UUID, 角色ID",
+                        "description": "User UUID, Role ID",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -6549,7 +6549,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "设置用户权限",
+                        "description": "User set authority",
                         "schema": {
                             "allOf": [
                                 {
@@ -6585,10 +6585,10 @@ const docTemplate = `{
                 "tags": [
                     "SysUser"
                 ],
-                "summary": "设置用户信息",
+                "summary": "Set user information",
                 "parameters": [
                     {
-                        "description": "ID, 用户名, 昵称, 头像链接",
+                        "description": "ID, Username, Nickname, Avatar URL",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -6599,7 +6599,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "设置用户信息",
+                        "description": "Set user information",
                         "schema": {
                             "allOf": [
                                 {
@@ -6636,10 +6636,10 @@ const docTemplate = `{
                 "tags": [
                     "SysUser"
                 ],
-                "summary": "用户修改密码 (二次确认)",
+                "summary": "User update password (secondary confirmation)",
                 "parameters": [
                     {
-                        "description": "用户名, 原密码, 新密码",
+                        "description": "Username, Original password, New password",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -6650,7 +6650,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "用户修改密码",
+                        "description": "User update password",
                         "schema": {
                             "allOf": [
                                 {
@@ -6789,23 +6789,23 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "img-height": {
-                    "description": "验证码高度",
+                    "description": "Captcha height",
                     "type": "integer"
                 },
                 "img-width": {
-                    "description": "验证码宽度",
+                    "description": "Captcha width",
                     "type": "integer"
                 },
                 "key-long": {
-                    "description": "验证码长度",
+                    "description": "Captcha length",
                     "type": "integer"
                 },
                 "open-captcha": {
-                    "description": "防爆破验证码开启此数，0代表每次登录都需要验证码，其他数字代表错误密码此数，如3代表错误三次后出现验证码",
+                    "description": "Captcha is enabled, 0 means every login requires a captcha, other numbers mean the number of incorrect passwords, such as 3 means that a captcha will appear after three incorrect passwords",
                     "type": "integer"
                 },
                 "open-captcha-timeout": {
-                    "description": "防爆破验证码超时时间，单位：s(秒)",
+                    "description": "Captcha timeout, unit: s(second)",
                     "type": "integer"
                 }
             }
@@ -6873,19 +6873,19 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "buffer-time": {
-                    "description": "缓冲时间",
+                    "description": "Buffer time",
                     "type": "string"
                 },
                 "expires-time": {
-                    "description": "过期时间",
+                    "description": "Expires time",
                     "type": "string"
                 },
                 "issuer": {
-                    "description": "签发者",
+                    "description": "Issuer",
                     "type": "string"
                 },
                 "signing-key": {
-                    "description": "jwt签名",
+                    "description": "JWT signing key",
                     "type": "string"
                 }
             }
@@ -6894,11 +6894,11 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "path": {
-                    "description": "本地文件访问路径",
+                    "description": "Local file access path",
                     "type": "string"
                 },
                 "store-path": {
-                    "description": "本地文件存储路径",
+                    "description": "Local file storage path",
                     "type": "string"
                 }
             }
@@ -6953,7 +6953,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "auth-source": {
-                    "description": "验证数据库",
+                    "description": "Authentication database",
                     "type": "string"
                 },
                 "coll": {
@@ -6961,7 +6961,7 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "connect-timeout-ms": {
-                    "description": "连接超时时间",
+                    "description": "Connection timeout time",
                     "type": "integer"
                 },
                 "database": {
@@ -6969,22 +6969,22 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "hosts": {
-                    "description": "主机列表",
+                    "description": "Host list",
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/config.MongoHost"
                     }
                 },
                 "is-zap": {
-                    "description": "是否开启zap日志",
+                    "description": "Is zap log enabled",
                     "type": "boolean"
                 },
                 "max-pool-size": {
-                    "description": "最大连接池",
+                    "description": "Maximum connection pool",
                     "type": "integer"
                 },
                 "min-pool-size": {
-                    "description": "最小连接池",
+                    "description": "Minimum connection pool",
                     "type": "integer"
                 },
                 "options": {
@@ -6992,15 +6992,15 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "password": {
-                    "description": "密码",
+                    "description": "Password",
                     "type": "string"
                 },
                 "socket-timeout-ms": {
-                    "description": "socket超时时间",
+                    "description": "Socket timeout time",
                     "type": "integer"
                 },
                 "username": {
-                    "description": "用户名",
+                    "description": "Username",
                     "type": "string"
                 }
             }
@@ -7009,11 +7009,11 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "host": {
-                    "description": "ip地址",
+                    "description": "IP address",
                     "type": "string"
                 },
                 "port": {
-                    "description": "端口",
+                    "description": "Port",
                     "type": "string"
                 }
             }
@@ -7022,56 +7022,56 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "config": {
-                    "description": "高级配置",
+                    "description": "Advanced configuration",
                     "type": "string"
                 },
                 "db-name": {
-                    "description": "数据库名",
+                    "description": "Database name",
                     "type": "string"
                 },
                 "engine": {
-                    "description": "数据库引擎，默认InnoDB",
+                    "description": "Database engine, default InnoDB",
                     "type": "string",
                     "default": "InnoDB"
                 },
                 "log-mode": {
-                    "description": "是否开启Gorm全局日志",
+                    "description": "Is Gorm global log enabled",
                     "type": "string"
                 },
                 "log-zap": {
-                    "description": "是否通过zap写入日志文件",
+                    "description": "Is zap log enabled",
                     "type": "boolean"
                 },
                 "max-idle-conns": {
-                    "description": "空闲中的最大连接数",
+                    "description": "Maximum idle connections",
                     "type": "integer"
                 },
                 "max-open-conns": {
-                    "description": "打开到数据库的最大连接数",
+                    "description": "Maximum open connections",
                     "type": "integer"
                 },
                 "password": {
-                    "description": "数据库密码",
+                    "description": "Database password",
                     "type": "string"
                 },
                 "path": {
-                    "description": "数据库地址",
+                    "description": "Database address",
                     "type": "string"
                 },
                 "port": {
-                    "description": "数据库端口",
+                    "description": "Database port",
                     "type": "string"
                 },
                 "prefix": {
-                    "description": "数据库前缀",
+                    "description": "Database prefix",
                     "type": "string"
                 },
                 "singular": {
-                    "description": "是否开启全局禁用复数，true表示开启",
+                    "description": "Is global plural disabled, true means enabled",
                     "type": "boolean"
                 },
                 "username": {
-                    "description": "数据库账号",
+                    "description": "Database account",
                     "type": "string"
                 }
             }
@@ -7080,56 +7080,56 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "config": {
-                    "description": "高级配置",
+                    "description": "Advanced configuration",
                     "type": "string"
                 },
                 "db-name": {
-                    "description": "数据库名",
+                    "description": "Database name",
                     "type": "string"
                 },
                 "engine": {
-                    "description": "数据库引擎，默认InnoDB",
+                    "description": "Database engine, default InnoDB",
                     "type": "string",
                     "default": "InnoDB"
                 },
                 "log-mode": {
-                    "description": "是否开启Gorm全局日志",
+                    "description": "Is Gorm global log enabled",
                     "type": "string"
                 },
                 "log-zap": {
-                    "description": "是否通过zap写入日志文件",
+                    "description": "Is zap log enabled",
                     "type": "boolean"
                 },
                 "max-idle-conns": {
-                    "description": "空闲中的最大连接数",
+                    "description": "Maximum idle connections",
                     "type": "integer"
                 },
                 "max-open-conns": {
-                    "description": "打开到数据库的最大连接数",
+                    "description": "Maximum open connections",
                     "type": "integer"
                 },
                 "password": {
-                    "description": "数据库密码",
+                    "description": "Database password",
                     "type": "string"
                 },
                 "path": {
-                    "description": "数据库地址",
+                    "description": "Database address",
                     "type": "string"
                 },
                 "port": {
-                    "description": "数据库端口",
+                    "description": "Database port",
                     "type": "string"
                 },
                 "prefix": {
-                    "description": "数据库前缀",
+                    "description": "Database prefix",
                     "type": "string"
                 },
                 "singular": {
-                    "description": "是否开启全局禁用复数，true表示开启",
+                    "description": "Is global plural disabled, true means enabled",
                     "type": "boolean"
                 },
                 "username": {
-                    "description": "数据库账号",
+                    "description": "Database account",
                     "type": "string"
                 }
             }
@@ -7138,56 +7138,56 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "config": {
-                    "description": "高级配置",
+                    "description": "Advanced configuration",
                     "type": "string"
                 },
                 "db-name": {
-                    "description": "数据库名",
+                    "description": "Database name",
                     "type": "string"
                 },
                 "engine": {
-                    "description": "数据库引擎，默认InnoDB",
+                    "description": "Database engine, default InnoDB",
                     "type": "string",
                     "default": "InnoDB"
                 },
                 "log-mode": {
-                    "description": "是否开启Gorm全局日志",
+                    "description": "Is Gorm global log enabled",
                     "type": "string"
                 },
                 "log-zap": {
-                    "description": "是否通过zap写入日志文件",
+                    "description": "Is zap log enabled",
                     "type": "boolean"
                 },
                 "max-idle-conns": {
-                    "description": "空闲中的最大连接数",
+                    "description": "Idle maximum connection number",
                     "type": "integer"
                 },
                 "max-open-conns": {
-                    "description": "打开到数据库的最大连接数",
+                    "description": "Maximum open connection number",
                     "type": "integer"
                 },
                 "password": {
-                    "description": "数据库密码",
+                    "description": "Database password",
                     "type": "string"
                 },
                 "path": {
-                    "description": "数据库地址",
+                    "description": "Database address",
                     "type": "string"
                 },
                 "port": {
-                    "description": "数据库端口",
+                    "description": "Database port",
                     "type": "string"
                 },
                 "prefix": {
-                    "description": "数据库前缀",
+                    "description": "Database prefix",
                     "type": "string"
                 },
                 "singular": {
-                    "description": "是否开启全局禁用复数，true表示开启",
+                    "description": "Is global plural disabled, true means enabled",
                     "type": "boolean"
                 },
                 "username": {
-                    "description": "数据库账号",
+                    "description": "Database account",
                     "type": "string"
                 }
             }
@@ -7212,56 +7212,56 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "config": {
-                    "description": "高级配置",
+                    "description": "Advanced configuration",
                     "type": "string"
                 },
                 "db-name": {
-                    "description": "数据库名",
+                    "description": "Database name",
                     "type": "string"
                 },
                 "engine": {
-                    "description": "数据库引擎，默认InnoDB",
+                    "description": "Database engine, default InnoDB",
                     "type": "string",
                     "default": "InnoDB"
                 },
                 "log-mode": {
-                    "description": "是否开启Gorm全局日志",
+                    "description": "Is Gorm global log enabled",
                     "type": "string"
                 },
                 "log-zap": {
-                    "description": "是否通过zap写入日志文件",
+                    "description": "Is zap log enabled",
                     "type": "boolean"
                 },
                 "max-idle-conns": {
-                    "description": "空闲中的最大连接数",
+                    "description": "Idle maximum connection number",
                     "type": "integer"
                 },
                 "max-open-conns": {
-                    "description": "打开到数据库的最大连接数",
+                    "description": "Maximum open connection number",
                     "type": "integer"
                 },
                 "password": {
-                    "description": "数据库密码",
+                    "description": "Database password",
                     "type": "string"
                 },
                 "path": {
-                    "description": "数据库地址",
+                    "description": "Database address",
                     "type": "string"
                 },
                 "port": {
-                    "description": "数据库端口",
+                    "description": "Database port",
                     "type": "string"
                 },
                 "prefix": {
-                    "description": "数据库前缀",
+                    "description": "Database prefix",
                     "type": "string"
                 },
                 "singular": {
-                    "description": "是否开启全局禁用复数，true表示开启",
+                    "description": "Whether to enable global disabling of pluralization, true means enable",
                     "type": "boolean"
                 },
                 "username": {
-                    "description": "数据库账号",
+                    "description": "Database account",
                     "type": "string"
                 }
             }
@@ -7270,31 +7270,31 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "access-key": {
-                    "description": "秘钥AK",
+                    "description": "Secret AK",
                     "type": "string"
                 },
                 "bucket": {
-                    "description": "空间名称",
+                    "description": "Space name",
                     "type": "string"
                 },
                 "img-path": {
-                    "description": "CDN加速域名",
+                    "description": "CDN acceleration domain name",
                     "type": "string"
                 },
                 "secret-key": {
-                    "description": "秘钥SK",
+                    "description": "Secret SK",
                     "type": "string"
                 },
                 "use-cdn-domains": {
-                    "description": "上传是否使用CDN上传加速",
+                    "description": "Upload whether to use CDN upload acceleration",
                     "type": "boolean"
                 },
                 "use-https": {
-                    "description": "是否使用https",
+                    "description": "Whether to use https",
                     "type": "boolean"
                 },
                 "zone": {
-                    "description": "存储区域",
+                    "description": "Storage area",
                     "type": "string"
                 }
             }
@@ -7303,30 +7303,30 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "addr": {
-                    "description": "服务器地址:端口",
+                    "description": "Redis server address:port",
                     "type": "string"
                 },
                 "clusterAddrs": {
-                    "description": "集群模式下的节点地址列表",
+                    "description": "Cluster mode node address list",
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
                 "db": {
-                    "description": "单实例模式下redis的哪个数据库",
+                    "description": "Single instance mode redis which database",
                     "type": "integer"
                 },
                 "name": {
-                    "description": "代表当前实例的名字",
+                    "description": "Represent the name of the current instance",
                     "type": "string"
                 },
                 "password": {
-                    "description": "密码",
+                    "description": "Redis password",
                     "type": "string"
                 },
                 "useCluster": {
-                    "description": "是否使用集群模式",
+                    "description": "Whether to use cluster mode",
                     "type": "boolean"
                 }
             }
@@ -7355,7 +7355,7 @@ const docTemplate = `{
                     "$ref": "#/definitions/config.CloudflareR2"
                 },
                 "cors": {
-                    "description": "跨域配置",
+                    "description": "CORS configuration",
                     "allOf": [
                         {
                             "$ref": "#/definitions/config.CORS"
@@ -7448,7 +7448,7 @@ const docTemplate = `{
                     "$ref": "#/definitions/config.System"
                 },
                 "task": {
-                    "description": "task 配置",
+                    "description": "Task configuration",
                     "allOf": [
                         {
                             "$ref": "#/definitions/config.Task"
@@ -7470,62 +7470,62 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "config": {
-                    "description": "高级配置",
+                    "description": "Specialized database configuration",
                     "type": "string"
                 },
                 "db-name": {
-                    "description": "数据库名",
+                    "description": "Database name",
                     "type": "string"
                 },
                 "disable": {
                     "type": "boolean"
                 },
                 "engine": {
-                    "description": "数据库引擎，默认InnoDB",
+                    "description": "Database engine, default InnoDB",
                     "type": "string",
                     "default": "InnoDB"
                 },
                 "log-mode": {
-                    "description": "是否开启Gorm全局日志",
+                    "description": "Whether to enable Gorm global log",
                     "type": "string"
                 },
                 "log-zap": {
-                    "description": "是否通过zap写入日志文件",
+                    "description": "Whether to write log file through zap",
                     "type": "boolean"
                 },
                 "max-idle-conns": {
-                    "description": "空闲中的最大连接数",
+                    "description": "Idle maximum connection number",
                     "type": "integer"
                 },
                 "max-open-conns": {
-                    "description": "打开到数据库的最大连接数",
+                    "description": "Maximum number of open connections to the database",
                     "type": "integer"
                 },
                 "password": {
-                    "description": "数据库密码",
+                    "description": "Database password",
                     "type": "string"
                 },
                 "path": {
-                    "description": "数据库地址",
+                    "description": "Database address",
                     "type": "string"
                 },
                 "port": {
-                    "description": "数据库端口",
+                    "description": "Database port",
                     "type": "string"
                 },
                 "prefix": {
-                    "description": "数据库前缀",
+                    "description": "Database prefix",
                     "type": "string"
                 },
                 "singular": {
-                    "description": "是否开启全局禁用复数，true表示开启",
+                    "description": "Whether to enable global disabling of pluralization, true means enable",
                     "type": "boolean"
                 },
                 "type": {
                     "type": "string"
                 },
                 "username": {
-                    "description": "数据库账号",
+                    "description": "Database account",
                     "type": "string"
                 }
             }
@@ -7534,56 +7534,56 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "config": {
-                    "description": "高级配置",
+                    "description": "Advanced configuration",
                     "type": "string"
                 },
                 "db-name": {
-                    "description": "数据库名",
+                    "description": "Database name",
                     "type": "string"
                 },
                 "engine": {
-                    "description": "数据库引擎，默认InnoDB",
+                    "description": "Database engine, default InnoDB",
                     "type": "string",
                     "default": "InnoDB"
                 },
                 "log-mode": {
-                    "description": "是否开启Gorm全局日志",
+                    "description": "Whether to enable Gorm global log",
                     "type": "string"
                 },
                 "log-zap": {
-                    "description": "是否通过zap写入日志文件",
+                    "description": "Whether to write log file through zap",
                     "type": "boolean"
                 },
                 "max-idle-conns": {
-                    "description": "空闲中的最大连接数",
+                    "description": "Idle maximum connection number",
                     "type": "integer"
                 },
                 "max-open-conns": {
-                    "description": "打开到数据库的最大连接数",
+                    "description": "Maximum number of open connections to the database",
                     "type": "integer"
                 },
                 "password": {
-                    "description": "数据库密码",
+                    "description": "Database password",
                     "type": "string"
                 },
                 "path": {
-                    "description": "数据库地址",
+                    "description": "Database address",
                     "type": "string"
                 },
                 "port": {
-                    "description": "数据库端口",
+                    "description": "Database port",
                     "type": "string"
                 },
                 "prefix": {
-                    "description": "数据库前缀",
+                    "description": "Database prefix",
                     "type": "string"
                 },
                 "singular": {
-                    "description": "是否开启全局禁用复数，true表示开启",
+                    "description": "Whether to enable global disabling of pluralization, true means enable",
                     "type": "boolean"
                 },
                 "username": {
-                    "description": "数据库账号",
+                    "description": "Database account",
                     "type": "string"
                 }
             }
@@ -7592,11 +7592,11 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "addr": {
-                    "description": "端口值",
+                    "description": "Service port value",
                     "type": "integer"
                 },
                 "db-type": {
-                    "description": "数据库类型:mysql(默认)|sqlite|sqlserver|postgresql",
+                    "description": "Database type:mysql(Default)|sqlite|sqlserver|postgresql",
                     "type": "string"
                 },
                 "iplimit-count": {
@@ -7606,26 +7606,26 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "oss-type": {
-                    "description": "Oss类型",
+                    "description": "Oss type",
                     "type": "string"
                 },
                 "router-prefix": {
                     "type": "string"
                 },
                 "use-mongo": {
-                    "description": "使用mongo",
+                    "description": "Whether to use mongo",
                     "type": "boolean"
                 },
                 "use-multipoint": {
-                    "description": "多点登录拦截",
+                    "description": "Whether to enable multi-point login interception",
                     "type": "boolean"
                 },
                 "use-redis": {
-                    "description": "使用redis",
+                    "description": "Whether to use redis",
                     "type": "boolean"
                 },
                 "use-strict-auth": {
-                    "description": "使用树形角色分配模式",
+                    "description": "Whether to use tree role allocation mode",
                     "type": "boolean"
                 }
             }
@@ -7665,39 +7665,39 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "director": {
-                    "description": "日志文件夹",
+                    "description": "Log folder",
                     "type": "string"
                 },
                 "encode-level": {
-                    "description": "编码级",
+                    "description": "Encoding level",
                     "type": "string"
                 },
                 "format": {
-                    "description": "输出",
+                    "description": "Output format",
                     "type": "string"
                 },
                 "level": {
-                    "description": "级别",
+                    "description": "Log level",
                     "type": "string"
                 },
                 "log-in-console": {
-                    "description": "输出控制台",
+                    "description": "Output to console",
                     "type": "boolean"
                 },
                 "prefix": {
-                    "description": "日志前缀",
+                    "description": "Log prefix",
                     "type": "string"
                 },
                 "retention-day": {
-                    "description": "日志保留天数",
+                    "description": "Log retention days",
                     "type": "integer"
                 },
                 "show-line": {
-                    "description": "显示行",
+                    "description": "Show line",
                     "type": "boolean"
                 },
                 "stacktrace-key": {
-                    "description": "栈名",
+                    "description": "Stack name",
                     "type": "string"
                 }
             }
@@ -7706,31 +7706,31 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key ID",
                     "type": "integer"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Creation time",
                     "type": "string"
                 },
                 "key": {
-                    "description": "编号",
+                    "description": "Number",
                     "type": "string"
                 },
                 "name": {
-                    "description": "文件名",
+                    "description": "File name",
                     "type": "string"
                 },
                 "tag": {
-                    "description": "文件标签",
+                    "description": "File tag",
                     "type": "string"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 },
                 "url": {
-                    "description": "文件地址",
+                    "description": "File address",
                     "type": "string"
                 }
             }
@@ -7739,31 +7739,31 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "from": {
-                    "description": "发件人  你自己要发邮件的邮箱",
+                    "description": "Sender  Your own email address to send emails from",
                     "type": "string"
                 },
                 "host": {
-                    "description": "服务器地址 例如 smtp.qq.com  请前往QQ或者你要发邮件的邮箱查看其smtp协议",
+                    "description": "Server address  For example, smtp.qq.com  Please go to QQ or your email provider to check its SMTP protocol",
                     "type": "string"
                 },
                 "is-ssl": {
-                    "description": "是否SSL   是否开启SSL",
+                    "description": "Whether SSL  Whether to enable SSL",
                     "type": "boolean"
                 },
                 "nickname": {
-                    "description": "昵称    发件人昵称 通常为自己的邮箱",
+                    "description": "Nickname  Sender nickname, usually your email address",
                     "type": "string"
                 },
                 "port": {
-                    "description": "端口     请前往QQ或者你要发邮件的邮箱查看其smtp协议 大多为 465",
+                    "description": "Port  Please go to QQ or your email provider to check its SMTP protocol  Usually 465",
                     "type": "integer"
                 },
                 "secret": {
-                    "description": "密钥    用于登录的密钥 最好不要用邮箱密码 去邮箱smtp申请一个用于登录的密钥",
+                    "description": "Secret  Used for login  It is best not to use your email password  Go to the email provider to apply for a secret key for login",
                     "type": "string"
                 },
                 "to": {
-                    "description": "收件人:多个以英文逗号分隔 例：a@qq.com b@qq.com 正式开发中请把此项目作为参数使用",
+                    "description": "Recipient: multiple separated by commas  For example: a@qq.com b@qq.com  In formal development, please use this project as a parameter",
                     "type": "string"
                 }
             }
@@ -7772,55 +7772,55 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "accessType": {
-                    "description": "接入方式（1域名托管接入）",
+                    "description": "Access type  (1 Domain hosting access)",
                     "type": "integer"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Creation time",
                     "type": "string"
                 },
                 "createdBy": {
-                    "description": "创建人ID",
+                    "description": "Creator ID",
                     "type": "integer"
                 },
                 "deletedAt": {
-                    "description": "删除时间",
+                    "description": "Deletion time",
                     "type": "string"
                 },
                 "domain": {
-                    "description": "域名地址",
+                    "description": "Domain address",
                     "type": "string"
                 },
                 "domainSource": {
-                    "description": "域名来源（如内部、外部、第三方）",
+                    "description": "Domain source (such as internal, external, third-party)",
                     "type": "integer"
                 },
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary key ID",
                     "type": "integer"
                 },
                 "remark": {
-                    "description": "备注",
+                    "description": "Remark",
                     "type": "string"
                 },
                 "resolveIp": {
-                    "description": "解析IP",
+                    "description": "Resolve IP",
                     "type": "string"
                 },
                 "status": {
-                    "description": "状态（1匹配中，2正确匹配，3匹配失败）",
+                    "description": "Status (1 matching, 2 correct match, 3 matching failure)",
                     "type": "integer"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 },
                 "updatedBy": {
-                    "description": "更新人ID",
+                    "description": "Updater ID",
                     "type": "integer"
                 },
                 "visible": {
-                    "description": "是否显示（1: 显示，-1: 隐藏）",
+                    "description": "Visible (1: display, -1: hide)",
                     "type": "integer"
                 }
             }
@@ -7833,19 +7833,19 @@ const docTemplate = `{
             ],
             "properties": {
                 "cDominId": {
-                    "description": "主域名表ID",
+                    "description": "Main domain table ID",
                     "type": "integer"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Creation time",
                     "type": "string"
                 },
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary key ID",
                     "type": "integer"
                 },
                 "subDomain": {
-                    "description": "域名地址",
+                    "description": "Subdomain address",
                     "type": "string"
                 }
             }
@@ -7854,34 +7854,34 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key ID",
                     "type": "integer"
                 },
                 "attachments": {
-                    "description": "附件",
+                    "description": "Attachments",
                     "type": "array",
                     "items": {
                         "type": "object"
                     }
                 },
                 "content": {
-                    "description": "内容",
+                    "description": "Content",
                     "type": "string"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Creation time",
                     "type": "string"
                 },
                 "title": {
-                    "description": "标题",
+                    "description": "Title",
                     "type": "string"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 },
                 "userID": {
-                    "description": "作者",
+                    "description": "Author",
                     "type": "integer"
                 }
             }
@@ -7890,7 +7890,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "authorityId": {
-                    "description": "角色ID",
+                    "description": "Role ID",
                     "type": "integer"
                 },
                 "menus": {
@@ -7905,44 +7905,44 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "abbreviation": {
-                    "description": "Struct简称",
+                    "description": "Struct abbreviation",
                     "type": "string",
-                    "example": "Struct简称"
+                    "example": "Struct abbreviation"
                 },
                 "autoCreateApiToSql": {
-                    "description": "是否自动创建api",
+                    "description": "Whether to automatically create API",
                     "type": "boolean",
                     "example": false
                 },
                 "autoCreateBtnAuth": {
-                    "description": "是否自动创建按钮权限",
+                    "description": "Whether to automatically create button permissions",
                     "type": "boolean",
                     "example": false
                 },
                 "autoCreateMenuToSql": {
-                    "description": "是否自动创建menu",
+                    "description": "Whether to automatically create menu",
                     "type": "boolean",
                     "example": false
                 },
                 "autoCreateResource": {
-                    "description": "是否自动创建资源标识",
+                    "description": "Whether to automatically create resource identifier",
                     "type": "boolean",
                     "example": false
                 },
                 "autoMigrate": {
-                    "description": "是否自动迁移表结构",
+                    "description": "Whether to automatically migrate table structure",
                     "type": "boolean",
                     "example": false
                 },
                 "businessDB": {
-                    "description": "业务数据库",
+                    "description": "Business database",
                     "type": "string",
-                    "example": "业务数据库"
+                    "example": "Business database"
                 },
                 "description": {
-                    "description": "Struct中文名称",
+                    "description": "Struct Chinese name",
                     "type": "string",
-                    "example": "Struct中文名称"
+                    "example": "Struct Chinese name"
                 },
                 "fields": {
                     "type": "array",
@@ -7951,27 +7951,27 @@ const docTemplate = `{
                     }
                 },
                 "gvaModel": {
-                    "description": "是否使用gva默认Model",
+                    "description": "Whether to use gva default Model",
                     "type": "boolean",
                     "example": false
                 },
                 "humpPackageName": {
-                    "description": "go文件名称",
+                    "description": "go file name",
                     "type": "string",
-                    "example": "go文件名称"
+                    "example": "go file name"
                 },
                 "isAdd": {
-                    "description": "是否新增",
+                    "description": "Whether to add",
                     "type": "boolean",
                     "example": false
                 },
                 "isTree": {
-                    "description": "是否树形结构",
+                    "description": "Whether it is a tree structure",
                     "type": "boolean",
                     "example": false
                 },
                 "onlyTemplate": {
-                    "description": "是否只生成模板",
+                    "description": "Whether to only generate templates",
                     "type": "boolean",
                     "example": false
                 },
@@ -7979,27 +7979,27 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "packageName": {
-                    "description": "文件名称",
+                    "description": "go file name",
                     "type": "string",
-                    "example": "文件名称"
+                    "example": "go file name"
                 },
                 "primaryField": {
                     "$ref": "#/definitions/request.AutoCodeField"
                 },
                 "structName": {
-                    "description": "Struct名称",
+                    "description": "Struct name",
                     "type": "string",
-                    "example": "Struct名称"
+                    "example": "Struct name"
                 },
                 "tableName": {
-                    "description": "表名",
+                    "description": "Table name",
                     "type": "string",
-                    "example": "表名"
+                    "example": "Table name"
                 },
                 "treeJson": {
-                    "description": "展示的树json字段",
+                    "description": "Show tree json field",
                     "type": "string",
-                    "example": "展示的树json字段"
+                    "example": "Show tree json field"
                 }
             }
         },
@@ -8007,23 +8007,23 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "checkDataSource": {
-                    "description": "是否检查数据源",
+                    "description": "Whether to check the data source",
                     "type": "boolean"
                 },
                 "clearable": {
-                    "description": "是否可清空",
+                    "description": "Whether it is clearable",
                     "type": "boolean"
                 },
                 "columnName": {
-                    "description": "数据库字段",
+                    "description": "Database field",
                     "type": "string"
                 },
                 "comment": {
-                    "description": "数据库字段描述",
+                    "description": "Database field description",
                     "type": "string"
                 },
                 "dataSource": {
-                    "description": "数据源",
+                    "description": "Data source",
                     "allOf": [
                         {
                             "$ref": "#/definitions/request.DataSource"
@@ -8031,35 +8031,35 @@ const docTemplate = `{
                     ]
                 },
                 "dataTypeLong": {
-                    "description": "数据库字段长度",
+                    "description": "Database field length",
                     "type": "string"
                 },
                 "defaultValue": {
-                    "description": "是否必填",
+                    "description": "Whether it is required",
                     "type": "string"
                 },
                 "desc": {
-                    "description": "是否前端详情",
+                    "description": "Whether it is front-end details",
                     "type": "boolean"
                 },
                 "dictType": {
-                    "description": "字典",
+                    "description": "Dictionary",
                     "type": "string"
                 },
                 "errorText": {
-                    "description": "校验失败文字",
+                    "description": "Validation failed text",
                     "type": "string"
                 },
                 "excel": {
-                    "description": "是否导入/导出",
+                    "description": "Whether to import/export",
                     "type": "boolean"
                 },
                 "fieldDesc": {
-                    "description": "中文名",
+                    "description": "Chinese name",
                     "type": "string"
                 },
                 "fieldIndexType": {
-                    "description": "索引类型",
+                    "description": "Index type",
                     "type": "string"
                 },
                 "fieldJson": {
@@ -8067,39 +8067,39 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "fieldName": {
-                    "description": "Field名",
+                    "description": "Field name",
                     "type": "string"
                 },
                 "fieldSearchHide": {
-                    "description": "是否隐藏查询条件",
+                    "description": "Whether to hide the query condition",
                     "type": "boolean"
                 },
                 "fieldSearchType": {
-                    "description": "搜索条件",
+                    "description": "Search condition",
                     "type": "string"
                 },
                 "fieldType": {
-                    "description": "Field数据类型",
+                    "description": "Field data type",
                     "type": "string"
                 },
                 "form": {
-                    "description": "Front           bool        ` + "`" + `json:\"front\"` + "`" + `           // 是否前端可见",
+                    "description": "Front           bool        ` + "`" + `json:\"front\"` + "`" + `           // Is it visible on the front end?",
                     "type": "boolean"
                 },
                 "primaryKey": {
-                    "description": "是否主键",
+                    "description": "Is it a primary key",
                     "type": "boolean"
                 },
                 "require": {
-                    "description": "是否必填",
+                    "description": "Is it required",
                     "type": "boolean"
                 },
                 "sort": {
-                    "description": "是否增加排序",
+                    "description": "Is it added for sorting",
                     "type": "boolean"
                 },
                 "table": {
-                    "description": "是否前端表格列",
+                    "description": "Is it a front-end table column",
                     "type": "boolean"
                 }
             }
@@ -8108,7 +8108,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "authorityId": {
-                    "description": "权限id",
+                    "description": "Role id",
                     "type": "integer"
                 },
                 "casbinInfos": {
@@ -8123,11 +8123,11 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "method": {
-                    "description": "方法",
+                    "description": "Method",
                     "type": "string"
                 },
                 "path": {
-                    "description": "路径",
+                    "description": "Path",
                     "type": "string"
                 }
             }
@@ -8136,11 +8136,11 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "newPassword": {
-                    "description": "新密码",
+                    "description": "New password",
                     "type": "string"
                 },
                 "password": {
-                    "description": "密码",
+                    "description": "Password",
                     "type": "string"
                 }
             }
@@ -8149,7 +8149,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "association": {
-                    "description": "关联关系 1 一对一 2 一对多",
+                    "description": "Relationship 1 One-to-one 2 One-to-many",
                     "type": "integer"
                 },
                 "dbName": {
@@ -8176,7 +8176,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "authorityId": {
-                    "description": "角色ID",
+                    "description": "Role id",
                     "type": "integer"
                 }
             }
@@ -8185,7 +8185,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 }
             }
@@ -8197,7 +8197,7 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "keyword": {
-                    "description": "关键字",
+                    "description": "Keywords",
                     "type": "string"
                 },
                 "nickName": {
@@ -8207,18 +8207,18 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "page": {
-                    "description": "页码",
+                    "description": "Page number",
                     "type": "integer"
                 },
                 "pageSize": {
-                    "description": "每页大小",
+                    "description": "Page size",
                     "type": "integer"
                 },
                 "phone": {
                     "type": "string"
                 },
                 "status": {
-                    "description": "1启用 2禁用",
+                    "description": "Status 1 Enabled 2 Disabled",
                     "type": "integer"
                 },
                 "username": {
@@ -8248,35 +8248,35 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "dbName": {
-                    "description": "数据库名",
+                    "description": "Database name",
                     "type": "string"
                 },
                 "dbPath": {
-                    "description": "sqlite数据库文件路径",
+                    "description": "Sqlite database file path",
                     "type": "string"
                 },
                 "dbType": {
-                    "description": "数据库类型",
+                    "description": "Database type",
                     "type": "string"
                 },
                 "host": {
-                    "description": "服务器地址",
+                    "description": "Server address",
                     "type": "string"
                 },
                 "password": {
-                    "description": "数据库密码",
+                    "description": "Database password",
                     "type": "string"
                 },
                 "port": {
-                    "description": "数据库连接端口",
+                    "description": "Database connection port",
                     "type": "string"
                 },
                 "template": {
-                    "description": "postgresql指定template",
+                    "description": "Postgresql specified template",
                     "type": "string"
                 },
                 "userName": {
-                    "description": "数据库用户名",
+                    "description": "Database username",
                     "type": "string"
                 }
             }
@@ -8285,15 +8285,15 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "captcha": {
-                    "description": "验证码",
+                    "description": "Captcha",
                     "type": "string"
                 },
                 "password": {
-                    "description": "密码",
+                    "description": "Password",
                     "type": "string"
                 },
                 "username": {
-                    "description": "用户名",
+                    "description": "Username",
                     "type": "string"
                 }
             }
@@ -8302,22 +8302,22 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "keyword": {
-                    "description": "关键字",
+                    "description": "Keyword",
                     "type": "string"
                 },
                 "operateId": {
                     "type": "integer"
                 },
                 "page": {
-                    "description": "页码",
+                    "description": "Page number",
                     "type": "integer"
                 },
                 "pageSize": {
-                    "description": "每页大小",
+                    "description": "Page size",
                     "type": "integer"
                 },
                 "status": {
-                    "description": "1启用 2禁用",
+                    "description": "Status 1 Enabled 2 Disabled",
                     "type": "integer"
                 }
             }
@@ -8327,39 +8327,39 @@ const docTemplate = `{
             "properties": {
                 "authorityId": {
                     "type": "string",
-                    "example": "int 角色id"
+                    "example": "int Role id"
                 },
                 "authorityIds": {
                     "type": "string",
-                    "example": "[]uint 角色id"
+                    "example": "[]uint Role id"
                 },
                 "email": {
                     "type": "string",
-                    "example": "电子邮箱"
+                    "example": "E-mail address"
                 },
                 "enable": {
                     "type": "string",
-                    "example": "int 是否启用"
+                    "example": "int Whether it is enabled"
                 },
                 "headerImg": {
                     "type": "string",
-                    "example": "头像链接"
+                    "example": "Avatar link"
                 },
                 "nickName": {
                     "type": "string",
-                    "example": "昵称"
+                    "example": "Nickname"
                 },
                 "passWord": {
                     "type": "string",
-                    "example": "密码"
+                    "example": "Password"
                 },
                 "phone": {
                     "type": "string",
-                    "example": "电话号码"
+                    "example": "Phone number"
                 },
                 "userName": {
                     "type": "string",
-                    "example": "用户名"
+                    "example": "Username"
                 }
             }
         },
@@ -8367,58 +8367,58 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "apiGroup": {
-                    "description": "api组",
+                    "description": "Api group",
                     "type": "string"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "desc": {
-                    "description": "排序方式:升序false(默认)|降序true",
+                    "description": "Sorting method: ascending false (default) | descending true",
                     "type": "boolean"
                 },
                 "description": {
-                    "description": "api中文描述",
+                    "description": "Api chinese description",
                     "type": "string"
                 },
                 "keyword": {
-                    "description": "关键字",
+                    "description": "Keyword",
                     "type": "string"
                 },
                 "method": {
-                    "description": "方法:创建POST(默认)|查看GET|更新PUT|删除DELETE",
+                    "description": "Method: create POST (default) | view GET | update PUT | delete DELETE",
                     "type": "string"
                 },
                 "operateId": {
                     "type": "integer"
                 },
                 "orderKey": {
-                    "description": "排序",
+                    "description": "Sorting",
                     "type": "string"
                 },
                 "page": {
-                    "description": "页码",
+                    "description": "Page number",
                     "type": "integer"
                 },
                 "pageSize": {
-                    "description": "每页大小",
+                    "description": "Page size",
                     "type": "integer"
                 },
                 "path": {
-                    "description": "api路径",
+                    "description": "Api path",
                     "type": "string"
                 },
                 "status": {
-                    "description": "1启用 2禁用",
+                    "description": "1 Enabled 2 Disabled",
                     "type": "integer"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 }
             }
@@ -8427,7 +8427,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "authorityId": {
-                    "description": "角色ID",
+                    "description": "Role id",
                     "type": "integer"
                 }
             }
@@ -8436,7 +8436,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "authorityIds": {
-                    "description": "角色ID",
+                    "description": "Role id",
                     "type": "array",
                     "items": {
                         "type": "integer"
@@ -8469,19 +8469,19 @@ const docTemplate = `{
             "properties": {
                 "desc": {
                     "type": "string",
-                    "example": "描述"
+                    "example": "Description"
                 },
                 "label": {
                     "type": "string",
-                    "example": "展示名"
+                    "example": "Show name"
                 },
                 "packageName": {
                     "type": "string",
-                    "example": "包名"
+                    "example": "Package name"
                 },
                 "template": {
                     "type": "string",
-                    "example": "模版"
+                    "example": "Template"
                 }
             }
         },
@@ -8489,19 +8489,19 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "deleteApi": {
-                    "description": "是否删除接口",
+                    "description": "Delete api",
                     "type": "boolean"
                 },
                 "deleteMenu": {
-                    "description": "是否删除菜单",
+                    "description": "Delete menu",
                     "type": "boolean"
                 },
                 "deleteTable": {
-                    "description": "是否删除表",
+                    "description": "Delete table",
                     "type": "boolean"
                 },
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 }
             }
@@ -8510,15 +8510,15 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "adminId": {
-                    "description": "管理员id",
+                    "description": "Admin id",
                     "type": "integer"
                 },
                 "password": {
-                    "description": "密码",
+                    "description": "Password",
                     "type": "string"
                 },
                 "rePassword": {
-                    "description": "二次确认密码",
+                    "description": "Re password",
                     "type": "string"
                 }
             }
@@ -8527,15 +8527,15 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "body": {
-                    "description": "邮件内容",
+                    "description": "Email body",
                     "type": "string"
                 },
                 "subject": {
-                    "description": "邮件标题",
+                    "description": "Email subject",
                     "type": "string"
                 },
                 "to": {
-                    "description": "邮件发送给谁",
+                    "description": "Email send to",
                     "type": "string"
                 }
             }
@@ -8637,7 +8637,7 @@ const docTemplate = `{
                     "$ref": "#/definitions/system.SysAuthority"
                 },
                 "oldAuthorityId": {
-                    "description": "旧角色ID",
+                    "description": "Old role id",
                     "type": "integer"
                 }
             }
@@ -8717,14 +8717,14 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "column": {
                     "type": "string"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "from": {
@@ -8737,7 +8737,7 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 }
             }
@@ -8746,11 +8746,11 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "joins": {
@@ -8766,7 +8766,7 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 }
             }
@@ -8778,27 +8778,27 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "closeTab": {
-                    "description": "自动关闭tab",
+                    "description": "Close tab",
                     "type": "boolean"
                 },
                 "defaultMenu": {
-                    "description": "是否是基础路由（开发中）",
+                    "description": "Is default menu",
                     "type": "boolean"
                 },
                 "icon": {
-                    "description": "菜单图标",
+                    "description": "Menu icon",
                     "type": "string"
                 },
                 "keepAlive": {
-                    "description": "是否缓存",
+                    "description": "Is keep alive",
                     "type": "boolean"
                 },
                 "lang": {
-                    "description": "多语言",
+                    "description": "Multi language",
                     "type": "string"
                 },
                 "title": {
-                    "description": "菜单名",
+                    "description": "Menu name",
                     "type": "string"
                 }
             }
@@ -8807,31 +8807,31 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "apiGroup": {
-                    "description": "api组",
+                    "description": "api group",
                     "type": "string"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "description": {
-                    "description": "api中文描述",
+                    "description": "Api description",
                     "type": "string"
                 },
                 "method": {
-                    "description": "方法:创建POST(默认)|查看GET|更新PUT|删除DELETE",
+                    "description": "Method: create POST (default)| view GET | update PUT | delete DELETE",
                     "type": "string"
                 },
                 "path": {
-                    "description": "api路径",
+                    "description": "API path",
                     "type": "string"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 }
             }
@@ -8840,11 +8840,11 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "authorityId": {
-                    "description": "角色ID",
+                    "description": "Role id",
                     "type": "integer"
                 },
                 "authorityName": {
-                    "description": "角色名",
+                    "description": "Role name",
                     "type": "string"
                 },
                 "children": {
@@ -8854,7 +8854,7 @@ const docTemplate = `{
                     }
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "dataAuthorityId": {
@@ -8864,7 +8864,7 @@ const docTemplate = `{
                     }
                 },
                 "defaultRouter": {
-                    "description": "默认菜单(默认dashboard)",
+                    "description": "Default router (default dashboard)",
                     "type": "string"
                 },
                 "deletedAt": {
@@ -8877,11 +8877,11 @@ const docTemplate = `{
                     }
                 },
                 "parentId": {
-                    "description": "父角色ID",
+                    "description": "Parent role id",
                     "type": "integer"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 }
             }
@@ -8890,7 +8890,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "authoritys": {
@@ -8906,15 +8906,15 @@ const docTemplate = `{
                     }
                 },
                 "component": {
-                    "description": "对应前端文件路径",
+                    "description": "Component path",
                     "type": "string"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "hidden": {
-                    "description": "是否在列表隐藏",
+                    "description": "Is hidden in list",
                     "type": "boolean"
                 },
                 "menuBtn": {
@@ -8924,7 +8924,7 @@ const docTemplate = `{
                     }
                 },
                 "meta": {
-                    "description": "附加属性",
+                    "description": "Additional attributes",
                     "allOf": [
                         {
                             "$ref": "#/definitions/system.Meta"
@@ -8932,7 +8932,7 @@ const docTemplate = `{
                     ]
                 },
                 "name": {
-                    "description": "路由name",
+                    "description": "Route name",
                     "type": "string"
                 },
                 "parameters": {
@@ -8942,19 +8942,19 @@ const docTemplate = `{
                     }
                 },
                 "parentId": {
-                    "description": "父菜单ID",
+                    "description": "Parent menu id",
                     "type": "integer"
                 },
                 "path": {
-                    "description": "路由path",
+                    "description": "Route path",
                     "type": "string"
                 },
                 "sort": {
-                    "description": "排序标记",
+                    "description": "Sort mark",
                     "type": "integer"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 }
             }
@@ -8963,11 +8963,11 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "desc": {
@@ -8980,7 +8980,7 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 }
             }
@@ -8989,30 +8989,30 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "key": {
-                    "description": "地址栏携带参数的key",
+                    "description": "Address bar parameter key",
                     "type": "string"
                 },
                 "sysBaseMenuID": {
                     "type": "integer"
                 },
                 "type": {
-                    "description": "地址栏携带参数为params还是query",
+                    "description": "Address bar parameter type: params or query",
                     "type": "string"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 },
                 "value": {
-                    "description": "地址栏携带参数的值",
+                    "description": "Address bar parameter value",
                     "type": "string"
                 }
             }
@@ -9021,23 +9021,23 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "desc": {
-                    "description": "描述",
+                    "description": "Description",
                     "type": "string"
                 },
                 "name": {
-                    "description": "字典名（中）",
+                    "description": "Dictionary name (zh)",
                     "type": "string"
                 },
                 "status": {
-                    "description": "状态",
+                    "description": "Status",
                     "type": "boolean"
                 },
                 "sysDictionaryDetails": {
@@ -9047,11 +9047,11 @@ const docTemplate = `{
                     }
                 },
                 "type": {
-                    "description": "字典名（英）",
+                    "description": "Dictionary name (en)",
                     "type": "string"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 }
             }
@@ -9060,39 +9060,39 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "extend": {
-                    "description": "扩展值",
+                    "description": "Extend value",
                     "type": "string"
                 },
                 "label": {
-                    "description": "展示值",
+                    "description": "Show value",
                     "type": "string"
                 },
                 "sort": {
-                    "description": "排序标记",
+                    "description": "Sort mark",
                     "type": "integer"
                 },
                 "status": {
-                    "description": "启用状态",
+                    "description": "Enable status",
                     "type": "boolean"
                 },
                 "sysDictionaryID": {
-                    "description": "关联标记",
+                    "description": "Dictionary id",
                     "type": "integer"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 },
                 "value": {
-                    "description": "字典值",
+                    "description": "Dictionary value",
                     "type": "string"
                 }
             }
@@ -9101,7 +9101,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "conditions": {
@@ -9111,11 +9111,11 @@ const docTemplate = `{
                     }
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "dbName": {
-                    "description": "数据库名称",
+                    "description": "Database name",
                     "type": "string"
                 },
                 "joinTemplate": {
@@ -9128,26 +9128,26 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "name": {
-                    "description": "模板名称",
+                    "description": "Template name",
                     "type": "string"
                 },
                 "order": {
                     "type": "string"
                 },
                 "tableName": {
-                    "description": "表名称",
+                    "description": "Table name",
                     "type": "string"
                 },
                 "templateID": {
-                    "description": "模板标识",
+                    "description": "Template id",
                     "type": "string"
                 },
                 "templateInfo": {
-                    "description": "模板信息",
+                    "description": "Template info",
                     "type": "string"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 }
             }
@@ -9156,7 +9156,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "authoritys": {
@@ -9178,15 +9178,15 @@ const docTemplate = `{
                     }
                 },
                 "component": {
-                    "description": "对应前端文件路径",
+                    "description": "Component path",
                     "type": "string"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "hidden": {
-                    "description": "是否在列表隐藏",
+                    "description": "Is hidden in list",
                     "type": "boolean"
                 },
                 "menuBtn": {
@@ -9199,7 +9199,7 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "meta": {
-                    "description": "附加属性",
+                    "description": "Meta info",
                     "allOf": [
                         {
                             "$ref": "#/definitions/system.Meta"
@@ -9207,7 +9207,7 @@ const docTemplate = `{
                     ]
                 },
                 "name": {
-                    "description": "路由name",
+                    "description": "Route name",
                     "type": "string"
                 },
                 "parameters": {
@@ -9217,19 +9217,19 @@ const docTemplate = `{
                     }
                 },
                 "parentId": {
-                    "description": "父菜单ID",
+                    "description": "Parent menu id",
                     "type": "integer"
                 },
                 "path": {
-                    "description": "路由path",
+                    "description": "Route path",
                     "type": "string"
                 },
                 "sort": {
-                    "description": "排序标记",
+                    "description": "Sort mark",
                     "type": "integer"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 }
             }
@@ -9238,62 +9238,62 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "agent": {
-                    "description": "代理",
+                    "description": "Agent",
                     "type": "string"
                 },
                 "body": {
-                    "description": "请求Body",
+                    "description": "Request body",
                     "type": "string"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "error_message": {
-                    "description": "错误信息",
+                    "description": "Error message",
                     "type": "string"
                 },
                 "ip": {
-                    "description": "请求ip",
+                    "description": "Request ip",
                     "type": "string"
                 },
                 "latency": {
-                    "description": "延迟",
-                    "type": "string"
+                    "description": "Latency",
+                    "type": "integer"
                 },
                 "method": {
-                    "description": "请求方法",
+                    "description": "Request method",
                     "type": "string"
                 },
                 "path": {
-                    "description": "请求路径",
+                    "description": "Request path",
                     "type": "string"
                 },
                 "resp": {
-                    "description": "响应Body",
+                    "description": "Response body",
                     "type": "string"
                 },
                 "shortcutKey": {
-                    "description": "快捷搜索",
+                    "description": "Shortcut key",
                     "type": "integer"
                 },
                 "status": {
-                    "description": "请求状态",
+                    "description": "Request status",
                     "type": "integer"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 },
                 "user": {
                     "$ref": "#/definitions/system.SysUser"
                 },
                 "user_id": {
-                    "description": "用户id",
+                    "description": "User id",
                     "type": "integer"
                 }
             }
@@ -9307,31 +9307,31 @@ const docTemplate = `{
             ],
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "desc": {
-                    "description": "参数说明",
+                    "description": "Parameter description",
                     "type": "string"
                 },
                 "key": {
-                    "description": "参数键",
+                    "description": "Parameter key",
                     "type": "string"
                 },
                 "name": {
-                    "description": "参数名称",
+                    "description": "Parameter name",
                     "type": "string"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 },
                 "value": {
-                    "description": "参数值",
+                    "description": "Parameter value",
                     "type": "string"
                 }
             }
@@ -9340,18 +9340,18 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "ID": {
-                    "description": "主键ID",
+                    "description": "Primary key id",
                     "type": "integer"
                 },
                 "authorities": {
-                    "description": "多用户角色",
+                    "description": "Multi user role",
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/system.SysAuthority"
                     }
                 },
                 "authority": {
-                    "description": "用户角色",
+                    "description": "User role",
                     "allOf": [
                         {
                             "$ref": "#/definitions/system.SysAuthority"
@@ -9359,19 +9359,19 @@ const docTemplate = `{
                     ]
                 },
                 "authorityId": {
-                    "description": "用户角色ID",
+                    "description": "User role id",
                     "type": "integer"
                 },
                 "createdAt": {
-                    "description": "创建时间",
+                    "description": "Create time",
                     "type": "string"
                 },
                 "email": {
-                    "description": "用户邮箱",
+                    "description": "User email",
                     "type": "string"
                 },
                 "enable": {
-                    "description": "用户是否被冻结 1正常 2冻结",
+                    "description": "User is frozen 1 normal 2 frozen",
                     "type": "integer"
                 },
                 "google_auth_secret": {
@@ -9381,15 +9381,15 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "headerImg": {
-                    "description": "用户头像",
+                    "description": "User avatar",
                     "type": "string"
                 },
                 "nickName": {
-                    "description": "用户昵称",
+                    "description": "User nickname",
                     "type": "string"
                 },
                 "originSetting": {
-                    "description": "配置",
+                    "description": "Configuration",
                     "allOf": [
                         {
                             "$ref": "#/definitions/common.JSONMap"
@@ -9397,19 +9397,19 @@ const docTemplate = `{
                     ]
                 },
                 "phone": {
-                    "description": "用户手机号",
+                    "description": "User phone number",
                     "type": "string"
                 },
                 "updatedAt": {
-                    "description": "更新时间",
+                    "description": "Update time",
                     "type": "string"
                 },
                 "userName": {
-                    "description": "用户登录名",
+                    "description": "User login name",
                     "type": "string"
                 },
                 "uuid": {
-                    "description": "用户UUID",
+                    "description": "User uuid",
                     "type": "string"
                 }
             }
@@ -9438,8 +9438,8 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "",
 	BasePath:         "",
 	Schemes:          []string{},
-	Title:            "Gin-Vue-Admin Swagger API接口文档",
-	Description:      "使用gin+vue进行极速开发的全栈开发基础平台",
+	Title:            "fullStack Base Model Swagger API interface documentation",
+	Description:      "Full stack development platform based on gin+vue for rapid development",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",

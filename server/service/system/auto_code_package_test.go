@@ -2,10 +2,11 @@ package system
 
 import (
 	"context"
-	model "github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
 	"reflect"
 	"testing"
+
+	model "github.com/flipped-aurora/gin-vue-admin/server/model/system"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
 )
 
 func Test_autoCodePackage_Create(t *testing.T) {
@@ -19,7 +20,7 @@ func Test_autoCodePackage_Create(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "测试 package",
+			name: "test package",
 			args: args{
 				ctx: context.Background(),
 				info: &request.SysAutoCodePackageCreate{
@@ -30,7 +31,7 @@ func Test_autoCodePackage_Create(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "测试 plugin",
+			name: "test plugin",
 			args: args{
 				ctx: context.Background(),
 				info: &request.SysAutoCodePackageCreate{
@@ -65,12 +66,12 @@ func Test_autoCodePackage_templates(t *testing.T) {
 		wantErr   bool
 	}{
 		{
-			name: "测试1",
+			name: "test 1",
 			args: args{
 				ctx: context.Background(),
 				entity: model.SysAutoCodePackage{
-					Desc:        "描述",
-					Label:       "展示名",
+					Desc:        "test desc",
+					Label:       "test label",
 					Template:    "plugin",
 					PackageName: "preview",
 				},

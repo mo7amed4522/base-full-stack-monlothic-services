@@ -8,8 +8,6 @@ type ApiGroup struct {
 	CSubDominManageApi
 	CPageTemplateApi
 	CPromotionLinkApi
-	CBxMatchesApi
-	CBxAdvertisingApi
 }
 
 var (
@@ -18,6 +16,4 @@ var (
 	cSubDominManageService = service.ServiceGroupApp.ManageServiceGroup.CSubDominManageService
 	cPageTemplateService   = service.ServiceGroupApp.ManageServiceGroup.CPageTemplateService
 	cPromotionLinkService  = service.ServiceGroupApp.ManageServiceGroup.CPromotionLinkService
-	cBxMatchesService      = service.ServiceGroupApp.ManageServiceGroup.CBxMatchesService
-	cBxAdvertisingService  = service.ServiceGroupApp.ManageServiceGroup.CBxAdvertisingService
 )

@@ -5,8 +5,6 @@ import (
 	"time"
 
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/bxapi"
-	bxapiReq "github.com/flipped-aurora/gin-vue-admin/server/model/bxapi/request"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
 	systemReq "github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
 	"github.com/gin-gonic/gin"
@@ -48,7 +46,7 @@ func GetToken(c *gin.Context) string {
 		token = c.Request.Header.Get("x-token")
 		claims, err := j.ParseToken(token)
 		if err != nil {
-			global.GVA_LOG.Error("重新写入cookie token失败,未能成功解析token,请检查请求头是否存在x-token且claims是否为规定结构")
+			global.GVA_LOG.Error("Failed to rewrite the cookie token. Failed to parse the token successfully. Please check whether the request header contains x-token and whether the claims are in the specified structure.")
 			return token
 		}
 		SetToken(c, token, int((claims.ExpiresAt.Unix()-time.Now().Unix())/60))
@@ -61,7 +59,7 @@ func GetClaims(c *gin.Context) (*systemReq.CustomClaims, error) {
 	j := NewJWT()
 	claims, err := j.ParseToken(token)
 	if err != nil {
-		global.GVA_LOG.Error("从Gin的Context中获取从jwt解析信息失败, 请检查请求头是否存在x-token且claims是否为规定结构")
+		global.GVA_LOG.Error("Failed to get the claims from the Gin Context. Failed to parse the token successfully. Please check whether the request header contains x-token and whether the claims are in the specified structure.")
 	}
 	return claims, err
 }
@@ -144,61 +142,6 @@ func LoginToken(user system.Login) (token string, claims systemReq.CustomClaims,
 		NickName:    user.GetNickname(),
 		Username:    user.GetUsername(),
 		AuthorityId: user.GetAuthorityId(),
-	})
-	token, err = j.CreateToken(claims)
-	if err != nil {
-		return
-	}
-	return
-}
-
-// GetBxClaims 从Gin的Context中获取从jwt解析出来的bxapi claims
-func GetBxClaims(c *gin.Context) (*bxapiReq.CustomClaims, error) {
-	token := GetToken(c)
-	j := NewBxJWT()
-	claims, err := j.ParseToken(token)
-	if err != nil {
-		global.GVA_LOG.Error("从Gin的Context中获取从jwt解析信息失败, 请检查请求头是否存在x-token且claims是否为规定结构")
-	}
-	return claims, err
-}
-
-// GetBxUserID 从Gin的Context中获取从jwt解析出来的bxapi用户ID
-func GetBxUserID(c *gin.Context) uuid.UUID {
-	// 优先从中间件预设的 userID 中获取，避免重复解析
-	if userID, exists := c.Get("bxUserID"); exists {
-		return userID.(uuid.UUID)
-	}
-	
-	// 备用方案：从 claims 中解析（向后兼容）
-	if claims, exists := c.Get("bxClaims"); !exists {
-		if cl, err := GetBxClaims(c); err != nil {
-			return uuid.UUID{}
-		} else {
-			return cl.BaseClaims.ID
-		}
-	} else {
-		waitUse := claims.(*bxapiReq.CustomClaims)
-		return waitUse.BaseClaims.ID
-	}
-}
-
-// GetBxUserIDFast 快速获取用户ID（推荐使用）
-// 直接从中间件设置的 context 中获取，性能更好
-func GetBxUserIDFast(c *gin.Context) uuid.UUID {
-	if userID, exists := c.Get("bxUserID"); exists {
-		return userID.(uuid.UUID)
-	}
-	return uuid.UUID{} // 如果不存在返回空UUID
-}
-
-func BxLoginToken(user bxapi.Login) (token string, claims bxapiReq.CustomClaims, err error) {
-	j := NewBxJWT() // 使用专门的 BxJWT
-	claims = j.CreateClaims(bxapiReq.BaseClaims{
-		UUID:     user.GetUUID(),
-		ID:       user.GetUUID(),
-		NickName: user.GetNickname(),
-		Username: user.GetUsername(),
 	})
 	token, err = j.CreateToken(claims)
 	if err != nil {

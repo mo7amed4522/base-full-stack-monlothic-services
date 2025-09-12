@@ -5,15 +5,15 @@ opt=$1
 if [ "$opt" == "" ];then
 
     if [ "$(uname)" == "Darwin" ];then
-        echo "build use mac os" # Mac OS X 操作系统
+        echo "build use mac os" # Mac OS X operating system
         opt='linux'
 
     elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ];then
-        echo "build use linux os" # GNU/Linux操作系统
+        echo "build use linux os" # GNU/Linux operating system
         opt='linux'
 
     elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ];then
-        echo "build use windows os" # Windows NT操作系统fi
+        echo "build use windows os" # Windows NT operating system
         opt='windows'
     fi
 fi

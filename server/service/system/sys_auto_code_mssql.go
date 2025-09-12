@@ -2,6 +2,7 @@ package system
 
 import (
 	"fmt"
+
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/system/response"
 )
@@ -15,7 +16,7 @@ type autoCodeMssql struct{}
 // Author [SliverHorn](https://github.com/SliverHorn)
 func (s *autoCodeMssql) GetDB(businessDB string) (data []response.Db, err error) {
 	var entities []response.Db
-	sql := "select name AS 'database' from sysdatabases;"
+	sql := "select name AS 'database' from sys databases;"
 	if businessDB == "" {
 		err = global.GVA_DB.Raw(sql).Scan(&entities).Error
 	} else {
@@ -30,7 +31,7 @@ func (s *autoCodeMssql) GetDB(businessDB string) (data []response.Db, err error)
 func (s *autoCodeMssql) GetTables(businessDB string, dbName string) (data []response.Table, err error) {
 	var entities []response.Table
 
-	sql := fmt.Sprintf(`select name as 'table_name' from %s.DBO.sysobjects where xtype='U'`, dbName)
+	sql := fmt.Sprintf(`select name as 'table_name' from %s.DBO.sys objects where xtype='U'`, dbName)
 	if businessDB == "" {
 		err = global.GVA_DB.Raw(sql).Scan(&entities).Error
 	} else {

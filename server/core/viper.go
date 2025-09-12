@@ -3,10 +3,11 @@ package core
 import (
 	"flag"
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/core/internal"
-	"github.com/gin-gonic/gin"
 	"os"
 	"path/filepath"
+
+	"github.com/flipped-aurora/gin-vue-admin/server/core/internal"
+	"github.com/gin-gonic/gin"
 
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
@@ -33,17 +34,17 @@ func Viper(path ...string) *viper.Viper {
 				case gin.TestMode:
 					config = internal.ConfigTestFile
 				}
-				fmt.Printf("您正在使用gin模式的%s环境名称,config的路径为%s\n", gin.Mode(), config)
+				fmt.Printf("You are using gin mode %s environment name, config path is %s\n", gin.Mode(), config)
 			} else { // internal.ConfigEnv 常量存储的环境变量不为空 将值赋值于config
 				config = configEnv
-				fmt.Printf("您正在使用%s环境变量,config的路径为%s\n", internal.ConfigEnv, config)
+				fmt.Printf("You are using %s environment variable, config path is %s\n", internal.ConfigEnv, config)
 			}
 		} else { // 命令行参数不为空 将值赋值于config
-			fmt.Printf("您正在使用命令行的-c参数传递的值,config的路径为%s\n", config)
+			fmt.Printf("You are using -c parameter passing value, config path is %s\n", config)
 		}
 	} else { // 函数传递的可变参数的第一个值赋值于config
 		config = path[0]
-		fmt.Printf("您正在使用func Viper()传递的值,config的路径为%s\n", config)
+		fmt.Printf("You are using func Viper() passing value, config path is %s\n", config)
 	}
 
 	v := viper.New()

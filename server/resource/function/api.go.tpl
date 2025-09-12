@@ -10,11 +10,11 @@ func (a *{{.Abbreviation}}) {{.FuncName}}(c *gin.Context) {
     // 请添加自己的业务逻辑
     err := service{{ .StructName }}.{{.FuncName}}()
        if err != nil {
-    		global.GVA_LOG.Error("失败!", zap.Error(err))
-            response.FailWithMessage("失败", c)
+    		global.GVA_LOG.Error("Failed to get data!", zap.Error(err))
+            response.FailWithMessage("Failed to get data!", c)
     		return
        }
-    response.OkWithData("返回数据",c)
+    response.OkWithData("Return data",c)
 }
 
 {{- else -}}
@@ -24,17 +24,17 @@ func (a *{{.Abbreviation}}) {{.FuncName}}(c *gin.Context) {
 // @Summary {{.FuncDesc}}
 // @Accept application/json
 // @Produce application/json
-// @Param data query {{.Package}}Req.{{.StructName}}Search true "成功"
+// @Param data query {{.Package}}Req.{{.StructName}}Search true "查询参数"
 // @Success 200 {object} response.Response{data=object,msg=string} "成功"
 // @Router /{{.Abbreviation}}/{{.Router}} [{{.Method}}]
 func ({{.Abbreviation}}Api *{{.StructName}}Api){{.FuncName}}(c *gin.Context) {
     // 请添加自己的业务逻辑
     err := {{.Abbreviation}}Service.{{.FuncName}}()
     if err != nil {
-        global.GVA_LOG.Error("失败!", zap.Error(err))
-   		response.FailWithMessage("失败", c)
+        global.GVA_LOG.Error("Failed to get data!", zap.Error(err))
+   		response.FailWithMessage("Failed to get data!", c)
    		return
    	}
-   	response.OkWithData("返回数据",c)
+   	response.OkWithData("Return data",c)
 }
 {{end}}

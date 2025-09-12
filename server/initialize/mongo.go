@@ -3,6 +3,9 @@ package initialize
 import (
 	"context"
 	"fmt"
+	"sort"
+	"strings"
+
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/initialize/internal"
 	"github.com/flipped-aurora/gin-vue-admin/server/utils"
@@ -11,8 +14,6 @@ import (
 	"github.com/qiniu/qmgo/options"
 	"go.mongodb.org/mongo-driver/bson"
 	option "go.mongodb.org/mongo-driver/mongo/options"
-	"sort"
-	"strings"
 )
 
 var Mongo = new(mongo)
@@ -60,7 +61,7 @@ func (m *mongo) Initialization() error {
 		},
 	}, opts...)
 	if err != nil {
-		return errors.Wrap(err, "链接mongodb数据库失败!")
+		return errors.Wrap(err, "Failed to connect to MongoDB database!")
 	}
 	global.GVA_MONGO = client
 	err = m.Indexes(ctx)
@@ -73,16 +74,16 @@ func (m *mongo) Initialization() error {
 func (m *mongo) CreateIndexes(ctx context.Context, name string, indexes [][]string) error {
 	collection, err := global.GVA_MONGO.Database.Collection(name).CloneCollection()
 	if err != nil {
-		return errors.Wrapf(err, "获取[%s]的表对象失败!", name)
+		return errors.Wrapf(err, "Failed to get table object for [%s]!", name)
 	}
 	list, err := collection.Indexes().List(ctx)
 	if err != nil {
-		return errors.Wrapf(err, "获取[%s]的索引对象失败!", name)
+		return errors.Wrapf(err, "Failed to get index object for [%s]!", name)
 	}
 	var entities []Index
 	err = list.All(ctx, &entities)
 	if err != nil {
-		return errors.Wrapf(err, "获取[%s]的索引列表失败!", name)
+		return errors.Wrapf(err, "Failed to get index list for [%s]!", name)
 	}
 	length := len(indexes)
 	indexMap1 := make(map[string][]string, length)
@@ -100,7 +101,7 @@ func (m *mongo) CreateIndexes(ctx context.Context, name string, indexes [][]stri
 		key := strings.Join(keys, "_")
 		_, o1 := indexMap1[key]
 		if o1 {
-			return errors.Errorf("索引[%s]重复!", key)
+			return errors.Errorf("Index [%s] is repeated!", key)
 		}
 		indexMap1[key] = indexes[i]
 	}
@@ -134,7 +135,7 @@ func (m *mongo) CreateIndexes(ctx context.Context, name string, indexes [][]stri
 				// IndexOptions: option.Index().SetName(utils.MD5V([]byte(k1))).SetExpireAfterSeconds(86400), // SetExpireAfterSeconds(86400) 设置索引过期时间, 86400 = 1天
 			})
 			if err != nil {
-				return errors.Wrapf(err, "创建索引[%s]失败!", k1)
+				return errors.Wrapf(err, "Failed to create index [%s]!", k1)
 			}
 			return nil
 		}
@@ -144,7 +145,7 @@ func (m *mongo) CreateIndexes(ctx context.Context, name string, indexes [][]stri
 			// IndexOptions: option.Index().SetName(utils.MD5V([]byte(k1))).SetExpireAfterSeconds(86400), // SetExpireAfterSeconds(86400) 设置索引过期时间(秒), 86400 = 1天
 		})
 		if err != nil {
-			return errors.Wrapf(err, "创建索引[%s]失败!", k1)
+			return errors.Wrapf(err, "Failed to create index [%s]!", k1)
 		}
 	}
 	return nil

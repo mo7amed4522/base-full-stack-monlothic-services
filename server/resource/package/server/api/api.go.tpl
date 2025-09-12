@@ -44,11 +44,11 @@ func ({{.Abbreviation}}Api *{{.StructName}}Api) Create{{.StructName}}(c *gin.Con
 	{{- end }}
 	err = {{.Abbreviation}}Service.Create{{.StructName}}(&{{.Abbreviation}})
 	if err != nil {
-        global.GVA_LOG.Error("创建失败!", zap.Error(err))
-		response.FailWithMessage("创建失败:" + err.Error(), c)
+        global.GVA_LOG.Error("Failed to create data!", zap.Error(err))
+		response.FailWithMessage("Failed to create data:" + err.Error(), c)
 		return
 	}
-    response.OkWithMessage("创建成功", c)
+    response.OkWithMessage("Created successfully", c)
 }
 
 // Delete{{.StructName}} 删除{{.Description}}

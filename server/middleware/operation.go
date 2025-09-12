@@ -77,10 +77,10 @@ func OperationRecord() gin.HandlerFunc {
 
 		// 上传文件时候 中间件日志进行裁断操作
 		if strings.Contains(c.GetHeader("Content-Type"), "multipart/form-data") {
-			record.Body = "[文件]"
+			record.Body = "Uploaded file"
 		} else {
 			if len(body) > bufferSize {
-				record.Body = "[超出记录长度]"
+				record.Body = "Exceeded record length"
 			} else {
 				record.Body = string(body)
 			}
@@ -112,7 +112,7 @@ func OperationRecord() gin.HandlerFunc {
 			strings.Contains(c.Writer.Header().Get("Content-Transfer-Encoding"), "binary") {
 			if len(record.Resp) > bufferSize {
 				// 截断
-				record.Body = "超出记录长度"
+				record.Body = "Exceeded record length"
 			}
 		}
 

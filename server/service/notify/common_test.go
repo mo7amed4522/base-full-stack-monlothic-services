@@ -20,7 +20,7 @@ func TestNewNotify(t *testing.T) {
 		},
 		"123",
 		func(isSuccess bool) {
-			fmt.Println("请求结果")
+			fmt.Println("Pay notify result")
 			fmt.Println(isSuccess)
 		},
 	)

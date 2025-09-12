@@ -25,18 +25,9 @@ func initBizRouter(routers ...*gin.RouterGroup) {
 		manageRouter.InitCSubDominManageRouter(privateGroup, publicGroup)
 		manageRouter.InitCPageTemplateRouter(privateGroup, publicGroup)
 		manageRouter.InitCPromotionLinkRouter(privateGroup, publicGroup)
-		manageRouter.InitBxMatchesRouter(privateGroup, publicGroup)
-		manageRouter.InitBxAdvertisingRouter(privateGroup, publicGroup)
 	}
 	{
-		bxApiRouter := router.RouterGroupApp.BxApi
-		bxApiRouter.InitBxUserRouter(bxPrivateGroup, publicGroup)
-		bxApiRouter.InitBxMatchesRouter(bxPrivateGroup, publicGroup) // 使用 bxPrivateGroup 进行 bxapi 认证
-		bxApiRouter.InitBxVotesRouter(bxPrivateGroup, publicGroup)
-		bxApiRouter.InitBxTipsRouter(bxPrivateGroup, publicGroup)
-		bxApiRouter.InitBxRewardRouter(bxPrivateGroup, publicGroup)
-		bxApiRouter.InitGoogleAuthRouter(bxPrivateGroup, publicGroup) // Google认证路由
-		bxApiRouter.InitBxConfigRouter(bxPrivateGroup, publicGroup)   // 配置路由
+		// 配置路由
 	}
 	{
 	}

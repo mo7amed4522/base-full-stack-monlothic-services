@@ -270,7 +270,7 @@ func (i *initCasbin) InitializeData(ctx context.Context) (context.Context, error
 		{Ptype: "p", V0: "9528", V1: "/user/getUserInfo", V2: "GET"},
 	}
 	if err := db.Create(&entities).Error; err != nil {
-		return ctx, errors.Wrap(err, "Casbin 表 ("+i.InitializerName()+") 数据初始化失败!")
+		return ctx, errors.Wrap(err, "Casbin table ("+i.InitializerName()+") data initialization failed!")
 	}
 	next := context.WithValue(ctx, i.InitializerName(), entities)
 	return next, nil

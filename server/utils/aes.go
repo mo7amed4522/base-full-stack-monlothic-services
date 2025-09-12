@@ -107,14 +107,14 @@ func main() {
 	// 加密
 	encrypted, err := EncryptAES(plaintext)
 	if err != nil {
-		log.Fatal("加密失败:", err)
+		log.Fatal("Failed to encrypt:", err)
 	}
-	fmt.Println("加密后的密文 (Base64 编码):", encrypted)
+	fmt.Println("Encrypted ciphertext (Base64 encoding):", encrypted)
 
 	// 解密
 	decrypted, err := DecryptAES(encrypted)
 	if err != nil {
-		log.Fatal("解密失败:", err)
+		log.Fatal("Decryption failed:", err)
 	}
-	fmt.Println("解密后的明文:", decrypted)
+	fmt.Println("Decrypted plaintext:", decrypted)
 }

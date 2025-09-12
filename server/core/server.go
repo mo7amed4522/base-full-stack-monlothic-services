@@ -2,6 +2,7 @@ package core
 
 import (
 	"fmt"
+
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/initialize"
 	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
@@ -37,6 +38,6 @@ func RunWindowsServer() {
 
 	global.GVA_LOG.Info("server run success on ", zap.String("address", address))
 
-	fmt.Printf(`欢迎使用 gin-vue-admin`, address)
+	fmt.Printf(`Welcome to full stack micro services`, address)
 	global.GVA_LOG.Error(s.ListenAndServe().Error())
 }
