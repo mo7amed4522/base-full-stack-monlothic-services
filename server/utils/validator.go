@@ -2,12 +2,13 @@ package utils
 
 import (
 	"errors"
-	"github.com/go-playground/validator/v10"
 	"reflect"
 	"regexp"
 	"strconv"
 	"strings"
 	"sync"
+
+	"github.com/go-playground/validator/v10"
 )
 
 var validate *validator.Validate
@@ -43,7 +44,7 @@ var CustomizeMap = make(map[string]Rules)
 
 func RegisterRule(key string, rule Rules) (err error) {
 	if CustomizeMap[key] != nil {
-		return errors.New(key + "已注册,无法重复注册")
+		return errors.New(key + " has been registered, cannot be registered repeatedly")
 	} else {
 		CustomizeMap[key] = rule
 		return nil
@@ -168,15 +169,15 @@ func Verify(st interface{}, roleMap Rules) (err error) {
 				switch {
 				case v == "notEmpty":
 					if isBlank(val) {
-						return errors.New(tagVal.Name + "值不能为空")
+						return errors.New(tagVal.Name + " cannot be empty")
 					}
 				case strings.Split(v, "=")[0] == "regexp":
 					if !regexpMatch(strings.Split(v, "=")[1], val.String()) {
-						return errors.New(tagVal.Name + "格式校验不通过")
+						return errors.New(tagVal.Name + " format check failed")
 					}
 				case compareMap[strings.Split(v, "=")[0]]:
 					if !compareVerify(val, v) {
-						return errors.New(tagVal.Name + "长度或值不在合法范围," + v)
+						return errors.New(tagVal.Name + " length or value is not in the legal range," + v)
 					}
 				}
 			}

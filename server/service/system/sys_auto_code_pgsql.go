@@ -117,7 +117,7 @@ FROM
     INFORMATION_SCHEMA.COLUMNS psc
 WHERE
   table_catalog = ?
-  AND table_schema = 'public' 
+  AND table_schema = 'public'
   AND TABLE_NAME = ?
 ORDER BY
     psc.ordinal_position;

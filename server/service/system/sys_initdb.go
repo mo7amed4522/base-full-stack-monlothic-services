@@ -5,10 +5,11 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	"sort"
+
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
 	"gorm.io/gorm"
-	"sort"
 )
 
 const (
@@ -16,10 +17,10 @@ const (
 	Pgsql           = "pgsql"
 	Sqlite          = "sqlite"
 	Mssql           = "mssql"
-	InitSuccess     = "\n[%v] --> 初始数据成功!\n"
-	InitDataExist   = "\n[%v] --> %v 的初始数据已存在!\n"
-	InitDataFailed  = "\n[%v] --> %v 初始数据失败! \nerr: %+v\n"
-	InitDataSuccess = "\n[%v] --> %v 初始数据成功!\n"
+	InitSuccess     = "\n[%v] --> Initialization data success!\n"
+	InitDataExist   = "\n[%v] --> %v initial data already exists!\n"
+	InitDataFailed  = "\n[%v] --> %v initial data failed! \nerr: %+v\n"
+	InitDataSuccess = "\n[%v] --> %v initial data success!\n"
 )
 
 const (
@@ -91,7 +92,7 @@ func (initDBService *InitDBService) InitDB(conf request.InitDB) (err error) {
 	ctx := context.TODO()
 	ctx = context.WithValue(ctx, "adminPassword", conf.AdminPassword)
 	if len(initializers) == 0 {
-		return errors.New("无可用初始化过程，请检查初始化是否已执行完成")
+		return errors.New("No available initialization process, please check if the initialization has been completed")
 	}
 	sort.Sort(&initializers) // 保证有依赖的 initializer 排在后面执行
 	// Note: 若 initializer 只有单一依赖，可以写为 B=A+1, C=A+1; 由于 BC 之间没有依赖关系，所以谁先谁后并不影响初始化

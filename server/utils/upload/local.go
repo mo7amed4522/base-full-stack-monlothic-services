@@ -81,19 +81,19 @@ func (*Local) UploadFile(file *multipart.FileHeader) (string, string, error) {
 func (*Local) DeleteFile(key string) error {
 	// 检查 key 是否为空
 	if key == "" {
-		return errors.New("key不能为空")
+		return errors.New("Key cannot be empty")
 	}
 
 	// 验证 key 是否包含非法字符或尝试访问存储路径之外的文件
 	if strings.Contains(key, "..") || strings.ContainsAny(key, `\/:*?"<>|`) {
-		return errors.New("非法的key")
+		return errors.New("Illegal key")
 	}
 
 	p := filepath.Join(global.GVA_CONFIG.Local.StorePath, key)
 
 	// 检查文件是否存在
 	if _, err := os.Stat(p); os.IsNotExist(err) {
-		return errors.New("文件不存在")
+		return errors.New("File does not exist")
 	}
 
 	// 使用文件锁防止并发删除
@@ -102,7 +102,7 @@ func (*Local) DeleteFile(key string) error {
 
 	err := os.Remove(p)
 	if err != nil {
-		return errors.New("文件删除失败: " + err.Error())
+		return errors.New("File deletion failed: " + err.Error())
 	}
 
 	return nil

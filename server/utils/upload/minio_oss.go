@@ -62,8 +62,8 @@ func (m *Minio) UploadFile(file *multipart.FileHeader) (filePathres, key string,
 	filecontent := bytes.Buffer{}
 	_, err := io.Copy(&filecontent, f)
 	if err != nil {
-		global.GVA_LOG.Error("读取文件失败", zap.Any("err", err.Error()))
-		return "", "", errors.New("读取文件失败, err:" + err.Error())
+		global.GVA_LOG.Error("Read file failed", zap.Any("err", err.Error()))
+		return "", "", errors.New("Read file failed, err:" + err.Error())
 	}
 	f.Close() // 创建文件 defer 关闭
 
@@ -83,8 +83,8 @@ func (m *Minio) UploadFile(file *multipart.FileHeader) (filePathres, key string,
 	// Upload the file with PutObject   大文件自动切换为分片上传
 	info, err := m.Client.PutObject(ctx, global.GVA_CONFIG.Minio.BucketName, filePathres, &filecontent, file.Size, minio.PutObjectOptions{ContentType: "application/octet-stream"})
 	if err != nil {
-		global.GVA_LOG.Error("上传文件到minio失败", zap.Any("err", err.Error()))
-		return "", "", errors.New("上传文件到minio失败, err:" + err.Error())
+		global.GVA_LOG.Error("Failed to upload file to minio", zap.Any("err", err.Error()))
+		return "", "", errors.New("Failed to upload file to minio, err:" + err.Error())
 	}
 	return global.GVA_CONFIG.Minio.BucketUrl + "/" + info.Key, filePathres, nil
 }

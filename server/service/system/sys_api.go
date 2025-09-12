@@ -24,7 +24,7 @@ var ApiServiceApp = new(ApiService)
 
 func (apiService *ApiService) CreateApi(api system.SysApi) (err error) {
 	if !errors.Is(global.GVA_DB.Where("path = ? AND method = ?", api.Path, api.Method).First(&system.SysApi{}).Error, gorm.ErrRecordNotFound) {
-		return errors.New("存在相同api")
+		return errors.New("Api already exists")
 	}
 	return global.GVA_DB.Create(&api).Error
 }
@@ -217,7 +217,7 @@ func (apiService *ApiService) GetAPIInfoList(api system.SysApi, info request.Pag
 		orderMap["description"] = true
 		orderMap["method"] = true
 		if !orderMap[order] {
-			err = fmt.Errorf("非法的排序字段: %v", order)
+			err = fmt.Errorf("Invalid sort field: %v", order)
 			return apiList, total, err
 		}
 		OrderStr = order
@@ -284,7 +284,7 @@ func (apiService *ApiService) UpdateApi(api system.SysApi) (err error) {
 			}
 		} else {
 			if duplicateApi.ID != api.ID {
-				return errors.New("存在相同api路径")
+				return errors.New("Api already exists")
 			}
 		}
 

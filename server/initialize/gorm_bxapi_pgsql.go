@@ -10,9 +10,9 @@ func GormPgSqlForBxapi() *gorm.DB {
 	// 直接使用现有的 GormPgSql() 函数
 	db := GormPgSql()
 	if db != nil {
-		global.GVA_LOG.Info("PostgreSQL数据库连接成功，专门用于bxapi模块")
+		global.GVA_LOG.Info("PostgreSQL database connection is successful, specifically for the bxapi module")
 	} else {
-		global.GVA_LOG.Error("PostgreSQL数据库连接失败，bxapi模块无法使用")
+		global.GVA_LOG.Error("PostgreSQL database connection failed and the bxapi module cannot be used")
 	}
 	return db
 }

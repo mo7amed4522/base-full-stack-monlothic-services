@@ -10,8 +10,6 @@ type RouterGroup struct {
 	CSubDominManageRouter
 	CPageTemplateRouter
 	CPromotionLinkRouter
-	CBxMatchesRouter
-	CBxAdvertisingRouter
 }
 
 var (
@@ -20,6 +18,4 @@ var (
 	cSubDominManageApi = api.ApiGroupApp.ManageApiGroup.CSubDominManageApi
 	cPageTemplateApi   = api.ApiGroupApp.ManageApiGroup.CPageTemplateApi
 	cPromotionLinkApi  = api.ApiGroupApp.ManageApiGroup.CPromotionLinkApi
-	cBxMatchesApi      = api.ApiGroupApp.ManageApiGroup.CBxMatchesApi
-	cBxAdvertisingApi  = api.ApiGroupApp.ManageApiGroup.CBxAdvertisingApi
 )

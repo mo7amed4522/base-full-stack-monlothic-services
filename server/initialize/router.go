@@ -77,7 +77,6 @@ func Routers() *gin.Engine {
 	BxPrivateGroup := Router.Group(global.GVA_CONFIG.System.RouterPrefix)
 
 	PrivateGroup.Use(middleware.JWTAuth())
-	BxPrivateGroup.Use(middleware.BxJWTAuth())
 
 	{
 		// 健康监测

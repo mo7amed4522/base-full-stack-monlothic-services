@@ -2,6 +2,7 @@ package system
 
 import (
 	"context"
+
 	sysModel "github.com/flipped-aurora/gin-vue-admin/server/model/system"
 	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
 	"github.com/flipped-aurora/gin-vue-admin/server/utils"
@@ -44,13 +45,13 @@ func (i *initAuthority) InitializeData(ctx context.Context) (context.Context, er
 		return ctx, system.ErrMissingDBContext
 	}
 	entities := []sysModel.SysAuthority{
-		{AuthorityId: 888, AuthorityName: "普通用户", ParentId: utils.Pointer[uint](0), DefaultRouter: "dashboard"},
-		{AuthorityId: 9528, AuthorityName: "测试角色", ParentId: utils.Pointer[uint](0), DefaultRouter: "dashboard"},
-		{AuthorityId: 8881, AuthorityName: "普通用户子角色", ParentId: utils.Pointer[uint](888), DefaultRouter: "dashboard"},
+		{AuthorityId: 888, AuthorityName: "Ordinary users", ParentId: utils.Pointer[uint](0), DefaultRouter: "dashboard"},
+		{AuthorityId: 9528, AuthorityName: "Test role", ParentId: utils.Pointer[uint](0), DefaultRouter: "dashboard"},
+		{AuthorityId: 8881, AuthorityName: "Ordinary user sub-role", ParentId: utils.Pointer[uint](888), DefaultRouter: "dashboard"},
 	}
 
 	if err := db.Create(&entities).Error; err != nil {
-		return ctx, errors.Wrapf(err, "%s表数据初始化失败!", sysModel.SysAuthority{}.TableName())
+		return ctx, errors.Wrapf(err, "%s table data initialization failed!", sysModel.SysAuthority{}.TableName())
 	}
 	// data authority
 	if err := db.Model(&entities[0]).Association("DataAuthorityId").Replace(
@@ -59,7 +60,7 @@ func (i *initAuthority) InitializeData(ctx context.Context) (context.Context, er
 			{AuthorityId: 9528},
 			{AuthorityId: 8881},
 		}); err != nil {
-		return ctx, errors.Wrapf(err, "%s表数据初始化失败!",
+		return ctx, errors.Wrapf(err, "%s table data initialization failed!",
 			db.Model(&entities[0]).Association("DataAuthorityId").Relationship.JoinTable.Name)
 	}
 	if err := db.Model(&entities[1]).Association("DataAuthorityId").Replace(
@@ -67,7 +68,7 @@ func (i *initAuthority) InitializeData(ctx context.Context) (context.Context, er
 			{AuthorityId: 9528},
 			{AuthorityId: 8881},
 		}); err != nil {
-		return ctx, errors.Wrapf(err, "%s表数据初始化失败!",
+		return ctx, errors.Wrapf(err, "%s table data initialization failed!",
 			db.Model(&entities[1]).Association("DataAuthorityId").Relationship.JoinTable.Name)
 	}
 

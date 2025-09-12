@@ -6,6 +6,4 @@ type ServiceGroup struct {
 	CSubDominManageService
 	CPageTemplateService
 	CPromotionLinkService
-	CBxMatchesService
-	CBxAdvertisingService
 }

@@ -2,12 +2,13 @@ package middleware
 
 import (
 	"errors"
+	"strconv"
+	"time"
+
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
 	"github.com/flipped-aurora/gin-vue-admin/server/utils"
 	"github.com/golang-jwt/jwt/v4"
-	"strconv"
-	"time"
 
 	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
 	"github.com/flipped-aurora/gin-vue-admin/server/service"
@@ -22,12 +23,12 @@ func JWTAuth() gin.HandlerFunc {
 		// 我们这里jwt鉴权取头部信息 x-token 登录时回返回token信息 这里前端需要把token存储到cookie或者本地localStorage中 不过需要跟后端协商过期时间 可以约定刷新令牌或者重新登录
 		token := utils.GetToken(c)
 		if token == "" {
-			response.NoAuth("未登录或非法访问", c)
+			response.NoAuth("Not logged in or illegal access", c)
 			c.Abort()
 			return
 		}
 		if jwtService.IsBlacklist(token) {
-			response.NoAuth("您的帐户异地登陆或令牌失效", c)
+			response.NoAuth("Your account has been logged in elsewhere or the token has expired", c)
 			utils.ClearToken(c)
 			c.Abort()
 			return
@@ -37,7 +38,7 @@ func JWTAuth() gin.HandlerFunc {
 		claims, err := j.ParseToken(token)
 		if err != nil {
 			if errors.Is(err, utils.TokenExpired) {
-				response.NoAuth("授权已过期", c)
+				response.NoAuth("Authorization expired", c)
 				utils.ClearToken(c)
 				c.Abort()
 				return

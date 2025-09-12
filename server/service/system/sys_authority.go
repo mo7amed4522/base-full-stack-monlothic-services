@@ -116,7 +116,7 @@ func (authorityService *AuthorityService) UpdateAuthority(auth system.SysAuthori
 	err = global.GVA_DB.Where("authority_id = ?", auth.AuthorityId).First(&oldAuthority).Error
 	if err != nil {
 		global.GVA_LOG.Debug(err.Error())
-		return system.SysAuthority{}, errors.New("查询角色数据失败")
+		return system.SysAuthority{}, errors.New("Query role data failed")
 	}
 	err = global.GVA_DB.Model(&oldAuthority).Updates(&auth).Error
 	return auth, err
@@ -130,16 +130,16 @@ func (authorityService *AuthorityService) UpdateAuthority(auth system.SysAuthori
 
 func (authorityService *AuthorityService) DeleteAuthority(auth *system.SysAuthority) error {
 	if errors.Is(global.GVA_DB.Preload("Users").First(&auth).Error, gorm.ErrRecordNotFound) {
-		return errors.New("该角色不存在")
+		return errors.New("Role does not exist")
 	}
 	if len(auth.Users) != 0 {
-		return errors.New("此角色有用户正在使用禁止删除")
+		return errors.New("This role is being used by some users, so it cannot be deleted.")
 	}
 	if !errors.Is(global.GVA_DB.Where("authority_id = ?", auth.AuthorityId).First(&system.SysUser{}).Error, gorm.ErrRecordNotFound) {
-		return errors.New("此角色有用户正在使用禁止删除")
+		return errors.New("This role is being used by some users, so it cannot be deleted.")
 	}
 	if !errors.Is(global.GVA_DB.Where("parent_id = ?", auth.AuthorityId).First(&system.SysAuthority{}).Error, gorm.ErrRecordNotFound) {
-		return errors.New("此角色存在子角色不允许删除")
+		return errors.New("This role has sub roles, so it cannot be deleted.")
 	}
 
 	return global.GVA_DB.Transaction(func(tx *gorm.DB) error {
@@ -249,7 +249,7 @@ func (authorityService *AuthorityService) CheckAuthorityIDAuth(authorityID, targ
 		}
 	}
 	if !hasAuth {
-		return errors.New("您提交的角色ID不合法")
+		return errors.New("The role ID you submitted is illegal.")
 	}
 	return nil
 }

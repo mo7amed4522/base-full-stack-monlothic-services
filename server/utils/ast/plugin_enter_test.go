@@ -1,9 +1,10 @@
 package ast
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"path/filepath"
 	"testing"
+
+	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
 func TestPluginEnter_Injection(t *testing.T) {
@@ -24,7 +25,7 @@ func TestPluginEnter_Injection(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "测试 Gva插件UserApi 注入",
+			name: "Testing Gva插件UserApi Injection",
 			fields: fields{
 				Type:            TypePluginApiEnter,
 				Path:            filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "plugin", "gva", "api", "enter.go"),
@@ -39,7 +40,7 @@ func TestPluginEnter_Injection(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "测试 Gva插件UserRouter 注入",
+			name: "Testing Gva插件UserRouter Injection",
 			fields: fields{
 				Type:            TypePluginRouterEnter,
 				Path:            filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "plugin", "gva", "router", "enter.go"),
@@ -54,7 +55,7 @@ func TestPluginEnter_Injection(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "测试 Gva插件UserService 注入",
+			name: "Testing Gva plugin UserService Injection",
 			fields: fields{
 				Type:            TypePluginServiceEnter,
 				Path:            filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "plugin", "gva", "service", "enter.go"),
@@ -69,7 +70,7 @@ func TestPluginEnter_Injection(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "测试 gva的User 注入",
+			name: "Testing gva plugin User injection",
 			fields: fields{
 				Type:            TypePluginServiceEnter,
 				Path:            filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "plugin", "gva", "service", "enter.go"),
@@ -128,7 +129,7 @@ func TestPluginEnter_Rollback(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "测试 Gva插件UserRouter 回滚",
+			name: "Test Gva plugin UserRouter rollback",
 			fields: fields{
 				Type:            TypePluginRouterEnter,
 				Path:            filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "plugin", "gva", "router", "enter.go"),
@@ -143,7 +144,7 @@ func TestPluginEnter_Rollback(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "测试 Gva插件UserApi 回滚",
+			name: "Test Gva plugin UserApi rollback",
 			fields: fields{
 				Type:            TypePluginApiEnter,
 				Path:            filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "plugin", "gva", "api", "enter.go"),
@@ -158,7 +159,7 @@ func TestPluginEnter_Rollback(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "测试 Gva插件UserService 回滚",
+			name: "Test Gva plugin UserService rollback",
 			fields: fields{
 				Type:            TypePluginServiceEnter,
 				Path:            filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "plugin", "gva", "service", "enter.go"),

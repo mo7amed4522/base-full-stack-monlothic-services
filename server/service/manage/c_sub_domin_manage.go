@@ -2,10 +2,11 @@ package manage
 
 import (
 	"errors"
+	"time"
+
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/manage"
 	manageReq "github.com/flipped-aurora/gin-vue-admin/server/model/manage/request"
-	"time"
 )
 
 type CSubDominManageService struct{}
@@ -14,7 +15,7 @@ type CSubDominManageService struct{}
 // Author [yourname](https://github.com/yourname)
 func (cSubDominManageService *CSubDominManageService) CreateCSubDominManage(cSubDominManage *manageReq.CSubDominManageAdd) (err error) {
 	if len(cSubDominManage.SubDomains) > 3 {
-		return errors.New("子域名数量超过限制")
+		return errors.New("The number of subdomains exceeds the limit")
 	}
 
 	var (

@@ -48,7 +48,7 @@ func (casbinService *CasbinService) UpdateCasbin(adminAuthorityID, AuthorityID u
 				}
 			}
 			if !hasApi {
-				return errors.New("存在api不在权限列表中")
+				return errors.New("Api does not exist.")
 			}
 		}
 	}
@@ -71,7 +71,7 @@ func (casbinService *CasbinService) UpdateCasbin(adminAuthorityID, AuthorityID u
 	e := casbinService.Casbin()
 	success, _ := e.AddPolicies(rules)
 	if !success {
-		return errors.New("存在相同api,添加失败,请联系管理员")
+		return errors.New("Same api exists, so it cannot be added.")
 	}
 	return nil
 }
@@ -189,28 +189,28 @@ func (casbinService *CasbinService) Casbin() *casbin.SyncedCachedEnforcer {
 	once.Do(func() {
 		a, err := gormadapter.NewAdapterByDB(global.GVA_DB)
 		if err != nil {
-			zap.L().Error("适配数据库失败请检查casbin表是否为InnoDB引擎!", zap.Error(err))
+			zap.L().Error("Casbin adapter database failed, please check if the casbin table is InnoDB engine!", zap.Error(err))
 			return
 		}
 		text := `
 		[request_definition]
 		r = sub, obj, act
-		
+
 		[policy_definition]
 		p = sub, obj, act
-		
+
 		[role_definition]
 		g = _, _
-		
+
 		[policy_effect]
 		e = some(where (p.eft == allow))
-		
+
 		[matchers]
 		m = r.sub == p.sub && keyMatch2(r.obj,p.obj) && r.act == p.act
 		`
 		m, err := model.NewModelFromString(text)
 		if err != nil {
-			zap.L().Error("字符串加载模型失败!", zap.Error(err))
+			zap.L().Error("Casbin model string load failed!", zap.Error(err))
 			return
 		}
 		syncedCachedEnforcer, _ = casbin.NewSyncedCachedEnforcer(m, a)

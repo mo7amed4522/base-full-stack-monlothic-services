@@ -75,7 +75,7 @@ func LoadAll() {
 	var data []string
 	err := global.GVA_DB.Model(&system.JwtBlacklist{}).Select("jwt").Find(&data).Error
 	if err != nil {
-		global.GVA_LOG.Error("加载数据库jwt黑名单失败!", zap.Error(err))
+		global.GVA_LOG.Error("Load jwt blacklist from database failed!", zap.Error(err))
 		return
 	}
 	for i := 0; i < len(data); i++ {

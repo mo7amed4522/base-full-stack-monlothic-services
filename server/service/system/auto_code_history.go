@@ -4,13 +4,14 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils/ast"
-	"github.com/pkg/errors"
 	"path"
 	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/flipped-aurora/gin-vue-admin/server/utils/ast"
+	"github.com/pkg/errors"
 
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	common "github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
@@ -32,7 +33,7 @@ func (s *autoCodeHistory) Create(ctx context.Context, info request.SysAutoHistor
 	create := info.Create()
 	err := global.GVA_DB.WithContext(ctx).Create(&create).Error
 	if err != nil {
-		return errors.Wrap(err, "创建失败!")
+		return errors.Wrap(err, "Failed to create data!")
 	}
 	return nil
 }
@@ -44,7 +45,7 @@ func (s *autoCodeHistory) First(ctx context.Context, info common.GetById) (strin
 	var meta string
 	err := global.GVA_DB.WithContext(ctx).Model(model.SysAutoCodeHistory{}).Where("id = ?", info.ID).Pluck("request", &meta).Error
 	if err != nil {
-		return "", errors.Wrap(err, "获取失败!")
+		return "", errors.Wrap(err, "Failed to get data!")
 	}
 	return meta, nil
 }
@@ -83,13 +84,13 @@ func (s *autoCodeHistory) RollBack(ctx context.Context, info request.SysAutoHist
 	if info.DeleteMenu {
 		err = BaseMenuServiceApp.DeleteBaseMenu(int(history.MenuID))
 		if err != nil {
-			return errors.Wrap(err, "删除菜单失败!")
+			return errors.Wrap(err, "Failed to delete menu!")
 		}
 	} // 清除菜单表
 	if info.DeleteTable {
 		err = s.DropTable(history.BusinessDB, history.Table)
 		if err != nil {
-			return errors.Wrap(err, "删除表失败!")
+			return errors.Wrap(err, "Failed to delete table!")
 		}
 	} // 删除表
 	templates := make(map[string]string, len(history.Templates))
@@ -160,7 +161,7 @@ func (s *autoCodeHistory) RollBack(ctx context.Context, info request.SysAutoHist
 			if err != nil {
 				return err
 			}
-			fmt.Printf("[filepath:%s]回滚注入代码成功!\n", key)
+			fmt.Printf("[filepath:%s] Rollback injection code successful!\n", key)
 		}
 	} // 清除注入代码
 	removeBasePath := filepath.Join(global.GVA_CONFIG.AutoCode.Root, "rm_file", strconv.FormatInt(int64(time.Now().Nanosecond()), 10))
@@ -171,12 +172,12 @@ func (s *autoCodeHistory) RollBack(ctx context.Context, info request.SysAutoHist
 		removePath := filepath.Join(removeBasePath, strings.TrimPrefix(value, global.GVA_CONFIG.AutoCode.Root))
 		err = utils.FileMove(value, removePath)
 		if err != nil {
-			return errors.Wrapf(err, "[src:%s][dst:%s]文件移动失败!", value, removePath)
+			return errors.Wrapf(err, "Failed to move file [src:%s][dst:%s]!", value, removePath)
 		}
 	} // 移动文件
 	err = global.GVA_DB.WithContext(ctx).Model(&model.SysAutoCodeHistory{}).Where("id = ?", info.ID).Update("flag", 1).Error
 	if err != nil {
-		return errors.Wrap(err, "更新失败!")
+		return errors.Wrap(err, "Failed to update data!")
 	}
 	return nil
 }
@@ -187,7 +188,7 @@ func (s *autoCodeHistory) RollBack(ctx context.Context, info request.SysAutoHist
 func (s *autoCodeHistory) Delete(ctx context.Context, info common.GetById) error {
 	err := global.GVA_DB.WithContext(ctx).Where("id = ?", info.Uint()).Delete(&model.SysAutoCodeHistory{}).Error
 	if err != nil {
-		return errors.Wrap(err, "删除失败!")
+		return errors.Wrap(err, "Failed to delete data!")
 	}
 	return nil
 }
