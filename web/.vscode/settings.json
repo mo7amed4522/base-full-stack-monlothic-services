@@ -1,0 +1,28 @@
+{
+  "i18n-ally.localesPaths": [
+    "src/i18n",
+    "public/tinymce/langs",
+    "src/i18n/lang"
+  ],
+  "cSpell.words": [
+    "Cascader",
+    "daterange",
+    "datetimerange",
+    "echarts",
+    "ehthumbs",
+    "eleme",
+    "eslintcache",
+    "Kaheld",
+    "Khaled",
+    "landingpage",
+    "Microbundle",
+    "Moahmed",
+    "notif",
+    "nuxt",
+    "Partidas",
+    "pids",
+    "Quentes",
+    "Tottenham",
+    "vueuse"
+  ]
+}

@@ -1,0 +1,66 @@
+/**
+ * Page tab route configuration
+ */
+import NProgress from 'nprogress';
+import { createRouter, createWebHistory } from 'vue-router';
+import { WHITE_LIST, REDIRECT_PATH, LAYOUT_PATH } from '@/config/setting';
+import { useUserStore } from '@/store/modules/user';
+import { getToken } from '@/utils/token-util';
+import { setPageTitle } from '@/utils/page-title-util';
+import { getRouteTitle } from '@/i18n/use-locale';
+import { routes, getMenuRoutes } from './routes';
+
+NProgress.configure({
+  speed: 200,
+  minimum: 0.02,
+  trickleSpeed: 200,
+  showSpinner: false
+});
+
+const router = createRouter({
+  routes,
+  history: createWebHistory(),
+  scrollBehavior: () => {
+    return { top: 0 };
+  }
+});
+
+/**
+ * Page tab route guard
+ */
+router.beforeEach(async (to) => {
+  // console.log("Token before route:", getToken());
+  if (!to.path.includes(REDIRECT_PATH)) {
+    NProgress.start();
+    setPageTitle(getRouteTitle(to));
+  }
+  if (!getToken()) {
+    // If not logged in, jump to the login interface
+    if (!WHITE_LIST.includes(to.path)) {
+      const query = { from: encodeURIComponent(to.fullPath) };
+      return { path: '/login', query: to.path === LAYOUT_PATH ? {} : query };
+    }
+    return;
+  }
+  // Register dynamic routes
+  const userStore = useUserStore();
+  if (!userStore.menus) {
+    const { menus, homePath } = await userStore.fetchUserInfo();
+    if (menus) {
+      getMenuRoutes(menus, homePath).forEach((r) => {
+        router.addRoute(r);
+      });
+      return { ...to, replace: true };
+    }
+  }
+});
+
+router.afterEach((to) => {
+  if (!to.path.includes(REDIRECT_PATH) && NProgress.isStarted()) {
+    setTimeout(() => {
+      NProgress.done(true);
+    }, 200);
+  }
+});
+
+export default router;
