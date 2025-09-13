@@ -51,7 +51,7 @@ export default defineConfig(({ command, mode }) => {
           port: 3040,
           proxy: {
             '/api': {
-              target: 'http://gva-server:8888',
+              target: 'http://localhost:8888',
               changeOrigin: true,
               rewrite: (path) => path.replace(/^\/api/, '')
             }

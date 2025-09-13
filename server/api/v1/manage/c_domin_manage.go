@@ -12,14 +12,14 @@ import (
 
 type CDominManageApi struct{}
 
-// CreateCDominManage 创建cDominManage表
+// CreateCDominManage Create the cDominManage table
 // @Tags CDominManage
-// @Summary 创建cDominManage表
+// @Summary Create the cDominManage table
 // @Security ApiKeyAuth
 // @Accept application/json
 // @Produce application/json
-// @Param data body manage.CDominManage true "创建cDominManage表"
-// @Success 200 {object} response.Response{msg=string} "创建成功"
+// @Param data body manage.CDominManage true "Create the cDominManage table"
+// @Success 200 {object} response.Response{msg=string} "Created successfully"
 // @Router /cDominManage/createCDominManage [post]
 func (cDominManageApi *CDominManageApi) CreateCDominManage(c *gin.Context) {
 	var cDominManage manage.CDominManage
@@ -39,14 +39,14 @@ func (cDominManageApi *CDominManageApi) CreateCDominManage(c *gin.Context) {
 	response.OkWithMessage("Create successful", c)
 }
 
-// DeleteCDominManage 删除cDominManage表
+// DeleteCDominManage Delete the cDominManage table
 // @Tags CDominManage
-// @Summary 删除cDominManage表
+// @Summary Delete the cDominManage table
 // @Security ApiKeyAuth
 // @Accept application/json
 // @Produce application/json
-// @Param data body manage.CDominManage true "删除cDominManage表"
-// @Success 200 {object} response.Response{msg=string} "删除成功"
+// @Param data body manage.CDominManage true "Delete the cDominManage table"
+// @Success 200 {object} response.Response{msg=string} "Deleted successfully"
 // @Router /cDominManage/deleteCDominManage [delete]
 func (cDominManageApi *CDominManageApi) DeleteCDominManage(c *gin.Context) {
 	id := c.Query("id")
@@ -59,13 +59,13 @@ func (cDominManageApi *CDominManageApi) DeleteCDominManage(c *gin.Context) {
 	response.OkWithMessage("Delete successful", c)
 }
 
-// DeleteCDominManageByIds 批量删除cDominManage表
+// DeleteCDominManageByIds Delete the cDominManage table in batches
 // @Tags CDominManage
-// @Summary 批量删除cDominManage表
+// @Summary Delete the cDominManage table in batches
 // @Security ApiKeyAuth
 // @Accept application/json
 // @Produce application/json
-// @Success 200 {object} response.Response{msg=string} "批量删除成功"
+// @Success 200 {object} response.Response{msg=string} "Batch deletion successful"
 // @Router /cDominManage/deleteCDominManageByIds [delete]
 func (cDominManageApi *CDominManageApi) DeleteCDominManageByIds(c *gin.Context) {
 	ids := c.QueryArray("ids[]")
@@ -78,14 +78,14 @@ func (cDominManageApi *CDominManageApi) DeleteCDominManageByIds(c *gin.Context) 
 	response.OkWithMessage("Batch delete successful", c)
 }
 
-// UpdateCDominManage 更新cDominManage表
+// UpdateCDominManage Update the cDominManage table
 // @Tags CDominManage
-// @Summary 更新cDominManage表
+// @Summary Update the cDominManage table
 // @Security ApiKeyAuth
 // @Accept application/json
 // @Produce application/json
-// @Param data body manage.CDominManage true "更新cDominManage表"
-// @Success 200 {object} response.Response{msg=string} "更新成功"
+// @Param data body manage.CDominManage true "Update the cDominManage table"
+// @Success 200 {object} response.Response{msg=string} "Update successful"
 // @Router /cDominManage/updateCDominManage [put]
 func (cDominManageApi *CDominManageApi) UpdateCDominManage(c *gin.Context) {
 	var cDominManage manage.CDominManage
@@ -103,14 +103,14 @@ func (cDominManageApi *CDominManageApi) UpdateCDominManage(c *gin.Context) {
 	response.OkWithMessage("Update successful", c)
 }
 
-// FindCDominManage 用id查询cDominManage表
+// FindCDominManage Query the cDominManage table using id
 // @Tags CDominManage
-// @Summary 用id查询cDominManage表
+// @Summary Query the cDominManage table using id
 // @Security ApiKeyAuth
 // @Accept application/json
 // @Produce application/json
-// @Param data query int true "用id查询cDominManage表"
-// @Success 200 {object} response.Response{data=manage.CDominManage,msg=string} "查询成功"
+// @Param data query int true "Query the cDominManage table using id"
+// @Success 200 {object} response.Response{data=manage.CDominManage,msg=string} "Query successful"
 // @Router /cDominManage/findCDominManage [get]
 func (cDominManageApi *CDominManageApi) FindCDominManage(c *gin.Context) {
 	id := c.Query("id")
@@ -123,14 +123,14 @@ func (cDominManageApi *CDominManageApi) FindCDominManage(c *gin.Context) {
 	response.OkWithData(recDominManage, c)
 }
 
-// GetCDominManageList 分页获取cDominManage表列表
+// GetCDominManageList Get the cDominManage table list by paging
 // @Tags CDominManage
-// @Summary 分页获取cDominManage表列表
+// @Summary Get the cDominManage table list by paging
 // @Security ApiKeyAuth
 // @Accept application/json
 // @Produce application/json
-// @Param data query manageReq.CDominManageSearch true "分页获取cDominManage表列表"
-// @Success 200 {object} response.Response{data=response.PageResult,msg=string} "获取成功"
+// @Param data query manageReq.CDominManageSearch true "Get the cDominManage table list by paging"
+// @Success 200 {object} response.Response{data=response.PageResult,msg=string} "Get Success"
 // @Router /cDominManage/getCDominManageList [get]
 func (cDominManageApi *CDominManageApi) GetCDominManageList(c *gin.Context) {
 	var pageInfo manageReq.CDominManageSearch
@@ -160,30 +160,30 @@ func (cDominManageApi *CDominManageApi) GetCDominManageList(c *gin.Context) {
 	}, "Get successful", c)
 }
 
-// GetCDominManagePublic 不需要鉴权的cDominManage表接口
+// GetCDominManagePubliccDominManage table interface that does not require authentication
 // @Tags CDominManage
-// @Summary 不需要鉴权的cDominManage表接口
+// @SummarycDominManage table interface that does not require authentication
 // @Accept application/json
 // @Produce application/json
-// @Success 200 {object} response.Response{data=object,msg=string} "获取成功"
+// @Success 200 {object} response.Response{data=object,msg=string} "Get Success"
 // @Router /cDominManage/getCDominManagePublic [get]
 func (cDominManageApi *CDominManageApi) GetCDominManagePublic(c *gin.Context) {
-	// 此接口不需要鉴权
-	// 示例为返回了一个固定的消息接口，一般本接口用于C端服务，需要自己实现业务逻辑
+	// This interface does not require authentication
+	// The example returns a fixed message interface. Generally, this interface is used for C-side services and requires implementing business logic by yourself.
 	cDominManageService.GetCDominManagePublic()
 	response.OkWithDetailed(gin.H{
 		"info": "No authentication required",
 	}, "Get successful", c)
 }
 
-// VisibleCDominManage 隐藏cDominManage
+// VisibleCDominManage Hide cDominManage
 // @Tags CDominManage
-// @Summary 隐藏cDominManage
+// @Summary Hide cDominManage
 // @Security ApiKeyAuth
 // @Accept application/json
 // @Produce application/json
-// @Param data body manage.CDominManage true "隐藏cDominManage"
-// @Success 200 {object} response.Response{msg=string} "更新成功"
+// @Param data body manage.CDominManage true "Hide cDominManage"
+// @Success 200 {object} response.Response{msg=string} "Update successful"
 // @Router /cDominManage/visibleCDominManage [put]
 func (cDominManageApi *CDominManageApi) VisibleCDominManage(c *gin.Context) {
 	var cDominManage manage.CDominManage

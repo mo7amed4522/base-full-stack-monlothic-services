@@ -11,14 +11,14 @@ import (
 
 type CPageTemplateApi struct{}
 
-// CreateCPageTemplate 创建cPageTemplate表
+// CreateCPageTemplate Create the cPageTemplate table
 // @Tags CPageTemplate
-// @Summary 创建cPageTemplate表
+// @Summary Create the cPageTemplate table
 // @Security ApiKeyAuth
 // @Accept application/json
 // @Produce application/json
-// @Param data body manage.CPageTemplate true "创建cPageTemplate表"
-// @Success 200 {object} response.Response{msg=string} "创建成功"
+// @Param data body manage.CPageTemplate true "Create the cPageTemplate table"
+// @Success 200 {object} response.Response{msg=string} "Created successfully"
 // @Router /cPageTemplate/createCPageTemplate [post]
 func (cPageTemplateApi *CPageTemplateApi) CreateCPageTemplate(c *gin.Context) {
 	var cPageTemplate manage.CPageTemplate
@@ -36,14 +36,14 @@ func (cPageTemplateApi *CPageTemplateApi) CreateCPageTemplate(c *gin.Context) {
 	response.OkWithMessage("Create successful", c)
 }
 
-// DeleteCPageTemplate 删除cPageTemplate表
+// DeleteCPageTemplate Delete the cPageTemplate table
 // @Tags CPageTemplate
-// @Summary 删除cPageTemplate表
+// @Summary Delete the cPageTemplate table
 // @Security ApiKeyAuth
 // @Accept application/json
 // @Produce application/json
-// @Param data body manage.CPageTemplate true "删除cPageTemplate表"
-// @Success 200 {object} response.Response{msg=string} "删除成功"
+// @Param data body manage.CPageTemplate true "Delete the cPageTemplate table"
+// @Success 200 {object} response.Response{msg=string} "Deleted successfully"
 // @Router /cPageTemplate/deleteCPageTemplate [delete]
 func (cPageTemplateApi *CPageTemplateApi) DeleteCPageTemplate(c *gin.Context) {
 	id := c.Query("id")
@@ -56,13 +56,13 @@ func (cPageTemplateApi *CPageTemplateApi) DeleteCPageTemplate(c *gin.Context) {
 	response.OkWithMessage("Delete successful", c)
 }
 
-// DeleteCPageTemplateByIds 批量删除cPageTemplate表
+// DeleteCPageTemplateByIds Batch Delete the cPageTemplate table
 // @Tags CPageTemplate
-// @Summary 批量删除cPageTemplate表
+// @Summary Batch Delete the cPageTemplate table
 // @Security ApiKeyAuth
 // @Accept application/json
 // @Produce application/json
-// @Success 200 {object} response.Response{msg=string} "批量删除成功"
+// @Success 200 {object} response.Response{msg=string} "Batch deletion successful"
 // @Router /cPageTemplate/deleteCPageTemplateByIds [delete]
 func (cPageTemplateApi *CPageTemplateApi) DeleteCPageTemplateByIds(c *gin.Context) {
 	ids := c.QueryArray("ids[]")
@@ -75,14 +75,14 @@ func (cPageTemplateApi *CPageTemplateApi) DeleteCPageTemplateByIds(c *gin.Contex
 	response.OkWithMessage("Delete successful", c)
 }
 
-// UpdateCPageTemplate 更新cPageTemplate表
+// UpdateCPageTemplate Update the cPageTemplate table
 // @Tags CPageTemplate
-// @Summary 更新cPageTemplate表
+// @Summary Update the cPageTemplate table
 // @Security ApiKeyAuth
 // @Accept application/json
 // @Produce application/json
-// @Param data body manage.CPageTemplate true "更新cPageTemplate表"
-// @Success 200 {object} response.Response{msg=string} "更新成功"
+// @Param data body manage.CPageTemplate true "Update the cPageTemplate table"
+// @Success 200 {object} response.Response{msg=string} "Update successful"
 // @Router /cPageTemplate/updateCPageTemplate [put]
 func (cPageTemplateApi *CPageTemplateApi) UpdateCPageTemplate(c *gin.Context) {
 	var cPageTemplate manage.CPageTemplate
@@ -100,14 +100,14 @@ func (cPageTemplateApi *CPageTemplateApi) UpdateCPageTemplate(c *gin.Context) {
 	response.OkWithMessage("Update successful", c)
 }
 
-// FindCPageTemplate 用id查询cPageTemplate表
+// FindCPageTemplate Query the cPageTemplate table using id
 // @Tags CPageTemplate
-// @Summary 用id查询cPageTemplate表
+// @Summary Query the cPageTemplate table using id
 // @Security ApiKeyAuth
 // @Accept application/json
 // @Produce application/json
-// @Param data query int true "用id查询cPageTemplate表"
-// @Success 200 {object} response.Response{data=manage.CPageTemplate,msg=string} "查询成功"
+// @Param data query int true "Query the cPageTemplate table using id"
+// @Success 200 {object} response.Response{data=manage.CPageTemplate,msg=string} "Query successful"
 // @Router /cPageTemplate/findCPageTemplate [get]
 func (cPageTemplateApi *CPageTemplateApi) FindCPageTemplate(c *gin.Context) {
 	id := c.Query("id")
@@ -120,14 +120,14 @@ func (cPageTemplateApi *CPageTemplateApi) FindCPageTemplate(c *gin.Context) {
 	response.OkWithData(recPageTemplate, c)
 }
 
-// GetCPageTemplateList 分页获取cPageTemplate表列表
+// GetCPageTemplateList Get cPageTemplate table list by paging
 // @Tags CPageTemplate
-// @Summary 分页获取cPageTemplate表列表
+// @Summary Get cPageTemplate table list by paging
 // @Security ApiKeyAuth
 // @Accept application/json
 // @Produce application/json
-// @Param data query manageReq.CPageTemplateSearch true "分页获取cPageTemplate表列表"
-// @Success 200 {object} response.Response{data=response.PageResult,msg=string} "获取成功"
+// @Param data query manageReq.CPageTemplateSearch true "Get cPageTemplate table list by paging"
+// @Success 200 {object} response.Response{data=response.PageResult,msg=string} "Get Success"
 // @Router /cPageTemplate/getCPageTemplateList [get]
 func (cPageTemplateApi *CPageTemplateApi) GetCPageTemplateList(c *gin.Context) {
 	var pageInfo manageReq.CPageTemplateSearch
@@ -150,16 +150,16 @@ func (cPageTemplateApi *CPageTemplateApi) GetCPageTemplateList(c *gin.Context) {
 	}, "Get successful", c)
 }
 
-// GetCPageTemplatePublic 不需要鉴权的cPageTemplate表接口
+// GetCPageTemplatePublic cPageTemplate table interface that does not require authentication
 // @Tags CPageTemplate
-// @Summary 不需要鉴权的cPageTemplate表接口
+// @Summary cPageTemplate table interface that does not require authentication
 // @Accept application/json
 // @Produce application/json
-// @Success 200 {object} response.Response{data=object,msg=string} "获取成功"
+// @Success 200 {object} response.Response{data=object,msg=string} "Get Success"
 // @Router /cPageTemplate/getCPageTemplatePublic [get]
 func (cPageTemplateApi *CPageTemplateApi) GetCPageTemplatePublic(c *gin.Context) {
-	// 此接口不需要鉴权
-	// 示例为返回了一个固定的消息接口，一般本接口用于C端服务，需要自己实现业务逻辑
+	// This interface does not require authentication
+	// The example returns a fixed message interface. Generally, this interface is used for C-side services and requires implementing business logic by yourself.
 	cPageTemplateService.GetCPageTemplatePublic()
 	response.OkWithDetailed(gin.H{
 		"info": "No authentication required",

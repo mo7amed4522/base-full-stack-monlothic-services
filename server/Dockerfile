@@ -24,7 +24,7 @@ COPY --from=0 /go/src/github.com/flipped-aurora/gin-vue-admin/server/server ./
 COPY --from=0 /go/src/github.com/flipped-aurora/gin-vue-admin/server/resource ./resource/
 COPY --from=0 /go/src/github.com/flipped-aurora/gin-vue-admin/server/config.docker.yaml ./
 
-#Mount directory: If the SQLite database is used, the container command example is: docker run -d -v /host path/gva.db:/go/src/github.com/flipped-aurora/gin-vue-admin/server/gva.db -p 8888:8888 --name gva-server-v1 gva-server:1.0
+#Mount directory: If the SQLite database is used, the container command example is: docker run -d -v /host path/gva.db:/go/src/github.com/flipped-aurora/gin-vue-admin/server/gva.db -p 8888:8888 --name localhost-v1 localhost:1.0
 # VOLUME ["/go/src/github.com/flipped-aurora/gin-vue-admin/server"]
 
 EXPOSE 8888

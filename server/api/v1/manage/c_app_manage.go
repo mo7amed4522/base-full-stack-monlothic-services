@@ -15,7 +15,7 @@ import (
 
 type CAppManager struct{}
 
-// CreateCPayConfig 创建cPayConfig表
+// CreateCPayConfig creates the cPayConfig table
 func (cAppManager *CAppManager) CreateCApp(c *gin.Context) {
 	var appCreateReq manage.CAppManage
 	err := c.ShouldBindJSON(&appCreateReq)
@@ -23,19 +23,19 @@ func (cAppManager *CAppManager) CreateCApp(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	// 验证language_json是否为有效的JSON字符串
+	// Verify that language_json is a valid JSON string
 	var languageJsonObj interface{}
 	if err := json.Unmarshal(appCreateReq.LanguageJson, &languageJsonObj); err != nil {
 		response.FailWithMessage("language_json format is incorrect: "+err.Error(), c)
 		return
 	}
 
-	// 直接转换为数据库模型
+	// Direct conversion to database model
 	appManage := manage.CAppManage{
 		AppName:      appCreateReq.AppName,
 		AppRemark:    appCreateReq.AppRemark,
 		AppIcon:      appCreateReq.AppIcon,
-		LanguageJson: appCreateReq.LanguageJson, // 将字符串转换为json.RawMessage
+		LanguageJson: appCreateReq.LanguageJson, // Convert string to json.RawMessage
 		CreatedAt:    time.Now(),
 		UpdatedAt:    time.Now(),
 		UpdatedBy:    &[]uint{uint(utils.GetUserID(c))}[0],
@@ -50,7 +50,7 @@ func (cAppManager *CAppManager) CreateCApp(c *gin.Context) {
 	response.OkWithMessage("Creation successful", c)
 }
 
-// DeleteCPayConfig 删除cPayConfig表
+// DeleteCPayConfig Delete the cPayConfig table
 func (cAppManager *CAppManager) DeleteApp(c *gin.Context) {
 	id := c.Query("id")
 	err := cAppManageService.DeleteCApp(id)
@@ -62,7 +62,7 @@ func (cAppManager *CAppManager) DeleteApp(c *gin.Context) {
 	response.OkWithMessage("Deletion successful", c)
 }
 
-// UpdateCPayConfig 更新cPayConfig表
+// UpdateCPayConfig Updates the cPayConfig table
 func (cAppManager *CAppManager) UpdateCPayConfig(c *gin.Context) {
 	var cPayConfig manage.CAppManage
 	err := c.ShouldBindJSON(&cPayConfig)
@@ -80,7 +80,7 @@ func (cAppManager *CAppManager) UpdateCPayConfig(c *gin.Context) {
 	response.OkWithMessage("Update successful", c)
 }
 
-// FindCPayConfig 用id查询cPayConfig表
+// FindCPayConfig uses id to query the cPayConfig table
 func (cAppManager *CAppManager) FindCPayConfig(c *gin.Context) {
 	id := c.Query("id")
 	recPayConfig, err := cAppManageService.GetCApp(id)
@@ -92,7 +92,7 @@ func (cAppManager *CAppManager) FindCPayConfig(c *gin.Context) {
 	response.OkWithData(recPayConfig, c)
 }
 
-// GetCAppList 分页获取表列表
+// GetCAppList Gets the table list by paging
 func (cAppManager *CAppManager) GetCAppList(c *gin.Context) {
 	var pageInfo request.AppManageSearchRequest
 	err := c.ShouldBindQuery(&pageInfo)
@@ -115,7 +115,7 @@ func (cAppManager *CAppManager) GetCAppList(c *gin.Context) {
 	}, "Query successful", c)
 }
 
-// GetCPayConfigPublic 不需要鉴权的cPayConfig表接口
+// GetCPayConfigPublic cPayConfig table interface that does not require authentication
 func (cAppManager *CAppManager) GetCPayConfigPublic(c *gin.Context) {
 	id := c.Query("id")
 	var info manage.CAppManage

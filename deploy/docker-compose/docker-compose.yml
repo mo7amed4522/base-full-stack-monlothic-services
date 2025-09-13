@@ -22,7 +22,7 @@ services:
         build:
             context: ../../server
             dockerfile: ./Dockerfile
-        container_name: gva-server
+        container_name: localhost
         restart: always
         ports:
             - "127.0.0.1:8888:8888"
