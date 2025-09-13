@@ -9,10 +9,10 @@
 </template>
 
 <script setup>
+  import { MAP_KEY } from '@/config/setting';
   import { useGlobalConfig } from '@/config/use-global-config';
-import { useLocale } from '@/i18n/use-locale';
-import { useThemeStore } from '@/store/modules/theme';
-import { MAP_KEY } from '@/config/setting';
+  import { useLocale } from '@/i18n/use-locale';
+  import { useThemeStore } from '@/store/modules/theme';
 
   /** 组件全局配置 */
   const { tableConfig } = useGlobalConfig();

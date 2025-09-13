@@ -15,8 +15,7 @@
         </el-col>
         <el-col :lg="4" :md="12" :sm="12" :xs="24">
           <el-form-item :label="t('common.enableStatusText')">
-            <el-select clearable v-model="form.status" :empty-values="[null, undefined]"
-              :placeholder="t('common.selectEnableStatusText')" class="ele-fluid">
+            <el-select clearable v-model="form.status" :empty-values="[null, undefined]" :placeholder="t('common.selectEnableStatusText')" class="ele-fluid">
               <el-option v-for="(item, index) in statusOptions" :key="index" :label="item.label" :value="item.value" />
             </el-select>
           </el-form-item>
@@ -49,48 +48,48 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
-import { useFormData } from '@/utils/use-form-data';
-import { useI18n } from 'vue-i18n';
+  import { ref, onMounted, computed } from 'vue';
+  import { useFormData } from '@/utils/use-form-data';
+  import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+  const { t } = useI18n();
 
-const props = defineProps({});
-const emit = defineEmits(['search']);
+  const props = defineProps({});
+  const emit = defineEmits(['search']);
 
-/** Search form data */
-const [form, resetFields] = useFormData({
-  status: '',
-  domain: '',
-  id: '',
-});
-
-const statusOptions = computed(() => [
-  { label: 'All', value: '' },
-  { label: 'Matching', value: 1 },
-  { label: 'Correct match', value: 2 },
-  { label: 'Match failed', value: 3 }
-]);
-
-/** Date range */
-const dateRange = ref(['', '']);
-
-/** Search */
-const search = () => {
-  const [d1, d2] = dateRange.value ?? [];
-  emit('search', {
-    ...form,
-    startTime: d1 ? `${d1}` : '',
-    endTime: d2 ? `${d2}` : ''
+  /** Search form data */
+  const [form, resetFields] = useFormData({
+    status: '',
+    domain: '',
+    id: ''
   });
-};
 
-/** Reset */
-const reset = () => {
-  resetFields();
-  dateRange.value = ['', ''];
-  search();
-};
+  const statusOptions = computed(() => [
+    { label: 'All', value: '' },
+    { label: 'Matching', value: 1 },
+    { label: 'Correct match', value: 2 },
+    { label: 'Match failed', value: 3 }
+  ]);
 
-onMounted(() => { });
+  /** Date range */
+  const dateRange = ref(['', '']);
+
+  /** Search */
+  const search = () => {
+    const [d1, d2] = dateRange.value ?? [];
+    emit('search', {
+      ...form,
+      startTime: d1 ? `${d1}` : '',
+      endTime: d2 ? `${d2}` : ''
+    });
+  };
+
+  /** Reset */
+  const reset = () => {
+    resetFields();
+    dateRange.value = ['', ''];
+    search();
+  };
+
+  onMounted(() => {});
 </script>
