@@ -1,19 +1,12 @@
 <template>
   <ele-page>
-  <div class="flex justify-between items-center gap-2 w-full">
-    <el-cascader
-        v-if="pathIsSelect"
-        placeholder="请选择文件路径"
-        :options="pathOptions"
-        v-model="activeComponent"
-        filterable
-        class="w-full"
-        clearable
-        @change="emitChange"
-    />
-    <el-input v-else v-model="tempPath" placeholder="页面:view/xxx/xx.vue 插件:plugin/xx/xx.vue" @change="emitChange" />
-    <el-button @click="togglePathIsSelect">{{ pathIsSelect ? '手动输入' : '快捷选择' }} </el-button>
-  </div>
+    <div class="flex justify-between items-center gap-2 w-full">
+      <el-cascader v-if="pathIsSelect" placeholder="Please select the file path" :options="pathOptions"
+        v-model="activeComponent" filterable class="w-full" clearable @change="emitChange" />
+      <el-input v-else v-model="tempPath" placeholder="Page:view/xxx/xx.vue Plugin:plugin/xx/xx.vue"
+        @change="emitChange" />
+      <el-button @click="togglePathIsSelect">{{ pathIsSelect ? 'Manual input ' : 'Quick selection' }} </el-button>
+    </div>
   </ele-page>
 </template>
 
@@ -37,9 +30,9 @@ const activeComponent = ref([])
 const pathIsSelect = ref(true)
 
 const togglePathIsSelect = () => {
-  if(pathIsSelect.value){
+  if (pathIsSelect.value) {
     tempPath.value = activeComponent.value?.join('/') || ''
-  }else{
+  } else {
     activeComponent.value = tempPath.value?.split('/') || []
   }
 
@@ -97,7 +90,7 @@ onMounted(() => {
 
 const initCascader = (value) => {
   // 新增的时候
-  if(value === ''){
+  if (value === '') {
     pathIsSelect.value = true
     return
   }
@@ -120,6 +113,4 @@ const emitChange = () => {
 </script>
 
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

@@ -175,6 +175,11 @@ Run the tests with:
 ```bash
 cd server
 go test ./... -v
+
+
+make docker-run
+docker-compose -f deploy/docker-compose/docker-compose.yml build web
+docker-compose -f deploy/docker-compose/docker-compose.yml up -d
 ```
 
 ## 🔒 Security

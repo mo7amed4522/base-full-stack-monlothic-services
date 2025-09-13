@@ -335,7 +335,7 @@ func (s *autoCodeTemplate) getTemplateStr(t string, info request.AutoFunc) (stri
 	return builder.String(), nil
 }
 
-func (s *autoCodeTemplate) addTemplateToAst(t string, info request.AutoFunc) error {
+func (s *autoCodeTemplate) addTemplateToAst(_ string, info request.AutoFunc) error {
 	tPath := filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "router", info.Package, info.HumpPackageName+".go")
 	funcName := fmt.Sprintf("Init%sRouter", info.StructName)
 

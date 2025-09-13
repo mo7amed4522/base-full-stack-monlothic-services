@@ -4,32 +4,24 @@
     <el-form label-width="72px" @keyup.enter="search" @submit.prevent="">
       <el-row :gutter="8">
         <el-col :lg="6" :md="12" :sm="12" :xs="24">
-          <el-form-item label="菜单名称">
-            <el-input
-              clearable
-              v-model.trim="form.title"
-              placeholder="请输入"
-            />
+          <el-form-item label="Menu name">
+            <el-input clearable v-model.trim="form.title" placeholder="Please input" />
           </el-form-item>
         </el-col>
         <el-col :lg="6" :md="12" :sm="12" :xs="24">
-          <el-form-item label="菜单地址">
-            <el-input clearable v-model.trim="form.path" placeholder="请输入" />
+          <el-form-item label="Menu address">
+            <el-input clearable v-model.trim="form.path" placeholder="Please input" />
           </el-form-item>
         </el-col>
         <el-col :lg="6" :md="12" :sm="12" :xs="24">
-          <el-form-item label="权限标识">
-            <el-input
-              clearable
-              v-model.trim="form.authority"
-              placeholder="请输入"
-            />
+          <el-form-item label="Permission identifier">
+            <el-input clearable v-model.trim="form.authority" placeholder="Please input" />
           </el-form-item>
         </el-col>
         <el-col :lg="6" :md="12" :sm="12" :xs="24">
           <el-form-item label-width="16px">
-            <el-button type="primary" @click="search">查询</el-button>
-            <el-button @click="reset">重置</el-button>
+            <el-button type="primary" @click="search">Search</el-button>
+            <el-button @click="reset">Reset</el-button>
           </el-form-item>
         </el-col>
       </el-row>
@@ -38,25 +30,25 @@
 </template>
 
 <script setup>
-  import { useFormData } from '@/utils/use-form-data';
+import { useFormData } from '@/utils/use-form-data';
 
-  const emit = defineEmits(['search']);
+const emit = defineEmits(['search']);
 
-  /** 表单数据 */
-  const [form, resetFields] = useFormData({
-    title: '',
-    path: '',
-    authority: ''
-  });
+/** 表单数据 */
+const [form, resetFields] = useFormData({
+  title: '',
+  path: '',
+  authority: ''
+});
 
-  /** 搜索 */
-  const search = () => {
-    emit('search', { ...form });
-  };
+/** 搜索 */
+const search = () => {
+  emit('search', { ...form });
+};
 
-  /**  重置 */
-  const reset = () => {
-    resetFields();
-    search();
-  };
+/**  重置 */
+const reset = () => {
+  resetFields();
+  search();
+};
 </script>

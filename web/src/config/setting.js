@@ -32,5 +32,5 @@ export const I18N_CACHE_NAME = 'i18n-lang';
 /** map key, please apply for it on the map official website */
 export const MAP_KEY = '006d995d433058322319fa797f2876f5';
 
-/** EleAdminPlus authorization code */
-export const LICENSE_CODE = import.meta.env.VITE_LICENSE;
+/** EleAdminPlus authorization code - removed */
+// License code has been removed

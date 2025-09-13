@@ -1,6 +1,6 @@
 <template>
   <el-config-provider :locale="elLocale">
-    <ele-config-provider :locale="eleLocale" :table="tableConfig" :map-key="MAP_KEY" :license="LICENSE_CODE">
+    <ele-config-provider :locale="eleLocale" :table="tableConfig" :map-key="MAP_KEY">
       <ele-app>
         <router-view />
       </ele-app>
@@ -10,9 +10,9 @@
 
 <script setup>
   import { useGlobalConfig } from '@/config/use-global-config';
-  import { useLocale } from '@/i18n/use-locale';
-  import { useThemeStore } from '@/store/modules/theme';
-  import { MAP_KEY, LICENSE_CODE } from '@/config/setting';
+import { useLocale } from '@/i18n/use-locale';
+import { useThemeStore } from '@/store/modules/theme';
+import { MAP_KEY } from '@/config/setting';
 
   /** 组件全局配置 */
   const { tableConfig } = useGlobalConfig();

@@ -10,7 +10,8 @@
                 <span class="label-color">(payType)</span>
               </span>
             </template>
-            <el-select clearable v-model="form.payType" :empty-values="[null, undefined]" :placeholder="t('mockOrder.selectPayType')" class="ele-fluid">
+            <el-select clearable v-model="form.payType" :empty-values="[null, undefined]"
+              :placeholder="t('mockOrder.selectPayType')" class="ele-fluid">
               <el-option v-for="(item, index) in payTypeOptions" :key="index" :label="item.label" :value="item.value" />
             </el-select>
           </el-form-item>
@@ -184,7 +185,7 @@
         <el-row :gutter="60">
           <el-col :lg="12" :md="12" :sm="12" :xs="24">
             <el-form-item :label="t('mockOrder.payType')">
-              <span>银行卡</span>
+              <span>bank card</span>
             </el-form-item>
           </el-col>
           <el-col :lg="12" :md="12" :sm="12" :xs="24">
@@ -203,112 +204,115 @@
   </div>
 </template>
 <script setup>
-  import { ref, reactive } from 'vue';
-  import { useI18n } from 'vue-i18n';
-  import { generateSign, _timeFormat } from '@/utils/public';
-  import { mockPayoutOrderApi } from '@/api/order';
-  import { ElMessage } from 'element-plus';
-  import { formatToTwoDecimals } from '@/utils/public';
+import { ref, reactive } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { generateSign, _timeFormat } from '@/utils/public';
+import { mockPayoutOrderApi } from '@/api/order';
+import { ElMessage } from 'element-plus';
+import { formatToTwoDecimals } from '@/utils/public';
 
-  const { t } = useI18n();
+const { t } = useI18n();
 
-  /** 提交状态 */
-  const loading = ref(false);
+/** 提交状态 */
+const loading = ref(false);
 
-  /** 表单实例 */
-  const formRef = ref(null);
+/** 表单实例 */
+const formRef = ref(null);
 
-  // 生成订单号
-  const generateOrderNumber = () => {
-    const length = Math.floor(Math.random() * (32 - 14 + 1)) + 14; // 随机生成14到32字符之间的长度
-    let orderId = '';
+// 生成订单号
+const generateOrderNumber = () => {
+  const length = Math.floor(Math.random() * (32 - 14 + 1)) + 14; // 随机生成14到32字符之间的长度
+  let orderId = '';
 
-    // 生成纯数字
-    for (let i = 0; i < length; i++) {
-      orderId += Math.floor(Math.random() * 10); // 生成0-9的数字
+  // 生成纯数字
+  for (let i = 0; i < length; i++) {
+    orderId += Math.floor(Math.random() * 10); // 生成0-9的数字
+  }
+
+  return orderId;
+};
+
+const form = ref({
+  payType: '1', // 支付类型
+  mchNo: 'msLkxPAPLGYE', // 商户号
+  cardName: 'test', // 商户下的用户标识
+  cardNumber: '6222028970042409623', // 商户下的用户名称
+  thirdOrderNo: generateOrderNumber(),
+  amount: '100.00', // 订单金额
+  notifyUrl: 'http://www.baidu.com', // 服务端后台支付结果通知地址
+  cardBank: '印度银行',
+  ifsc: 'ICIC0001234',
+  remark: 'test',
+  currency: 'inr',
+  sign: '' // 签名
+});
+
+const payTypeOptions = ref([{ label: 'bank card', value: '1' }]);
+
+const rules = reactive({
+  payType: [{ required: true, message: t('mockOrder.selectText'), trigger: 'change' }],
+  mchNo: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  cardName: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  cardNumber: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  thirdOrderNo: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  amount: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  notifyUrl: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  cardBank: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  ifsc: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  remark: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  currency: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }]
+});
+
+const payoutOrderInfo = ref({});
+
+const save = () => {
+  formRef.value?.validate?.((valid) => {
+    if (!valid) {
+      return;
     }
-
-    return orderId;
-  };
-
-  const form = ref({
-    payType: '1', // 支付类型
-    mchNo: 'msLkxPAPLGYE', // 商户号
-    cardName: '许三', // 商户下的用户标识
-    cardNumber: '6222028970042409623', // 商户下的用户名称
-    thirdOrderNo: generateOrderNumber(),
-    amount: '100.00', // 订单金额
-    notifyUrl: 'http://www.baidu.com', // 服务端后台支付结果通知地址
-    cardBank: '印度银行',
-    ifsc: 'ICIC0001234',
-    remark: 'test',
-    currency: 'inr',
-    sign: '' // 签名
-  });
-
-  const payTypeOptions = ref([{ label: '银行卡', value: '1' }]);
-
-  const rules = reactive({
-    payType: [{ required: true, message: t('mockOrder.selectText'), trigger: 'change' }],
-    mchNo: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    cardName: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    cardNumber: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    thirdOrderNo: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    amount: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    notifyUrl: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    cardBank: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    ifsc: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    remark: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    currency: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }]
-  });
-
-  const payoutOrderInfo = ref({});
-
-  const save = () => {
-    formRef.value?.validate?.((valid) => {
-      if (!valid) {
-        return;
-      }
-      form.value.amount = formatToTwoDecimals(form.value.amount)
-      form.value.sign = generateSign(form.value, 'demo123456');
-      loading.value = true;
-      mockPayoutOrderApi({
-        ...form.value
-      })
-        .then((res) => {
-          loading.value = false;
-          form.value.thirdOrderNo = generateOrderNumber();
-          ElMessage({
-            message: res.msg,
-            type: 'success'
-          });
-          payoutOrderInfo.value = res.data;
-        })
-        .catch((e) => {
-          loading.value = false;
-          ElMessage.error(e.message);
+    form.value.amount = formatToTwoDecimals(form.value.amount)
+    form.value.sign = generateSign(form.value, 'demo123456');
+    loading.value = true;
+    mockPayoutOrderApi({
+      ...form.value
+    })
+      .then((res) => {
+        loading.value = false;
+        form.value.thirdOrderNo = generateOrderNumber();
+        ElMessage({
+          message: res.msg,
+          type: 'success'
         });
-    });
-  };
+        payoutOrderInfo.value = res.data;
+      })
+      .catch((e) => {
+        loading.value = false;
+        ElMessage.error(e.message);
+      });
+  });
+};
 </script>
 <style lang="scss" scoped>
-  .form {
-    padding: 20px 40px;
-    box-sizing: border-box;
-  }
-  .footer {
-    text-align: center;
-  }
-  .card {
-    width: 100%;
-    border: 1px solid #dcdfe6;
-    border-radius: 4px;
-    padding: 20px;
-    box-sizing: border-box;
-    word-wrap: break-word;
-  }
-  .label-color {
-    color: red;
-    margin-left: 5px;
-  }
+.form {
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.footer {
+  text-align: center;
+}
+
+.card {
+  width: 100%;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  padding: 20px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+.label-color {
+  color: red;
+  margin-left: 5px;
+}
 </style>

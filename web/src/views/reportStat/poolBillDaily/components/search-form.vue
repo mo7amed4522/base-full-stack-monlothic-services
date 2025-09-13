@@ -5,29 +5,23 @@
       <el-row :gutter="8">
         <el-col :lg="6" :md="12" :sm="12" :xs="24">
           <el-form-item :label="t('common.searchOrderNumber')">
-            <el-input clearable v-model="form.keyword" class="ele-fluid" :placeholder="t('common.searchOrderNumberText')" />
+            <el-input clearable v-model="form.keyword" class="ele-fluid"
+              :placeholder="t('common.searchOrderNumberText')" />
           </el-form-item>
         </el-col>
         <el-col :lg="6" :md="12" :sm="12" :xs="24">
           <el-form-item :label="t('common.enableStatusText')">
-            <el-select clearable v-model="form.status" :empty-values="[null, undefined]" :placeholder="t('common.selectEnableStatusText')" class="ele-fluid">
+            <el-select clearable v-model="form.status" :empty-values="[null, undefined]"
+              :placeholder="t('common.selectEnableStatusText')" class="ele-fluid">
               <el-option v-for="(item, index) in statusOptions" :key="index" :label="item.label" :value="item.value" />
             </el-select>
           </el-form-item>
         </el-col>
         <el-col :lg="8" :md="12" :sm="12" :xs="24">
           <el-form-item :label="t('common.createTimeText')">
-            <el-date-picker
-              unlink-panels
-              type="datetimerange"
-              v-model="dateRange"
-              range-separator="-"
-              format="YYYY-MM-DD HH:mm"
-              value-format="YYYY-MM-DD HH:mm"
-              :start-placeholder="t('common.beginTimeText')"
-              :end-placeholder="t('common.endTimeText')"
-              class="ele-fluid"
-            />
+            <el-date-picker unlink-panels type="datetimerange" v-model="dateRange" range-separator="-"
+              format="YYYY-MM-DD HH:mm" value-format="YYYY-MM-DD HH:mm" :start-placeholder="t('common.beginTimeText')"
+              :end-placeholder="t('common.endTimeText')" class="ele-fluid" />
           </el-form-item>
         </el-col>
 
@@ -43,46 +37,46 @@
 </template>
 
 <script setup>
-  import { ref, onMounted } from 'vue';
-  import { useFormData } from '@/utils/use-form-data';
-  import { useI18n } from 'vue-i18n';
+import { ref, onMounted } from 'vue';
+import { useFormData } from '@/utils/use-form-data';
+import { useI18n } from 'vue-i18n';
 
-  const { t } = useI18n();
+const { t } = useI18n();
 
-  const props = defineProps({});
-  const emit = defineEmits(['search']);
+const props = defineProps({});
+const emit = defineEmits(['search']);
 
-  /** 表单数据 */
-  const [form, resetFields] = useFormData({
-    keyword: '',
-    status: ''
+/** 表单数据 */
+const [form, resetFields] = useFormData({
+  keyword: '',
+  status: ''
+});
+
+const statusOptions = ref([
+  { label: t('common.all'), value: '' },
+  { label: t('common.enable'), value: 1 },
+  { label: t('merchant.disabled'), value: 2 }
+]);
+
+/** 日期范围 */
+const dateRange = ref(['', '']);
+
+/** 搜索 */
+const search = () => {
+  const [d1, d2] = dateRange.value ?? [];
+  emit('search', {
+    ...form,
+    startTime: d1 ? `${d1}` : '',
+    endTime: d2 ? `${d2}` : ''
   });
+};
 
-  const statusOptions = ref([
-    { label: t('common.all'), value: '' },
-    { label: t('common.enable'), value: 1 },
-    { label: t('merchant.disabled'), value: 2 }
-  ]);
+/**  重置 */
+const reset = () => {
+  resetFields();
+  dateRange.value = ['', ''];
+  search();
+};
 
-  /** 日期范围 */
-  const dateRange = ref(['', '']);
-
-  /** 搜索 */
-  const search = () => {
-    const [d1, d2] = dateRange.value ?? [];
-    emit('search', {
-      ...form,
-      startTime: d1 ? `${d1}` : '',
-      endTime: d2 ? `${d2}` : ''
-    });
-  };
-
-  /**  重置 */
-  const reset = () => {
-    resetFields();
-    dateRange.value = ['', ''];
-    search();
-  };
-
-  onMounted(() => {});
+onMounted(() => { });
 </script>

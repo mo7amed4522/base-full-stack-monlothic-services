@@ -11,7 +11,8 @@
 
         <el-col :lg="4" :md="12" :sm="12" :xs="24">
           <el-form-item :label="t('common.statusText')">
-            <el-select clearable v-model="form.status" :empty-values="[null, undefined]" :placeholder="t('common.selectEnableStatusText')" class="ele-fluid">
+            <el-select clearable v-model="form.status" :empty-values="[null, undefined]"
+              :placeholder="t('common.selectEnableStatusText')" class="ele-fluid">
               <el-option v-for="(item, index) in statusOptions" :key="index" :label="item.label" :value="item.value" />
             </el-select>
           </el-form-item>
@@ -44,45 +45,45 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, computed } from 'vue';
-  import { useFormData } from '@/utils/use-form-data';
-  import { useI18n } from 'vue-i18n';
+import { ref, onMounted, computed } from 'vue';
+import { useFormData } from '@/utils/use-form-data';
+import { useI18n } from 'vue-i18n';
 
-  const { t } = useI18n();
+const { t } = useI18n();
 
-  const emit = defineEmits(['search']);
+const emit = defineEmits(['search']);
 
-  /** 表单数据 */
-  const [form, resetFields] = useFormData({
-    status: '',
-    keyword: ''
+/** 表单数据 */
+const [form, resetFields] = useFormData({
+  status: '',
+  keyword: ''
+});
+
+const statusOptions = computed(() => [
+  { label: t('common.all'), value: '' },
+  { label: t('common.enable'), value: 1 },
+  { label: t('merchant.disabled'), value: 2 }
+]);
+
+/** 日期范围 */
+const dateRange = ref(['', '']);
+
+/** 搜索 */
+const search = () => {
+  const [d1, d2] = dateRange.value ?? [];
+  emit('search', {
+    ...form,
+    startTime: d1 ? `${d1}` : '',
+    endTime: d2 ? `${d2}` : ''
   });
+};
 
-  const statusOptions = computed(() => [
-    { label: t('common.all'), value: '' },
-    { label: t('common.enable'), value: 1 },
-    { label: t('merchant.disabled'), value: 2 }
-  ]);
+/**  重置 */
+const reset = () => {
+  resetFields();
+  dateRange.value = ['', ''];
+  search();
+};
 
-  /** 日期范围 */
-  const dateRange = ref(['', '']);
-
-  /** 搜索 */
-  const search = () => {
-    const [d1, d2] = dateRange.value ?? [];
-    emit('search', {
-      ...form,
-      startTime: d1 ? `${d1}` : '',
-      endTime: d2 ? `${d2}` : ''
-    });
-  };
-
-  /**  重置 */
-  const reset = () => {
-    resetFields();
-    dateRange.value = ['', ''];
-    search();
-  };
-
-  onMounted(() => {});
+onMounted(() => { });
 </script>

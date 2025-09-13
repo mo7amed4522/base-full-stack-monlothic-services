@@ -1,5 +1,6 @@
 <template>
-  <ele-modal form :width="550" :model-value="modelValue" :title="t('common.detailText')" @update:modelValue="updateModelValue">
+  <ele-modal form :width="550" :model-value="modelValue" :title="t('common.detailText')"
+    @update:modelValue="updateModelValue">
     <el-form ref="formRef" :model="form" :rules="rules" label-width="130px" @submit.prevent="">
       <el-form-item :label="t('merchant.username')" prop="user">
         <el-input v-model="form.user" disabled :placeholder="t('mockOrder.enterText')" clearable />
@@ -14,7 +15,8 @@
       </el-form-item>
 
       <el-form-item :label="t('common.notes')" prop="remark">
-        <el-input v-model="form.remark" disabled type="textarea" :rows="3" :placeholder="t('common.enterNotes')" clearable />
+        <el-input v-model="form.remark" disabled type="textarea" :rows="3" :placeholder="t('common.enterNotes')"
+          clearable />
       </el-form-item>
 
       <el-form-item :label="t('common.statusText')" prop="valid">
@@ -32,91 +34,91 @@
 </template>
 
 <script setup>
-  import { ref, reactive, watch } from 'vue';
-  import { EleMessage } from 'ele-admin-plus/es';
-  import { useFormData } from '@/utils/use-form-data';
-  import { QuestionCircleOutlined } from '@/components/icons/index.js';
-  import { createReceiptAccountApi, updateReceiptAccountApi } from '@/api/receipt';
-  import { useI18n } from 'vue-i18n';
+import { ref, reactive, watch } from 'vue';
+import { EleMessage } from 'ele-admin-plus/es';
+import { useFormData } from '@/utils/use-form-data';
 
-  const { t } = useI18n();
+import { createReceiptAccountApi, updateReceiptAccountApi } from '@/api/receipt';
+import { useI18n } from 'vue-i18n';
 
-  const emit = defineEmits(['done', 'update:modelValue']);
+const { t } = useI18n();
 
-  const props = defineProps({
-    /** 弹窗是否打开 */
-    modelValue: Boolean,
-    /** 修改回显的数据 */
-    data: Object
-  });
+const emit = defineEmits(['done', 'update:modelValue']);
 
-  /** 是否是修改 */
-  const isUpdate = ref(false);
+const props = defineProps({
+  /** 弹窗是否打开 */
+  modelValue: Boolean,
+  /** 修改回显的数据 */
+  data: Object
+});
 
-  /** 提交状态 */
-  const loading = ref(false);
+/** 是否是修改 */
+const isUpdate = ref(false);
 
-  /** 表单实例 */
-  const formRef = ref(null);
+/** 提交状态 */
+const loading = ref(false);
 
-  /** 表单数据 */
-  const [form, resetFields, assignFields] = useFormData({
-    id: void 0,
-    ip: '',
-    password: '',
-    remark: '',
-    user: '',
-    valid: ''
-  });
+/** 表单实例 */
+const formRef = ref(null);
 
-  /** 表单验证规则 */
-  const rules = reactive({
-    user: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    password: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    ip: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    valid: [{ required: true, message: t('mockOrder.selectText'), trigger: 'blur' }]
-  });
+/** 表单数据 */
+const [form, resetFields, assignFields] = useFormData({
+  id: void 0,
+  ip: '',
+  password: '',
+  remark: '',
+  user: '',
+  valid: ''
+});
 
-  /** 保存编辑 */
-  const save = () => {
-    formRef.value?.validate?.((valid) => {
-      if (!valid) {
-        return;
-      }
-      loading.value = true;
-      const saveOrUpdate = isUpdate.value ? updateReceiptAccountApi : createReceiptAccountApi;
-      saveOrUpdate({ ...form })
-        .then((msg) => {
-          loading.value = false;
-          EleMessage.success(msg);
-          updateModelValue(false);
-          emit('done');
-        })
-        .catch((e) => {
-          loading.value = false;
-          EleMessage.error(e.message);
-        });
-    });
-  };
+/** 表单验证规则 */
+const rules = reactive({
+  user: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  password: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  ip: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  valid: [{ required: true, message: t('mockOrder.selectText'), trigger: 'blur' }]
+});
 
-  /** 更新modelValue */
-  const updateModelValue = (value) => {
-    emit('update:modelValue', value);
-  };
-
-  watch(
-    () => props.modelValue,
-    (modelValue) => {
-      if (modelValue) {
-        if (props.data) {
-          assignFields({
-            ...props.data
-          });
-        }
-      } else {
-        resetFields();
-        formRef.value?.clearValidate?.();
-      }
+/** 保存编辑 */
+const save = () => {
+  formRef.value?.validate?.((valid) => {
+    if (!valid) {
+      return;
     }
-  );
+    loading.value = true;
+    const saveOrUpdate = isUpdate.value ? updateReceiptAccountApi : createReceiptAccountApi;
+    saveOrUpdate({ ...form })
+      .then((msg) => {
+        loading.value = false;
+        EleMessage.success(msg);
+        updateModelValue(false);
+        emit('done');
+      })
+      .catch((e) => {
+        loading.value = false;
+        EleMessage.error(e.message);
+      });
+  });
+};
+
+/** 更新modelValue */
+const updateModelValue = (value) => {
+  emit('update:modelValue', value);
+};
+
+watch(
+  () => props.modelValue,
+  (modelValue) => {
+    if (modelValue) {
+      if (props.data) {
+        assignFields({
+          ...props.data
+        });
+      }
+    } else {
+      resetFields();
+      formRef.value?.clearValidate?.();
+    }
+  }
+);
 </script>

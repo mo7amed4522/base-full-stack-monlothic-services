@@ -1,5 +1,6 @@
 <template>
-  <ele-modal form :width="750" :model-value="modelValue" :title="t('common.detailText')" @update:modelValue="updateModelValue">
+  <ele-modal form :width="750" :model-value="modelValue" :title="t('common.detailText')"
+    @update:modelValue="updateModelValue">
     <el-form ref="formRef" :model="form" label-width="140px" @submit.prevent="">
       <el-form-item :label="t('orderList.poolName') + '：'">
         <span>{{ form.cPayPoolName }}</span>
@@ -30,58 +31,58 @@
 </template>
 
 <script setup>
-  import { ref, reactive, watch } from 'vue';
-  import { EleMessage } from 'ele-admin-plus/es';
-  import { useFormData } from '@/utils/use-form-data';
-  import { useI18n } from 'vue-i18n';
+import { ref, watch } from 'vue';
 
-  const { t } = useI18n();
+import { useFormData } from '@/utils/use-form-data';
+import { useI18n } from 'vue-i18n';
 
-  const emit = defineEmits(['done', 'update:modelValue']);
+const { t } = useI18n();
 
-  const props = defineProps({
-    /** 弹窗是否打开 */
-    modelValue: Boolean,
-    /** 修改回显的数据 */
-    data: Object
-  });
+const emit = defineEmits(['done', 'update:modelValue']);
 
-  /** 表单实例 */
-  const formRef = ref(null);
+const props = defineProps({
+  /** 弹窗是否打开 */
+  modelValue: Boolean,
+  /** 修改回显的数据 */
+  data: Object
+});
 
-  /** 表单数据 */
-  const [form, resetFields, assignFields] = useFormData({
-    cPayPoolName: '',
-    cPayConfigName: '',
-    merSubUser: '',
-    payType: '',
-    cType: '',
-    remark: ''
-  });
+/** 表单实例 */
+const formRef = ref(null);
 
-  /** 更新modelValue */
-  const updateModelValue = (value) => {
-    emit('update:modelValue', value);
-  };
+/** 表单数据 */
+const [form, resetFields, assignFields] = useFormData({
+  cPayPoolName: '',
+  cPayConfigName: '',
+  merSubUser: '',
+  payType: '',
+  cType: '',
+  remark: ''
+});
 
-  watch(
-    () => props.modelValue,
-    (modelValue) => {
-      if (modelValue) {
-        if (props.data) {
-          assignFields({
-            ...props.data
-          });
-        }
-      } else {
-        resetFields();
-        formRef.value?.clearValidate?.();
+/** 更新modelValue */
+const updateModelValue = (value) => {
+  emit('update:modelValue', value);
+};
+
+watch(
+  () => props.modelValue,
+  (modelValue) => {
+    if (modelValue) {
+      if (props.data) {
+        assignFields({
+          ...props.data
+        });
       }
+    } else {
+      resetFields();
+      formRef.value?.clearValidate?.();
     }
-  );
+  }
+);
 </script>
 <style>
-  .el-input-number .el-input-number__decrease {
-    left: 1px !important;
-  }
+.el-input-number .el-input-number__decrease {
+  left: 1px !important;
+}
 </style>

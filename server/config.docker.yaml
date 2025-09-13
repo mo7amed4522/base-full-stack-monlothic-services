@@ -20,7 +20,7 @@ zap:
 # redis configuration
 redis:
   db: 0
-  addr: 177.7.0.14:6379
+  addr: gva-redis:6379
   password: ""
 
 # mongo configuration
@@ -74,7 +74,7 @@ captcha:
 # mysql connect configuration
 # Do not manually modify the database information before initialization! ! ! If you must manually initialize, please refer to (https://gin-vue-admin.com/docs/first_master)
 mysql:
-  path: localhost
+  path: gva-mysql
   port: "3306"
   config: charset=utf8mb4&parseTime=True&loc=Local
   db-name: my_landing_page
@@ -83,7 +83,7 @@ mysql:
   max-idle-conns: 10
   max-open-conns: 100
   log-mode: error
-  log-zap: false
+  log-zap: true
 
 # pgsql connect configuration
 # Do not manually modify the database information before initialization! ! ! If you must manually initialize, please refer to (https://gin-vue-admin.com/docs/first_master)

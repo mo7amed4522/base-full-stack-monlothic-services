@@ -2,28 +2,28 @@
   <div class="list-wrapper">
     <div class="list-item">
       <div class="list-item-body">
-        <ele-text size="md">密保手机</ele-text>
-        <ele-text type="placeholder">已绑定手机: {{ data.phone }}</ele-text>
+        <ele-text size="md">Security phone</ele-text>
+        <ele-text type="placeholder">Binded phone: {{ data.phone }}</ele-text>
       </div>
-      <el-link type="primary" :underline="false">去修改</el-link>
+      <el-link type="primary" :underline="false">Go to modify</el-link>
     </div>
     <el-divider style="margin: 0; opacity: 0.6" />
     <div class="list-item">
       <div class="list-item-body">
-        <ele-text size="md">密保邮箱</ele-text>
+        <ele-text size="md">Security email</ele-text>
         <ele-text type="placeholder">
-          已绑定邮箱: eleadmin@eclouds.com
+          Binded email: eleadmin@eclouds.com
         </ele-text>
       </div>
-      <el-link type="primary" :underline="false">去修改</el-link>
+      <el-link type="primary" :underline="false">Go to modify</el-link>
     </div>
     <el-divider style="margin: 0; opacity: 0.6" />
     <div class="list-item">
       <div class="list-item-body">
-        <ele-text size="md">密保问题</ele-text>
-        <ele-text type="placeholder">未设置密保问题</ele-text>
+        <ele-text size="md">Security question</ele-text>
+        <ele-text type="placeholder">Not set security question</ele-text>
       </div>
-      <el-link type="primary" :underline="false">去设置</el-link>
+      <el-link type="primary" :underline="false">Go to set</el-link>
     </div>
     <el-divider style="margin: 0; opacity: 0.6" />
     <div class="list-item">
@@ -31,10 +31,10 @@
         <QqFilled />
       </el-icon>
       <div class="list-item-body">
-        <ele-text size="md">绑定QQ</ele-text>
-        <ele-text type="placeholder">当前未绑定QQ账号</ele-text>
+        <ele-text size="md">Security QQ</ele-text>
+        <ele-text type="placeholder">Not binded QQ account</ele-text>
       </div>
-      <el-link type="primary" :underline="false">去绑定</el-link>
+      <el-link type="primary" :underline="false">Go to bind</el-link>
     </div>
     <el-divider style="margin: 0; opacity: 0.6" />
     <div class="list-item">
@@ -42,10 +42,10 @@
         <WechatFilled />
       </el-icon>
       <div class="list-item-body">
-        <ele-text size="md">绑定微信</ele-text>
-        <ele-text type="placeholder">当前未绑定绑定微信账号</ele-text>
+        <ele-text size="md">Security Wechat</ele-text>
+        <ele-text type="placeholder">Not binded Wechat account</ele-text>
       </div>
-      <el-link type="primary" :underline="false">去绑定</el-link>
+      <el-link type="primary" :underline="false">Go to bind</el-link>
     </div>
     <el-divider style="margin: 0; opacity: 0.6" />
     <div class="list-item">
@@ -53,49 +53,49 @@
         <AlipayFilled />
       </el-icon>
       <div class="list-item-body">
-        <ele-text size="md">绑定支付宝</ele-text>
-        <ele-text type="placeholder">当前未绑定绑定支付宝账号</ele-text>
+        <ele-text size="md">Security Alipay</ele-text>
+        <ele-text type="placeholder">Currently not bound to Alipay account</ele-text>
       </div>
-      <el-link type="primary" :underline="false">去绑定</el-link>
+      <el-link type="primary" :underline="false">Go to bind</el-link>
     </div>
   </div>
 </template>
 
 <script setup>
-  import { QqFilled, WechatFilled, AlipayFilled } from '@/components/icons';
+import { QqFilled, WechatFilled, AlipayFilled } from '@/components/icons';
 
-  defineProps({
-    data: Object
-  });
+defineProps({
+  data: Object
+});
 </script>
 
 <style lang="scss" scoped>
-  .list-wrapper {
-    padding: 6px 14px;
+.list-wrapper {
+  padding: 6px 14px;
+  box-sizing: border-box;
+
+  .list-item {
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
+    padding: 12px 10px;
 
-    .list-item {
-      display: flex;
-      align-items: center;
-      box-sizing: border-box;
-      padding: 12px 10px;
+    .list-item-body {
+      flex: 1;
 
-      .list-item-body {
-        flex: 1;
-
-        .ele-text + .ele-text {
-          margin-top: 2px;
-        }
-      }
-
-      .list-item-icon {
-        color: #fff;
-        padding: 10px;
-        font-size: 24px;
-        border-radius: 50%;
-        background: #3492ed;
-        margin-right: 12px;
+      .ele-text+.ele-text {
+        margin-top: 2px;
       }
     }
+
+    .list-item-icon {
+      color: #fff;
+      padding: 10px;
+      font-size: 24px;
+      border-radius: 50%;
+      background: #3492ed;
+      margin-right: 12px;
+    }
   }
+}
 </style>

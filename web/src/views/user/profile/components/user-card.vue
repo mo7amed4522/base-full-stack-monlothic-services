@@ -11,7 +11,7 @@
         {{ data.nickname }}
       </ele-text>
       <ele-text type="placeholder">
-        {{ data.introduction || '这家伙很懒，什么都不说~' }}
+        {{ data.introduction || 'This guy is lazy and doesn\'t say anything ' }}
       </ele-text>
     </div>
     <div class="info-list">
@@ -19,19 +19,19 @@
         <el-icon>
           <UserOutlined />
         </el-icon>
-        <div class="info-item-text">资深前端工程师</div>
+        <div class="info-item-text">Senior front-end engineer</div>
       </div>
       <div class="info-item">
         <el-icon>
           <CityOutlined style="transform: translateY(-1px)" />
         </el-icon>
-        <div class="info-item-text">某某公司 - 研发部 - 某某组</div>
+        <div class="info-item-text">A certain company - R&D Department - A certain group</div>
       </div>
       <div class="info-item">
         <el-icon>
           <EnvironmentOutlined />
         </el-icon>
-        <div class="info-item-text">中国 • 浙江省 • 杭州市</div>
+        <div class="info-item-text">China • Zhejiang • Hangzhou</div>
       </div>
       <div class="info-item">
         <el-icon>
@@ -41,160 +41,156 @@
       </div>
     </div>
     <el-divider border-style="dashed" style="margin: 0" />
-    <ele-text size="md" style="margin-top: 16px">标签</ele-text>
+    <ele-text size="md" style="margin-top: 16px">Tags</ele-text>
     <div class="info-tags" style="margin-top: 12px">
       <el-tag type="info" size="small" :disable-transitions="true">
-        很有想法的
+        Creative
       </el-tag>
       <el-tag type="info" size="small" :disable-transitions="true">
-        专注设计
-      </el-tag>
-      <el-tag type="info" size="small" :disable-transitions="true">辣~</el-tag>
-      <el-tag type="info" size="small" :disable-transitions="true">
-        大长腿
+        Focus on design
       </el-tag>
       <el-tag type="info" size="small" :disable-transitions="true">
-        川妹子
+        Hot
       </el-tag>
       <el-tag type="info" size="small" :disable-transitions="true">
-        海纳百川
+        Big long legs
+      </el-tag>
+      <el-tag type="info" size="small" :disable-transitions="true">
+        Chinese woman
+      </el-tag>
+      <el-tag type="info" size="small" :disable-transitions="true">
+        Multi-cultural
       </el-tag>
     </div>
     <!-- 头像裁剪弹窗 -->
-    <ele-cropper-modal
-      v-model="visible"
-      :src="data.avatar"
-      :options="{
-        aspectRatio: 1,
-        autoCropArea: 1,
-        viewMode: 1,
-        dragMode: 'move'
-      }"
-      :modal-props="{ destroyOnClose: true }"
-      @done="onCrop"
-    />
+    <ele-cropper-modal v-model="visible" :src="data.avatar" :options="{
+      aspectRatio: 1,
+      autoCropArea: 1,
+      viewMode: 1,
+      dragMode: 'move'
+    }" :modal-props="{ destroyOnClose: true }" @done="onCrop" />
   </ele-card>
 </template>
 
 <script setup>
-  import { ref } from 'vue';
-  import {
-    CloudUploadOutlined,
-    UserOutlined,
-    CityOutlined,
-    EnvironmentOutlined,
-    TagOutlined
-  } from '@/components/icons';
-  //import { EleMessage } from 'ele-admin-plus/es';
-  //import { updateUserInfo } from '@/api/layout';
+import { ref } from 'vue';
+import {
+  CloudUploadOutlined,
+  UserOutlined,
+  CityOutlined,
+  EnvironmentOutlined,
+  TagOutlined
+} from '@/components/icons';
+//import { EleMessage } from 'ele-admin-plus/es';
+//import { updateUserInfo } from '@/api/layout';
 
-  defineProps({
-    data: Object
+defineProps({
+  data: Object
+});
+
+const emit = defineEmits(['done']);
+
+/** 是否显示裁剪弹窗 */
+const visible = ref(false);
+
+/** 打开图片裁剪 */
+const openCropper = () => {
+  visible.value = true;
+};
+
+/** 头像裁剪完成回调 */
+const onCrop = (result) => {
+  visible.value = false;
+  emit('done', { avatar: result });
+  /* const loading = EleMessage.loading({
+    message: '请求中..',
+    plain: true
   });
-
-  const emit = defineEmits(['done']);
-
-  /** 是否显示裁剪弹窗 */
-  const visible = ref(false);
-
-  /** 打开图片裁剪 */
-  const openCropper = () => {
-    visible.value = true;
-  };
-
-  /** 头像裁剪完成回调 */
-  const onCrop = (result) => {
-    visible.value = false;
-    emit('done', { avatar: result });
-    /* const loading = EleMessage.loading({
-      message: '请求中..',
-      plain: true
-    });
-    updateUserInfo({ avatar: result })
-      .then((data) => {
-        loading.close();
-        visible.value = false;
-        EleMessage.success('修改成功');
-        emit('done', data);
-      })
-      .catch((e) => {
-        loading.close();
-        EleMessage.error(e.message);
-      }); */
-  };
+  updateUserInfo({ avatar: result })
+    .then((data) => {
+      loading.close();
+      visible.value = false;
+      EleMessage.success('修改成功');
+      emit('done', data);
+    })
+    .catch((e) => {
+      loading.close();
+      EleMessage.error(e.message);
+    }); */
+};
 </script>
 
 <style lang="scss" scoped>
-  .info-user {
-    padding-top: 8px;
-    box-sizing: border-box;
-    text-align: center;
+.info-user {
+  padding-top: 8px;
+  box-sizing: border-box;
+  text-align: center;
 
-    .info-user-avatar {
-      display: inline-block;
-      position: relative;
-      cursor: pointer;
-      line-height: 0;
+  .info-user-avatar {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    line-height: 0;
 
+    .info-user-avatar-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 30px;
+      display: none;
+      z-index: 2;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: transparent;
+      transition: background-color 0.3s;
+    }
+
+    &:hover {
       .info-user-avatar-icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: #fff;
-        font-size: 30px;
-        display: none;
-        z-index: 2;
+        display: block;
       }
 
       &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background-color: transparent;
-        transition: background-color 0.3s;
-      }
-
-      &:hover {
-        .info-user-avatar-icon {
-          display: block;
-        }
-
-        &::after {
-          background-color: rgba(0, 0, 0, 0.4);
-        }
+        background-color: rgba(0, 0, 0, 0.4);
       }
     }
   }
+}
 
-  .info-list {
-    margin: 35px 0 24px 0;
+.info-list {
+  margin: 35px 0 24px 0;
 
-    .info-item {
-      display: flex;
-      align-items: center;
+  .info-item {
+    display: flex;
+    align-items: center;
 
-      & > .el-icon {
-        font-size: 16px;
-      }
+    &>.el-icon {
+      font-size: 16px;
+    }
 
-      .info-item-text {
-        flex: 1;
-        padding-left: 8px;
-        box-sizing: border-box;
-      }
+    .info-item-text {
+      flex: 1;
+      padding-left: 8px;
+      box-sizing: border-box;
+    }
 
-      & + .info-item {
-        margin-top: 10px;
-      }
+    &+.info-item {
+      margin-top: 10px;
     }
   }
+}
 
-  .info-tags .el-tag {
-    margin: 0 12px 8px 0;
-  }
+.info-tags .el-tag {
+  margin: 0 12px 8px 0;
+}
 </style>

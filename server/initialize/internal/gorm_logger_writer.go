@@ -2,6 +2,8 @@ package internal
 
 import (
 	"fmt"
+	"log"
+	"os"
 	"github.com/flipped-aurora/gin-vue-admin/server/config"
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"gorm.io/gorm/logger"
@@ -13,7 +15,7 @@ type Writer struct {
 }
 
 func NewWriter(config config.GeneralDB) *Writer {
-	return &Writer{config: config}
+	return &Writer{config: config, writer: logger.Writer(log.New(os.Stdout, "\r\n", log.LstdFlags))}
 }
 
 // Printf 格式化打印日志

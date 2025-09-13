@@ -143,7 +143,7 @@ The production environment uses a custom Nginx configuration that includes:
    ```bash
    # Clean up Docker system
    npm run docker:clean
-   
+
    # Remove unused images
    docker image prune -a
    ```
@@ -152,7 +152,7 @@ The production environment uses a custom Nginx configuration that includes:
    ```bash
    # Clear Docker build cache
    docker builder prune
-   
+
    # Rebuild without cache
    docker-compose build --no-cache
    ```

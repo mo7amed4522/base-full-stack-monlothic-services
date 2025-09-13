@@ -10,7 +10,8 @@
                 <span class="label-color">(payType)</span>
               </span>
             </template>
-            <el-select clearable v-model="form.payType" :empty-values="[null, undefined]" :placeholder="t('mockOrder.selectPayType')" class="ele-fluid" @change="getConfigAndPayPoolList">
+            <el-select clearable v-model="form.payType" :empty-values="[null, undefined]"
+              :placeholder="t('mockOrder.selectPayType')" class="ele-fluid" @change="getConfigAndPayPoolList">
               <el-option v-for="(item, index) in payTypeOptions" :key="index" :label="item.label" :value="item.value" />
             </el-select>
           </el-form-item>
@@ -146,8 +147,10 @@
                 <span class="label-color">(cPayPoolId)</span>
               </span>
             </template>
-            <el-select v-model="form.cPayPoolId" clearable :empty-values="[null, undefined]" :placeholder="t('utrOrder.selectChannelAndPool')" @change="getPayPoolAccountList">
-              <el-option v-for="(item, pIndex) in payPoolListOptions" :key="pIndex" :label="item.cPayPoolName + '(' + item.name + ')'" :value="item.cPayPoolId" />
+            <el-select v-model="form.cPayPoolId" clearable :empty-values="[null, undefined]"
+              :placeholder="t('utrOrder.selectChannelAndPool')" @change="getPayPoolAccountList">
+              <el-option v-for="(item, pIndex) in payPoolListOptions" :key="pIndex"
+                :label="item.cPayPoolName + '(' + item.name + ')'" :value="item.cPayPoolId" />
             </el-select>
           </el-form-item>
         </el-col>
@@ -162,8 +165,10 @@
                 <span class="label-color">(cPayPoolAccountId)</span>
               </span>
             </template>
-            <el-select v-model="form.cPayPoolAccountId" clearable :empty-values="[null, undefined]" :placeholder="t('utrOrder.selectBankCard')">
-              <el-option v-for="(item, cardIndex) in bankCardOptions" :key="cardIndex" :label="item.cardNumber + '(' + item.cPoolAccountName + ')'" :value="item.id" />
+            <el-select v-model="form.cPayPoolAccountId" clearable :empty-values="[null, undefined]"
+              :placeholder="t('utrOrder.selectBankCard')">
+              <el-option v-for="(item, cardIndex) in bankCardOptions" :key="cardIndex"
+                :label="item.cardNumber + '(' + item.cPoolAccountName + ')'" :value="item.id" />
             </el-select>
           </el-form-item>
         </el-col>
@@ -191,147 +196,150 @@
   </div>
 </template>
 <script setup>
-  import { ref, reactive, onMounted } from 'vue';
-  import { useI18n } from 'vue-i18n';
-  import { generateSign } from '@/utils/public';
-  import { mockPayOrderTestApi, getConfigAndPayPoolListByApi, getPayPoolAccountListApi } from '@/api/order';
-  import { ElMessage } from 'element-plus';
-  import { formatToTwoDecimals } from '@/utils/public';
+import { ref, reactive, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { generateSign } from '@/utils/public';
+import { mockPayOrderTestApi, getConfigAndPayPoolListByApi, getPayPoolAccountListApi } from '@/api/order';
+import { ElMessage } from 'element-plus';
+import { formatToTwoDecimals } from '@/utils/public';
 
-  const { t } = useI18n();
+const { t } = useI18n();
 
-  /** 提交状态 */
-  const loading = ref(false);
+/** 提交状态 */
+const loading = ref(false);
 
-  /** 表单实例 */
-  const formRef = ref(null);
+/** 表单实例 */
+const formRef = ref(null);
 
-  // 生成订单号
-  const generateOrderNumber = () => {
-    const length = Math.floor(Math.random() * (32 - 14 + 1)) + 14; // 随机生成14到32字符之间的长度
-    let orderId = '';
+// 生成订单号
+const generateOrderNumber = () => {
+  const length = Math.floor(Math.random() * (32 - 14 + 1)) + 14; // 随机生成14到32字符之间的长度
+  let orderId = '';
 
-    // 生成纯数字
-    for (let i = 0; i < length; i++) {
-      orderId += Math.floor(Math.random() * 10); // 生成0-9的数字
+  // 生成纯数字
+  for (let i = 0; i < length; i++) {
+    orderId += Math.floor(Math.random() * 10); // 生成0-9的数字
+  }
+
+  return 'test' + orderId;
+};
+
+const form = ref({
+  payType: '1', // 支付类型
+  mchNo: 'msLkxPAPLGYE', // 商户号
+  mchUserNo: '788985', // 商户下的用户标识
+  mchUserName: 'test', // 商户下的用户名称
+  thirdOrderNo: generateOrderNumber(),
+  amount: '100.00', // 订单金额
+  notifyUrl: 'http://www.baidu.com', // 服务端后台支付结果通知地址
+  returnUrl: 'http://www.baidu.com',
+  remark: 'test',
+  labelCode: 'WIN_TAG',
+  currency: 'inr',
+  sign: '', // 签名
+  cPayPoolId: null, // 支付池id
+  cPayPoolAccountId: null // 支付账户id
+});
+
+const payTypeOptions = ref([
+  { label: 'upi', value: '1' },
+  { label: 'bank', value: '2' },
+  { label: 'imps', value: '3' }
+]);
+
+const rules = reactive({
+  payType: [{ required: true, message: t('mockOrder.selectText'), trigger: 'change' }],
+  mchNo: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  mchUserNo: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  mchUserName: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  thirdOrderNo: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  amount: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  notifyUrl: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  returnUrl: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  remark: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  labelCode: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  currency: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
+  cPayPoolId: [{ required: true, message: t('utrOrder.selectChannelAndPool'), trigger: 'change' }],
+  cPayPoolAccountId: [{ required: true, message: t('utrOrder.selectBankCard'), trigger: 'change' }]
+});
+
+const responseData = ref({});
+
+const save = () => {
+  formRef.value?.validate?.((valid) => {
+    if (!valid) {
+      return;
     }
-
-    return 'test' + orderId;
-  };
-
-  const form = ref({
-    payType: '1', // 支付类型
-    mchNo: 'msLkxPAPLGYE', // 商户号
-    mchUserNo: '788985', // 商户下的用户标识
-    mchUserName: '派大星', // 商户下的用户名称
-    thirdOrderNo: generateOrderNumber(),
-    amount: '100.00', // 订单金额
-    notifyUrl: 'http://www.baidu.com', // 服务端后台支付结果通知地址
-    returnUrl: 'http://www.baidu.com',
-    remark: 'test',
-    labelCode: 'WIN_TAG',
-    currency: 'inr',
-    sign: '', // 签名
-    cPayPoolId: null, // 支付池id
-    cPayPoolAccountId: null // 支付账户id
-  });
-
-  const payTypeOptions = ref([
-    { label: 'upi', value: '1' },
-    { label: 'bank', value: '2' },
-    { label: 'imps', value: '3' }
-  ]);
-
-  const rules = reactive({
-    payType: [{ required: true, message: t('mockOrder.selectText'), trigger: 'change' }],
-    mchNo: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    mchUserNo: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    mchUserName: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    thirdOrderNo: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    amount: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    notifyUrl: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    returnUrl: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    remark: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    labelCode: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    currency: [{ required: true, message: t('mockOrder.enterText'), trigger: 'blur' }],
-    cPayPoolId: [{ required: true, message: t('utrOrder.selectChannelAndPool'), trigger: 'change' }],
-    cPayPoolAccountId: [{ required: true, message: t('utrOrder.selectBankCard'), trigger: 'change' }]
-  });
-
-  const responseData = ref({});
-
-  const save = () => {
-    formRef.value?.validate?.((valid) => {
-      if (!valid) {
-        return;
-      }
-      form.value.amount = formatToTwoDecimals(form.value.amount);
-      delete form.value.cPayPoolId;
-      form.value.sign = generateSign(form.value, 'demo123456');
-      loading.value = true;
-      mockPayOrderTestApi({
-        ...form.value
-      })
-        .then((res) => {
-          loading.value = false;
-          form.value.thirdOrderNo = generateOrderNumber();
-          responseData.value = res.data;
-          ElMessage({
-            message: res.msg,
-            type: 'success',
-            onClose: () => {
-              window.open(res.data.payUrl, '_blank');
-            }
-          });
-        })
-        .catch((e) => {
-          loading.value = false;
-          ElMessage.error(e.message);
+    form.value.amount = formatToTwoDecimals(form.value.amount);
+    delete form.value.cPayPoolId;
+    form.value.sign = generateSign(form.value, 'demo123456');
+    loading.value = true;
+    mockPayOrderTestApi({
+      ...form.value
+    })
+      .then((res) => {
+        loading.value = false;
+        form.value.thirdOrderNo = generateOrderNumber();
+        responseData.value = res.data;
+        ElMessage({
+          message: res.msg,
+          type: 'success',
+          onClose: () => {
+            window.open(res.data.payUrl, '_blank');
+          }
         });
-    });
-  };
-
-  const payPoolListOptions = ref([]);
-
-  // 获取支付池列表
-  const getConfigAndPayPoolList = async (payType) => {
-    form.value.cPayPoolId = null;
-    form.value.cPayPoolAccountId = null;
-    const res = await getConfigAndPayPoolListByApi({ payType });
-    payPoolListOptions.value = res;
-  };
-
-  const bankCardOptions = ref([]);
-
-  // 获取银行账户列表
-  const getPayPoolAccountList = async (cPayPoolId) => {
-    form.value.cPayPoolAccountId = null;
-    const res = await getPayPoolAccountListApi({ cPayPoolId });
-    bankCardOptions.value = res;
-  };
-
-  onMounted(() => {
-    getConfigAndPayPoolList(form.value.payType);
+      })
+      .catch((e) => {
+        loading.value = false;
+        ElMessage.error(e.message);
+      });
   });
+};
+
+const payPoolListOptions = ref([]);
+
+// 获取支付池列表
+const getConfigAndPayPoolList = async (payType) => {
+  form.value.cPayPoolId = null;
+  form.value.cPayPoolAccountId = null;
+  const res = await getConfigAndPayPoolListByApi({ payType });
+  payPoolListOptions.value = res;
+};
+
+const bankCardOptions = ref([]);
+
+// 获取银行账户列表
+const getPayPoolAccountList = async (cPayPoolId) => {
+  form.value.cPayPoolAccountId = null;
+  const res = await getPayPoolAccountListApi({ cPayPoolId });
+  bankCardOptions.value = res;
+};
+
+onMounted(() => {
+  getConfigAndPayPoolList(form.value.payType);
+});
 </script>
 <style lang="scss" scoped>
-  .form {
-    padding: 20px 40px;
-    box-sizing: border-box;
-  }
-  .footer {
-    text-align: center;
-  }
-  .card {
-    width: 100%;
-    border: 1px solid #dcdfe6;
-    border-radius: 4px;
-    padding: 20px;
-    box-sizing: border-box;
-    word-wrap: break-word;
-  }
-  .label-color {
-    color: red;
-    margin-left: 5px;
-  }
+.form {
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.footer {
+  text-align: center;
+}
+
+.card {
+  width: 100%;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  padding: 20px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+.label-color {
+  color: red;
+  margin-left: 5px;
+}
 </style>

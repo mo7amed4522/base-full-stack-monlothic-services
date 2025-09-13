@@ -1,29 +1,14 @@
 <template>
   <div class="w-full">
-    <el-select
-      v-model="value"
-      clearable
-      filterable
-      placeholder="请选择"
-      class="w-full"
-    >
+    <el-select v-model="value" clearable filterable placeholder="Please select" class="w-full">
       <template #prefix>
         <el-icon>
           <component :is="value" />
         </el-icon>
       </template>
-      <el-option
-        v-for="item in options"
-        :key="item.key"
-        class="select__option_item"
-        :label="item.key"
-        :value="item.key"
-      >
-        <span
-          class="gva-icon"
-          style=" padding: 3px 0 0; "
-          :class="item.label"
-        >
+      <el-option v-for="item in options" :key="item.key" class="select__option_item" :label="item.key"
+        :value="item.key">
+        <span class="gva-icon" style=" padding: 3px 0 0; " :class="item.label">
           <el-icon>
             <component :is="item.label" />
           </el-icon>

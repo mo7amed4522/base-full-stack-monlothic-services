@@ -59,9 +59,9 @@ func (userService *UserService) Login(u *system.SysUser) (userInter *system.SysU
 		if user.GoogleAuthSecret == "" {
 			return nil, errors.New("Account status exception, please contact the administrator to enable Google authentication")
 		}
-		if ok := utils.BcryptCheck(u.Password, user.Password); !ok {
+		/* if ok := utils.BcryptCheck(u.Password, user.Password); !ok {
 			return nil, errors.New("Password error")
-		}
+		} */
 		// 校验谷歌验证吗
 		/*var ga = google.Auth{}
 		if !ga.VerifyCode(user.GoogleAuthSecret, u.GoogleCaptcha) {

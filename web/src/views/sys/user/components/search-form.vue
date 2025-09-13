@@ -34,38 +34,38 @@
 </template>
 
 <script setup>
-  import { ref, onMounted } from 'vue';
-  import { useFormData } from '@/utils/use-form-data';
-  import { useI18n } from 'vue-i18n';
+import { ref, onMounted } from 'vue';
+import { useFormData } from '@/utils/use-form-data';
+import { useI18n } from 'vue-i18n';
 
-  const { t } = useI18n();
+const { t } = useI18n();
 
-  const emit = defineEmits(['search']);
+const emit = defineEmits(['search']);
 
-  /** 表单数据 */
-  const [form, resetFields] = useFormData({
-    username: ''
+/** 表单数据 */
+const [form, resetFields] = useFormData({
+  username: ''
+});
+
+/** 日期范围 */
+const dateRange = ref(['', '']);
+
+/** 搜索 */
+const search = () => {
+  const [d1, d2] = dateRange.value ?? [];
+  emit('search', {
+    ...form,
+    startTime: d1 ? `${d1}` : '',
+    endTime: d2 ? `${d2}` : ''
   });
+};
 
-  /** 日期范围 */
-  const dateRange = ref(['', '']);
+/**  重置 */
+const reset = () => {
+  resetFields();
+  dateRange.value = ['', ''];
+  search();
+};
 
-  /** 搜索 */
-  const search = () => {
-    const [d1, d2] = dateRange.value ?? [];
-    emit('search', {
-      ...form,
-      startTime: d1 ? `${d1}` : '',
-      endTime: d2 ? `${d2}` : ''
-    });
-  };
-
-  /**  重置 */
-  const reset = () => {
-    resetFields();
-    dateRange.value = ['', ''];
-    search();
-  };
-
-  onMounted(() => {});
+onMounted(() => { });
 </script>

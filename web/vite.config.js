@@ -15,7 +15,7 @@ export default defineConfig(({ command, mode }) => {
   const plugins = [vue()];
 
   if (isBuild) {
-    // 组件按需引入
+    // Component introduction on demand
     plugins.push(
       Components({
         dts: false,
@@ -30,7 +30,7 @@ export default defineConfig(({ command, mode }) => {
       })
     );
 
-    // gzip压缩
+    // gzip compression
     plugins.push(
       Compression({
         disable: !isBuild,
@@ -40,23 +40,20 @@ export default defineConfig(({ command, mode }) => {
       })
     );
   } else {
-    // 开发环境全局安装
+    // Component introduction on demand in development environment
     alias['./as-needed'] = './global-import';
   }
 
-  // 用于开发环境代理配置
+  // Development environment proxy configuration
   const serverConfig =
     mode === 'development'
       ? {
-          port: 5180,
+          port: 3040,
           proxy: {
             '/api': {
-              target: 'http://172.232.96.159:13340/api/',
-              // target: 'https://newpayn.indpy.com/api/',
-              // target: 'https://knympy.com/api/',
+              target: 'http://gva-server:8888',
               changeOrigin: true,
-              // rewrite: (path) => path.replace(/^\/api/, '')
-              rewrite: (path) => path.replace(new RegExp('^' + '/api'), '')
+              rewrite: (path) => path.replace(/^\/api/, '')
             }
           }
         }

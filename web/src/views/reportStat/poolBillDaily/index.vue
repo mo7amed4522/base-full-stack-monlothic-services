@@ -2,35 +2,20 @@
   <ele-page>
     <!-- 搜索表单 -->
     <search-form @search="onSearch" />
-    <ele-card
-      :flex-table="fixedHeight"
-      :body-style="{ paddingBottom: '4px' }"
-      :style="{
-        minHeight: fixedHeight ? '380px' : void 0,
-        marginBottom: fixedHeight ? '0px' : void 0
-      }"
-    >
-      <ele-pro-table
-        ref="tableRef"
-        row-key="id"
-        :columns="columns"
-        :datasource="datasource"
-        :response="response"
-        v-model:current="current"
-        v-model:selections="selections"
-        :show-overflow-tooltip="true"
-        :border="bordered"
-        :toolbar="{ theme: 'default' }"
-        :default-sort="{ prop: 'createTime', order: 'descending' }"
-        :footer-style="{ paddingBottom: '12px' }"
-        :tableStyle="{ paddingBottom: '0', color: 'rgba(0, 0, 0, 0.65)' }"
-      >
+    <ele-card :flex-table="fixedHeight" :body-style="{ paddingBottom: '4px' }" :style="{
+      minHeight: fixedHeight ? '380px' : void 0,
+      marginBottom: fixedHeight ? '0px' : void 0
+    }">
+      <ele-pro-table ref="tableRef" row-key="id" :columns="columns" :datasource="datasource" :response="response"
+        v-model:current="current" v-model:selections="selections" :show-overflow-tooltip="true" :border="bordered"
+        :toolbar="{ theme: 'default' }" :default-sort="{ prop: 'createTime', order: 'descending' }"
+        :footer-style="{ paddingBottom: '12px' }" :tableStyle="{ paddingBottom: '0', color: 'rgba(0, 0, 0, 0.65)' }">
         <template #toolbar>
         </template>
         <!-- 表头工具按钮 -->
         <template #tools>
           <div style="display: flex; align-items: center; flex-wrap: wrap">
-            <div>高度铺满&nbsp;</div>
+            <div>Full height&nbsp;</div>
             <el-switch v-model="fixedHeight" size="small" />
             <el-divider direction="vertical" />
           </div>
@@ -42,159 +27,159 @@
         </template>
 
         <template #action="{ row }">
-          <el-link type="primary" :underline="false" icon="edit" @click="handleEdit(row)">修改</el-link>
+          <el-link type="primary" :underline="false" icon="edit" @click="handleEdit(row)">Edit</el-link>
           <el-divider direction="vertical" />
-          <el-link type="danger" :underline="false" icon="Delete" @click="handleDelete(row)">删除</el-link>
+          <el-link type="danger" :underline="false" icon="Delete" @click="handleDelete(row)">Delete</el-link>
         </template>
       </ele-pro-table>
     </ele-card>
   </ele-page>
 </template>
 <script setup>
-  import { ref, reactive, computed, onMounted, watch } from 'vue';
-  import SearchForm from './components/search-form.vue';
-  import { PlusOutlined } from '@/components/icons';
-  import { EleMessage } from 'ele-admin-plus';
-  import dayjs from 'dayjs';
-  import { getCPayPoolBillDailyListApi } from '@/api/report/index.js';
-  import { ArrowDown, DeleteOutlined, EditOutlined, MinusCircleOutlined } from '@/components/icons/index.js';
-  import { useMessageBox } from 'ele-admin-plus/es';
-  import { _timeFormat } from '@/utils/public'
+import { ref, reactive, computed, onMounted, watch } from 'vue';
+import SearchForm from './components/search-form.vue';
+import { PlusOutlined } from '@/components/icons';
+import { EleMessage } from 'ele-admin-plus';
+import dayjs from 'dayjs';
+import { getCPayPoolBillDailyListApi } from '@/api/report/index.js';
+import { ArrowDown, DeleteOutlined, EditOutlined, MinusCircleOutlined } from '@/components/icons/index.js';
+import { useMessageBox } from 'ele-admin-plus/es';
+import { _timeFormat } from '@/utils/public'
 
-  const messageBox = useMessageBox();
-  /** 表格实例 */
-  const tableRef = ref(null);
-  const bordered = ref(true);
+const messageBox = useMessageBox();
+/** 表格实例 */
+const tableRef = ref(null);
+const bordered = ref(true);
 
-  /** 表格搜索参数 */
-  const lastWhere = reactive({});
-  /** 表格选中数据 */
-  const selections = ref([]);
-  /** 表格单选选中数据 */
-  const current = ref(null);
-  /** 表格固定高度 */
-  const fixedHeight = ref(false);
-  /** 刷新表格 */
-  const reload = (where) => {
-    tableRef.value?.reload?.({ page: 1, where });
-  };
+/** 表格搜索参数 */
+const lastWhere = reactive({});
+/** 表格选中数据 */
+const selections = ref([]);
+/** 表格单选选中数据 */
+const current = ref(null);
+/** 表格固定高度 */
+const fixedHeight = ref(false);
+/** 刷新表格 */
+const reload = (where) => {
+  tableRef.value?.reload?.({ page: 1, where });
+};
 
-  /** 搜索事件 */
-  const onSearch = (where) => {
-    Object.assign(lastWhere, where);
-    doReload();
-  };
+/** 搜索事件 */
+const onSearch = (where) => {
+  Object.assign(lastWhere, where);
+  doReload();
+};
 
-  /** 表格搜索 */
-  const doReload = () => {
-    reload(lastWhere);
-  };
+/** 表格搜索 */
+const doReload = () => {
+  reload(lastWhere);
+};
 
-  const response = ref({
-    dataName: 'list', // 数据列表的字段名称, 支持嵌套, 例如: 'data.rows'
-    countName: 'total' // 数据总数的字段名称, 例如: 'data.total'
-  });
+const response = ref({
+  dataName: 'list', // 数据列表的字段名称, 支持嵌套, 例如: 'data.rows'
+  countName: 'total' // 数据总数的字段名称, 例如: 'data.total'
+});
 
-  const showEdit = ref(false);
+const showEdit = ref(false);
 
-  /** 打开编辑弹窗 */
-  const handleEdit = (row) => {
-    current.value = row ?? null;
-    showEdit.value = true;
-  };
+/** 打开编辑弹窗 */
+const handleEdit = (row) => {
+  current.value = row ?? null;
+  showEdit.value = true;
+};
 
-  // 删除
-  const handleDelete = async (row) => {
-    console.log(row);
-    messageBox
-      .confirm('确认删除吗? ', '删除确认', {
-        type: 'warning',
-        draggable: true
-      })
-      .then(async () => {
-        try {
-          const res = await deleteCPayConfigApi({ id: row.id });
-          EleMessage.success(res.msg);
-          doReload();
-        } catch (error) {
-          EleMessage.error(error.message);
-        }
-      })
-      .catch(() => {});
-  };
-
-  /** 表格列配置 */
-  const columns = computed(() => {
-    return [
-      {
-        type: 'selection',
-        columnKey: 'selection',
-        width: 56,
-        align: 'center'
-      },
-      {
-        columnKey: 'id',
-        prop: 'id',
-        label: 'ID',
-        align: 'center',
-        minWidth: 80
-      },
-      {
-        columnKey: 'date',
-        prop: 'date',
-        label: '日期',
-        align: 'center',
-        minWidth: 120
-      },
-      {
-        columnKey: 'successAmountDay',
-        prop: 'successAmountDay',
-        label: '每日完成金额',
-        align: 'center',
-        minWidth: 120
-      },
-      {
-        columnKey: 'successCountDay',
-        prop: 'successCountDay',
-        label: '每日完成次数',
-        align: 'center',
-        minWidth: 120
-      },
-      {
-        columnKey: 'remark',
-        prop: 'remark',
-        label: '备注',
-        align: 'center',
-        minWidth: 120
-      },
-      {
-        columnKey: 'createTime',
-        prop: 'createTime',
-        label: '创建时间',
-        align: 'center',
-        minWidth: 180,
-        formatter: (row, column, cellValue, index) => {
-          return cellValue ? _timeFormat(cellValue) : '-';
-        }
+// 删除
+const handleDelete = async (row) => {
+  console.log(row);
+  messageBox
+    .confirm('Confirm deletion? ', 'Delete confirmation', {
+      type: 'warning',
+      draggable: true
+    })
+    .then(async () => {
+      try {
+        const res = await deleteCPayConfigApi({ id: row.id });
+        EleMessage.success(res.msg);
+        doReload();
+      } catch (error) {
+        EleMessage.error(error.message);
       }
-    ];
-  });
+    })
+    .catch(() => { });
+};
 
-  /** 表格数据源 */
-  const datasource = async ({ pages, where, orders, filters }) => {
-    try {
-      const data = await getCPayPoolBillDailyListApi({
-        ...where,
-        page: pages.page || 1, // 使用 pages.currentPage 或默认值 1
-        pageSize: pages.limit || 10 // 使用 pages.pageSize 或默认值 10
-      });
-      return data;
-    } catch (e) {
-      EleMessage.error(e.message);
+/** 表格列配置 */
+const columns = computed(() => {
+  return [
+    {
+      type: 'selection',
+      columnKey: 'selection',
+      width: 56,
+      align: 'center'
+    },
+    {
+      columnKey: 'id',
+      prop: 'id',
+      label: 'ID',
+      align: 'center',
+      minWidth: 80
+    },
+    {
+      columnKey: 'date',
+      prop: 'date',
+      label: 'Date',
+      align: 'center',
+      minWidth: 120
+    },
+    {
+      columnKey: 'successAmountDay',
+      prop: 'successAmountDay',
+      label: 'Daily completed amount',
+      align: 'center',
+      minWidth: 120
+    },
+    {
+      columnKey: 'successCountDay',
+      prop: 'successCountDay',
+      label: 'Daily completed times',
+      align: 'center',
+      minWidth: 120
+    },
+    {
+      columnKey: 'remark',
+      prop: 'remark',
+      label: 'Remark',
+      align: 'center',
+      minWidth: 120
+    },
+    {
+      columnKey: 'createTime',
+      prop: 'createTime',
+      label: 'Create time',
+      align: 'center',
+      minWidth: 180,
+      formatter: (row, column, cellValue, index) => {
+        return cellValue ? _timeFormat(cellValue) : '-';
+      }
     }
-  };
+  ];
+});
 
-  onMounted(() => {});
+/** 表格数据源 */
+const datasource = async ({ pages, where, orders, filters }) => {
+  try {
+    const data = await getCPayPoolBillDailyListApi({
+      ...where,
+      page: pages.page || 1, // 使用 pages.currentPage 或默认值 1
+      pageSize: pages.limit || 10 // 使用 pages.pageSize 或默认值 10
+    });
+    return data;
+  } catch (e) {
+    EleMessage.error(e.message);
+  }
+};
+
+onMounted(() => { });
 </script>
 
 <style lang="scss" scoped></style>

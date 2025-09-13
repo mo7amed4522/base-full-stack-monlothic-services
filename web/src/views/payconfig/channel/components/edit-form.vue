@@ -1,5 +1,6 @@
 <template>
-  <ele-modal form :width="550" :model-value="modelValue" :title="isUpdate ? t('common.edit') : t('common.add')" @update:modelValue="updateModelValue">
+  <ele-modal form :width="550" :model-value="modelValue" :title="isUpdate ? t('common.edit') : t('common.add')"
+    @update:modelValue="updateModelValue">
     <el-form ref="formRef" :model="form" :rules="rules" label-width="140px" @submit.prevent="">
       <el-form-item :label="t('channelConfig.configName')" prop="name">
         <el-input v-model="form.name" :placeholder="t('channelConfig.enterConfigName')" clearable />
@@ -38,10 +39,12 @@
           <el-input v-model="form.thirdUrl" :placeholder="t('channelConfig.enterThirdRequestUrl')" clearable />
         </el-form-item>
         <el-form-item :label="t('channelConfig.thirdPublicKey')" prop="thirdPublicKey">
-          <el-input v-model="form.thirdPublicKey" type="textarea" :rows="2" :placeholder="t('channelConfig.enterThirdPublicKey')" clearable />
+          <el-input v-model="form.thirdPublicKey" type="textarea" :rows="2"
+            :placeholder="t('channelConfig.enterThirdPublicKey')" clearable />
         </el-form-item>
         <el-form-item :label="t('channelConfig.thirdPrivateKey')" prop="thirdPrivateKey">
-          <el-input v-model="form.thirdPrivateKey" type="textarea" :rows="2" :placeholder="t('channelConfig.enterThirdPrivateKey')" clearable />
+          <el-input v-model="form.thirdPrivateKey" type="textarea" :rows="2"
+            :placeholder="t('channelConfig.enterThirdPrivateKey')" clearable />
         </el-form-item>
       </template>
 
@@ -64,108 +67,108 @@
 </template>
 
 <script setup>
-  import { ref, reactive, watch } from 'vue';
-  import { EleMessage } from 'ele-admin-plus/es';
-  import { useFormData } from '@/utils/use-form-data';
-  import { QuestionCircleOutlined } from '@/components/icons/index.js';
-  import { createCPayConfigApi, updateCPayConfigApi } from '@/api/payConfig';
-  import { useI18n } from 'vue-i18n';
+import { ref, reactive, watch } from 'vue';
+import { EleMessage } from 'ele-admin-plus/es';
+import { useFormData } from '@/utils/use-form-data';
 
-  const { t } = useI18n();
+import { createCPayConfigApi, updateCPayConfigApi } from '@/api/payConfig';
+import { useI18n } from 'vue-i18n';
 
-  const emit = defineEmits(['done', 'update:modelValue']);
+const { t } = useI18n();
 
-  const props = defineProps({
-    /** 弹窗是否打开 */
-    modelValue: Boolean,
-    /** 修改回显的数据 */
-    data: Object
-  });
+const emit = defineEmits(['done', 'update:modelValue']);
 
-  /** 是否是修改 */
-  const isUpdate = ref(false);
+const props = defineProps({
+  /** 弹窗是否打开 */
+  modelValue: Boolean,
+  /** 修改回显的数据 */
+  data: Object
+});
 
-  /** 提交状态 */
-  const loading = ref(false);
+/** 是否是修改 */
+const isUpdate = ref(false);
 
-  /** 表单实例 */
-  const formRef = ref(null);
+/** 提交状态 */
+const loading = ref(false);
 
-  /** 表单数据 */
-  const [form, resetFields, assignFields] = useFormData({
-    id: void 0,
-    payType: '1',
-    channelCode: '',
-    channelType: 1,
-    channelValue: '',
-    name: '',
-    remark: '',
-    thirdMerchantNo: '',
-    thirdPrivateKey: '',
-    thirdPublicKey: '',
-    thirdUrl: '',
-    valid: 1,
-    type: 1,
-  });
+/** 表单实例 */
+const formRef = ref(null);
 
-  /** 表单验证规则 */
-  const rules = reactive({
-    name: [{ required: true, message: t('channelConfig.enterConfigName'), trigger: 'blur' }],
-    payType: [{ required: true, message: t('channelConfig.selectChannelPayType'), trigger: ['change'] }],
-    channelType: [{ required: true, message: t('channelConfig.selectSourceType'), trigger: ['change'] }],
-    type: [{ required: true, message: t('channelConfig.selectChannelType'), trigger: ['change'] }],
-    channelValue: [{ required: true, message: t('channelConfig.enterConfigValue'), trigger: 'blur' }],
-    channelCode: [{ required: true, message: t('channelConfig.enterThirdCode'), trigger: 'blur' }],
-    thirdMerchantNo: [{ required: true, message: t('channelConfig.enterThirdMerchantNum'), trigger: 'blur' }],
-    thirdUrl: [{ required: true, message: t('channelConfig.enterThirdRequestUrl'), trigger: 'blur' }],
-    thirdPublicKey: [{ required: true, message: t('channelConfig.enterThirdPublicKey'), trigger: 'blur' }],
-    thirdPrivateKey: [{ required: true, message: t('channelConfig.enterThirdPrivateKey'), trigger: 'blur' }],
-    valid: [{ required: true, message: t('common.selectStatus'), trigger: ['change', 'blur'] }]
-  });
+/** 表单数据 */
+const [form, resetFields, assignFields] = useFormData({
+  id: void 0,
+  payType: '1',
+  channelCode: '',
+  channelType: 1,
+  channelValue: '',
+  name: '',
+  remark: '',
+  thirdMerchantNo: '',
+  thirdPrivateKey: '',
+  thirdPublicKey: '',
+  thirdUrl: '',
+  valid: 1,
+  type: 1,
+});
 
-  /** 保存编辑 */
-  const save = () => {
-    formRef.value?.validate?.((valid) => {
-      if (!valid) {
-        return;
-      }
-      loading.value = true;
-      const saveOrUpdate = isUpdate.value ? updateCPayConfigApi : createCPayConfigApi;
-      saveOrUpdate({ ...form })
-        .then((msg) => {
-          loading.value = false;
-          EleMessage.success(msg);
-          updateModelValue(false);
-          emit('done');
-        })
-        .catch((e) => {
-          loading.value = false;
-          EleMessage.error(e.message);
-        });
-    });
-  };
+/** 表单验证规则 */
+const rules = reactive({
+  name: [{ required: true, message: t('channelConfig.enterConfigName'), trigger: 'blur' }],
+  payType: [{ required: true, message: t('channelConfig.selectChannelPayType'), trigger: ['change'] }],
+  channelType: [{ required: true, message: t('channelConfig.selectSourceType'), trigger: ['change'] }],
+  type: [{ required: true, message: t('channelConfig.selectChannelType'), trigger: ['change'] }],
+  channelValue: [{ required: true, message: t('channelConfig.enterConfigValue'), trigger: 'blur' }],
+  channelCode: [{ required: true, message: t('channelConfig.enterThirdCode'), trigger: 'blur' }],
+  thirdMerchantNo: [{ required: true, message: t('channelConfig.enterThirdMerchantNum'), trigger: 'blur' }],
+  thirdUrl: [{ required: true, message: t('channelConfig.enterThirdRequestUrl'), trigger: 'blur' }],
+  thirdPublicKey: [{ required: true, message: t('channelConfig.enterThirdPublicKey'), trigger: 'blur' }],
+  thirdPrivateKey: [{ required: true, message: t('channelConfig.enterThirdPrivateKey'), trigger: 'blur' }],
+  valid: [{ required: true, message: t('common.selectStatus'), trigger: ['change', 'blur'] }]
+});
 
-  /** 更新modelValue */
-  const updateModelValue = (value) => {
-    emit('update:modelValue', value);
-  };
-
-  watch(
-    () => props.modelValue,
-    (modelValue) => {
-      if (modelValue) {
-        if (props.data) {
-          assignFields({
-            ...props.data
-          });
-          isUpdate.value = true;
-        } else {
-          isUpdate.value = false;
-        }
-      } else {
-        resetFields();
-        formRef.value?.clearValidate?.();
-      }
+/** 保存编辑 */
+const save = () => {
+  formRef.value?.validate?.((valid) => {
+    if (!valid) {
+      return;
     }
-  );
+    loading.value = true;
+    const saveOrUpdate = isUpdate.value ? updateCPayConfigApi : createCPayConfigApi;
+    saveOrUpdate({ ...form })
+      .then((msg) => {
+        loading.value = false;
+        EleMessage.success(msg);
+        updateModelValue(false);
+        emit('done');
+      })
+      .catch((e) => {
+        loading.value = false;
+        EleMessage.error(e.message);
+      });
+  });
+};
+
+/** 更新modelValue */
+const updateModelValue = (value) => {
+  emit('update:modelValue', value);
+};
+
+watch(
+  () => props.modelValue,
+  (modelValue) => {
+    if (modelValue) {
+      if (props.data) {
+        assignFields({
+          ...props.data
+        });
+        isUpdate.value = true;
+      } else {
+        isUpdate.value = false;
+      }
+    } else {
+      resetFields();
+      formRef.value?.clearValidate?.();
+    }
+  }
+);
 </script>

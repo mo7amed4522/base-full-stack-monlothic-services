@@ -4,33 +4,29 @@
       <el-result icon="error" title="提交失败">
         <template #sub-title>
           <ele-text type="placeholder">
-            请核对并修改以下信息后，再重新提交。
+            Please check and modify the following information, then resubmit.
           </ele-text>
         </template>
       </el-result>
       <div style="text-align: center">
-        <el-button type="primary">返回修改</el-button>
-        <el-button>重新提交</el-button>
+        <el-button type="primary">Return to modification</el-button>
+        <el-button>Resubmit</el-button>
       </div>
-      <div
-        style="
+      <div style="
           max-width: 760px;
           padding: 18px 24px;
           background: hsla(0, 0%, 60%, 0.1);
           border-radius: var(--el-border-radius-base);
           margin: 26px auto;
-        "
-      >
-        <div>您提交的内容有如下错误:</div>
+        ">
+        <div>
+          The following errors have been found in your submission:
+        </div>
         <div style="margin-top: 12px">
           <ele-text type="danger" :icon="CloseCircleOutlined" tag="span" />
-          <span>&nbsp;您的账户已被冻结&nbsp;</span>
-          <el-link
-            type="primary"
-            :underline="false"
-            style="display: inline; vertical-align: 0"
-          >
-            <span>立即解冻</span>
+          <span>&nbsp;Your account has been frozen&nbsp;</span>
+          <el-link type="primary" :underline="false" style="display: inline; vertical-align: 0">
+            <span>Unfreeze now</span>
             <el-icon :size="14">
               <arrow-right />
             </el-icon>
@@ -38,13 +34,9 @@
         </div>
         <div style="margin-top: 12px">
           <ele-text type="danger" :icon="CloseCircleOutlined" tag="span" />
-          <span>&nbsp;您的账户还不具备申请资格&nbsp;</span>
-          <el-link
-            type="primary"
-            :underline="false"
-            style="display: inline; vertical-align: 0"
-          >
-            <span>立即升级</span>
+          <span>&nbsp;Your account does not have the qualification to apply&nbsp;</span>
+          <el-link type="primary" :underline="false" style="display: inline; vertical-align: 0">
+            <span>Upgrade now</span>
             <el-icon :size="14">
               <arrow-right />
             </el-icon>
@@ -56,11 +48,11 @@
 </template>
 
 <script setup>
-  import { CloseCircleOutlined, ArrowRight } from '@/components/icons';
+import { CloseCircleOutlined, ArrowRight } from '@/components/icons';
 </script>
 
 <script>
-  export default {
-    name: 'ResultFail'
-  };
+export default {
+  name: 'ResultFail'
+};
 </script>
