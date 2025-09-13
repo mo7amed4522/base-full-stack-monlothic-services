@@ -72,7 +72,6 @@ func (b *BaseApi) Login(c *gin.Context) {
 		return
 	}
 	b.TokenNext(c, *user)
-	return
 
 	// 判断验证码是否开启
 	//openCaptcha := global.GVA_CONFIG.Captcha.OpenCaptcha               // 是否开启防爆次数

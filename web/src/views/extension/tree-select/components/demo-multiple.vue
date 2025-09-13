@@ -1,0 +1,97 @@
+<template>
+  <ele-card header="Multiple Select">
+    <div style="max-width: 240px">
+      <ele-tree-select ref="treeSelectRef" clearable multiple placeholder="Select" v-model="selectedValue"
+        :popper-width="240" :tree-props="treeProps" :max-tag-count="1" :disabled="disabled"
+        :popper-options="{ strategy: 'fixed' }" />
+    </div>
+    <option-item label="Disabled" :responsive="false" style="margin-top: 16px">
+      <el-radio-group v-model="disabled">
+        <el-radio :value="false" label="否" />
+        <el-radio :value="true" label="是" />
+      </el-radio-group>
+    </option-item>
+    <option-item label="Parent Click" :responsive="false" style="margin-top: 0">
+      <el-radio-group v-model="treeProps.expandOnClickNode">
+        <el-radio :value="true" label="Expand" />
+        <el-radio :value="false" label="Check" />
+      </el-radio-group>
+    </option-item>
+    <option-item label="Parent Check" :responsive="false" style="margin-top: 0">
+      <el-radio-group :model-value="treeProps.checkStrictly" @update:modelValue="updateCheckStrictly">
+        <el-radio :value="true" label="Yes" />
+        <el-radio :value="false" label="No" />
+      </el-radio-group>
+    </option-item>
+  </ele-card>
+</template>
+
+<script setup>
+import { ref, reactive, onMounted } from 'vue';
+import OptionItem from '@/views/extension/avatar/components/option-item.vue';
+
+/** 树选择组件 */
+const treeSelectRef = ref(null);
+
+/** 选中值 */
+const selectedValue = ref([]);
+
+/** 树属性 */
+const treeProps = reactive({
+  height: 266,
+  data: [],
+  checkStrictly: false,
+  expandOnClickNode: true
+});
+
+/** 禁用 */
+const disabled = ref(false);
+
+const updateCheckStrictly = (modelValue) => {
+  selectedValue.value = [];
+  treeProps.checkStrictly = modelValue;
+};
+
+onMounted(() => {
+  setTimeout(() => {
+    const keys = [];
+    let count = 0;
+    const data = Array.from({ length: 20 }).map((_, i) => {
+      count++;
+      keys.push(count);
+      return {
+        id: count,
+        label: `${String(count).padStart(5, '0')}-node-${i + 1}`,
+        disabled: false,
+        children: Array.from({ length: 20 }).map((_, j) => {
+          count++;
+          keys.push(count);
+          return {
+            id: count,
+            label: `${String(count).padStart(5, '0')}-node-${i + 1}-${j + 1}`,
+            disabled: false,
+            children: Array.from({ length: 30 }).map((_, k) => {
+              count++;
+              const idStr = String(count).padStart(5, '0');
+              return {
+                id: count,
+                label: `${idStr}-node-${i + 1}-${j + 1}-${k + 1}`,
+                disabled: false
+              };
+            })
+          };
+        })
+      };
+    });
+    data[0].children[0].children[2].disabled = true;
+    data[0].children[2].disabled = true;
+    data[0].children[2].children.forEach((d) => {
+      d.disabled = true;
+    });
+    treeProps.data = data;
+    if (treeSelectRef.value && treeSelectRef.value.treeRef) {
+      treeSelectRef.value.treeRef.setExpandedKeys(keys);
+    }
+  }, 100);
+});
+</script>

@@ -1,0 +1,136 @@
+<template>
+  <div>
+    <ele-pro-table ref="tableRef" row-key="menuKey" :columns="columns" :datasource="datasource" :lazy="true"
+      :show-overflow-tooltip="true" :load="tableLoad" :pagination="{ pageSize: 5, pageSizes: [5, 10, 20] }"
+      :export-config="{ fileName: 'Menu data', datasource: exportSource }" :print-config="{ datasource: exportSource }">
+      <template #action="{ row }">
+        <el-link type="primary" :underline="false" @click="reloadChild(row, $event)">
+          Refresh my children
+        </el-link>
+        <el-divider v-if="row.parentId" direction="vertical" />
+        <el-link v-if="row.parentId" type="primary" :underline="false" @click="reloadParent(row)">
+          Refresh my parent's children
+        </el-link>
+      </template>
+    </ele-pro-table>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { EleMessage, toTree } from 'ele-admin-plus/es';
+import dayjs from 'dayjs';
+import { pageMenus, listMenus } from '@/api/system/menu';
+
+/** 表格实例 */
+const tableRef = ref(null);
+
+/** 表格列配置 */
+const columns = ref([
+  {
+    type: 'index',
+    columnKey: 'index',
+    width: 50,
+    align: 'center'
+  },
+  {
+    prop: 'title',
+    label: 'Menu name',
+    minWidth: 160
+  },
+  {
+    prop: 'path',
+    label: 'Route address',
+    minWidth: 180
+  },
+  {
+    prop: 'sortNumber',
+    label: 'Sort',
+    width: 100,
+    align: 'center'
+  },
+  {
+    prop: 'updateTime',
+    label: 'Update time',
+    width: 220,
+    align: 'center'
+  },
+  {
+    width: 280,
+    columnKey: 'action',
+    label: 'Operation',
+    align: 'center',
+    slot: 'action',
+    hideInPrint: true,
+    hideInExport: true
+  }
+]);
+
+/** 表格数据源 */
+const datasource = async ({ pages, where, parent }) => {
+  const now = Date.now();
+  if (parent == null) {
+    const res = await pageMenus({ ...where, ...pages, parentId: 0 });
+    return {
+      count: res?.count,
+      list: res?.list?.map?.((d) => {
+        return {
+          ...d,
+          updateTime: dayjs(now).format('YYYY-MM-DD HH:mm:ss.SSS'),
+          menuKey: d.menuId + '-' + now
+        };
+      })
+    };
+  }
+  const data = await listMenus({ ...where, parentId: parent.menuId });
+  return data.map((d) => {
+    return {
+      ...d,
+      updateTime: dayjs(now).format('YYYY-MM-DD HH:mm:ss.SSS'),
+      menuKey: d.menuId + '-' + now,
+      _parentTableResolve: parent._tableResolve
+    };
+  });
+};
+
+/** 重写树表格懒加载方法 */
+const tableLoad = (row, _treeNode, resolve) => {
+  row._tableResolve = resolve;
+  tableRef.value?.reload?.(void 0, row, resolve);
+};
+
+/** 刷新节点的子级数据 */
+const reloadChild = (row, e) => {
+  EleMessage.success('Refreshed to view the requests issued by the console');
+  if (row._tableResolve) {
+    tableRef.value?.reload?.(void 0, row, row._tableResolve);
+    return;
+  }
+  const target = e.currentTarget;
+  const $tr = target?.parentElement?.parentElement?.parentElement;
+  const $icon = $tr?.querySelector?.('.el-table__expand-icon');
+  $icon && $icon.click();
+};
+
+/** 刷新父级节点的子级数据 */
+const reloadParent = (row) => {
+  EleMessage.success('Refreshed to view the requests issued by the console');
+  if (row._parentTableResolve) {
+    const parent = {
+      _tableResolve: row._parentTableResolve,
+      menuId: row.parentId
+    };
+    tableRef.value?.reload?.(void 0, parent, row._parentTableResolve);
+  }
+};
+
+/** 导出和打印全部数据的数据源 */
+const exportSource = async ({ where }) => {
+  const data = await listMenus({ ...where });
+  return toTree({
+    data,
+    idField: 'menuId',
+    parentIdField: 'parentId'
+  });
+};
+</script>

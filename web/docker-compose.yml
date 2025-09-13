@@ -1,0 +1,47 @@
+#version: '3.8'
+
+services:
+  # Development environment
+  app-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: landingpage-management-dev
+    ports:
+      - "5180:5180"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_API_BASE_URL=http://localhost:8888/api/
+    networks:
+      - landingpage-network
+    restart: unless-stopped
+    profiles:
+      - dev
+
+  # Production environment
+  app-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: landingpage-management-prod
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - landingpage-network
+    restart: unless-stopped
+    profiles:
+      - prod
+networks:
+  landingpage-network:
+    driver: bridge
+
+volumes:
+  node_modules:
+    driver: local

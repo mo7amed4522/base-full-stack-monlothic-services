@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: landingpage-management-dev
+    ports:
+      - "5180:5180"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_API_BASE_URL=http://172.232.96.159:13340/api/
+    networks:
+      - landingpage-network
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+
+networks:
+  landingpage-network:
+    driver: bridge
