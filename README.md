@@ -17,21 +17,25 @@ Tourism-FullStack-admin is a powerful, feature-rich management system designed s
 ### Core Features
 
 - **Complete RBAC Permission Control System**
+
   - Role-based access control with fine-grained permissions
   - Dynamic role assignment and permission management
   - Multi-level administrative capabilities
 
 - **Authentication System**
+
   - JWT-based authentication with role separation
   - Mobile authentication with OTP verification
   - Secure session management
 
 - **Payment Processing**
+
   - Multi-stage payment processing (Visa, PayPal, Cash)
   - Secure card data handling (no CVV storage)
   - Payment status tracking and reporting
 
 - **Data Security**
+
   - Comprehensive data validation
   - Secure file upload and storage system
   - Encrypted sensitive information
@@ -45,6 +49,7 @@ Tourism-FullStack-admin is a powerful, feature-rich management system designed s
 ### Tourism-Specific Features
 
 - **Booking Management**
+
   - Trip and accommodation booking system
   - Hotel and flight reservation integration
   - Booking confirmation and e-tickets
@@ -156,6 +161,206 @@ cd web
 npm run dev
 ```
 
+### to develop in this tamplate
+
+add model for the application
+
+```bash
+cd server/model/app_name
+# this use for user side not system side
+mkdir app_name.go
+cd app_name
+mkdire request, response
+
+```
+
+fist add app_jwt.go inside folder utils
+
+```bash
+cd server/utils/app_jwt.go
+```
+
+```go
+type AppJWT struct {
+   SigninKey []byte
+}
+
+var (
+   AppTokenExpired     =errors.New("AppToken is expired")
+   AppTokenNotVaildYet = errors.New("AppToken not active yet")
+   AppTokenMalformed   = errors.New("That's not even a AppToken")
+   AppTokenInvalid     =errors.New("Couldn't handel this AppToken:")
+)
+
+func NewAppJWT() *AppJWT{
+    return &AppJWT{
+        []byte(global.GVA_CONFIG.JWT.SigningKey),
+    }
+}
+
+func (j *AppJWT) CreateClaims(baseClaims appapiReq.BaseClaims) appapiReq.CustomClaims {
+  expiresDuration , _ := ParseDuration(global.GVA_CONFIG.JWT.ExpiresTime)
+  claims := appapiReq.CustomClaims {
+      BaseClaims: baseClaims,
+      BufferTime: 60 * 60 * 24 * 7,  // 7-day buffer time
+      RegisteredClaims: jwt.RegisteredClaims {
+          Audience:   jwt.ClaimStrings{"AppApi"}, // Audience
+          NotBeforce: jwt.NewNumberDate(time.Now().Add(-1000)), // Signature effective time
+          ExpireAt:   jwt.NewNumberDate(time.Now().Add(expireDuration)), // Expiration time
+          Issure:     global.GVA_CONFIG.JWT.Issuer, //Issuer of the signature
+      },
+  }
+  return claims
+}
+  // Create a token
+  func (j *AppJWT) CreateToken(claims appapiReq.CustomClaims)(string, error){
+    token := jwt.NewWithClaims(jwt.SigninMethodHS256, claims)
+    return token.SignedString(j.SigningKey)
+  }
+
+  // CreateTokenByOldToken replaces the old token with a new one. Use merge back to source to avoid concurrency issues.
+
+  func (j *AppJWT) CreateTokenByOldToken(oldToken string, claims appapiReq.CustomClaims)(string, error){
+    v, err, _ := global.GVA_Concurrency_Control.Do("AppJWT:"+oldToken, func() (interface{}, error) {
+        return j.CreateToken(claims)
+    })
+    return v.(string), err
+  }
+
+  // Parsing the token
+  func (j *AppJWT) ParseToken(tokenString string)(*appapiReq.CustomClaims, error){
+    token, err := jwt.ParseWithClaims(tokenString, &appapiReq.CustomClaims{}, func(token *jwt.Token) (i interface{}, e error){
+      if err != nil {
+        if ve, ok := err.(*jwt.ValidationError); ok {
+          if ve.Errors&jwt.ValidationErrorMalformed != 0 {
+              return nil, AppTokenMalformed
+          }else if ve.Errors&jwt.ValidationErrorExpired != 0 {
+              // token is Expired
+              return nil, AppTokenExpired
+          }else if ve.Errors&jwt.ValidationErrorNotValidYet != 0 {
+              return nil, AppTokenNotVaildYet
+          }else {
+              return nil, AppTokenInvaild
+          }
+        }
+      }
+      if token != nil {
+        if claims , ok := token.Claims.(*appapiReq.CustomClaims); ok && token.Valid {
+            return claims, nil
+        }
+        return nil , AppTokenInvalid
+      }else{
+        return nil, AppTokenInvalid
+      }
+    }
+```
+
+sec add inside folder middleware the JWT for application userSide
+
+```bash
+# this use for create the JWT for application Side
+cd server/middleware/app_jwt.go
+```
+
+```go
+
+func AppJWTAuth() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// Get a token
+		token := utils.GetToken(c)
+		if token == "" {
+			response.NoAuth("Not logged in or illegal access", c)
+			c.Abort()
+			return
+		}
+
+		// Parsing tokens using AppJWT
+		j := utils.NewAppJWT()
+		claims, err := j.ParseToken(token)
+		if err != nil {
+			if errors.Is(err, utils.AppTokenExpired) {
+				response.NoAuth("Authorization has expired", c)
+				utils.ClearToken(c)
+				c.Abort()
+				return
+			}
+			response.NoAuth(err.Error(), c)
+			utils.ClearToken(c)
+			c.Abort()
+			return
+		}
+
+		// Set the claims to the context using "appClaims" as the key
+		c.Set("appClaims", claims)
+
+		// Directly extract the user ID and set it to the context to avoid repeated parsing
+		c.Set("appUserID", claims.BaseClaims.ID)
+
+		// Check if the token is about to expire, and refresh it if so
+		if claims.ExpiresAt.Unix()-time.Now().Unix() < claims.BufferTime {
+			dr, _ := utils.ParseDuration(global.GVA_CONFIG.JWT.ExpiresTime)
+			claims.ExpiresAt = jwt.NewNumericDate(time.Now().Add(dr))
+			newToken, _ := j.CreateTokenByOldToken(token, *claims)
+			newClaims, _ := j.ParseToken(newToken)
+			c.Header("new-token", newToken)
+			c.Header("new-expires-at", strconv.FormatInt(newClaims.ExpiresAt.Unix(), 10))
+			utils.SetToken(c, newToken, int(dr.Seconds()))
+		}
+		c.Next()
+
+		// Set the new token to the response header
+		if newToken, exists := c.Get("new-token"); exists {
+			c.Header("new-token", newToken.(string))
+		}
+		if newExpiresAt, exists := c.Get("new-expires-at"); exists {
+			c.Header("new-expires-at", newExpiresAt.(string))
+		}
+	}
+}
+
+```
+
+> then after create JWT and creat the JWT go to create a new Thing about
+> **Servics** > **api** > **routes**
+
+```bash
+cd services
+mkdir app_api
+# this folder must create a file enter.go
+ # in this must  struct the all services inside this project
+```
+
+```go
+type ServicesGroup struct {
+    // here add all services that you created
+    // like we will create a UserServices
+    UserServices
+}
+```
+
+#### UserServices
+
+```go
+type UserServices struct{}
+
+func(appUserServices *UserServices) SignInUser(u *appapi.AppUser)(userInter *appapi.AppUser, err error){
+  // here we check on DB that db has init or not
+  if nil == global.GVA_DB {
+    return nil, fmt.Errorf("db not init ")
+  }
+  // here get the data from DB
+  var user appapi.AppUser
+  err = global.GVA_DB.Where("name = ?", u.UserName).First(&user).Error
+  // here check the password is equial that exist
+  if err == nil {
+      if ok := utils.BcryptCheck(u.Password, user.Password); !ok {
+        return nil ,errors.New("Incorrect password")
+      }
+  }
+  return &user, err
+}
+```
+
 ### Using Docker
 
 You can also use Docker to run the entire application:
@@ -176,10 +381,16 @@ Run the tests with:
 cd server
 go test ./... -v
 
-
+# this for run the docker throw Makefile
 make docker-run
+# this use for build the web application without server
 docker-compose -f deploy/docker-compose/docker-compose.yml build web
+# this use for build the server application without web application
+docker-compose -f deploy/docker-compose/docker-compose.yml build server
+# this for build and push the application to both web and server applications
 docker-compose -f deploy/docker-compose/docker-compose.yml up -d
+# this for delete the docker container
+docker-compose -f deploy/docker-compose/docker-compose.yml down
 ```
 
 ## 🔒 Security

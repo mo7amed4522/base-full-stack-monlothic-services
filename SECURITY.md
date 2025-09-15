@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-The Tourism-FullStack-admin team takes security vulnerabilities seriously. We appreciate your efforts to responsibly disclose your findings and will make every effort to acknowledge your contributions.
+The Base-FullStack-admin team takes security vulnerabilities seriously. We appreciate your efforts to responsibly disclose your findings and will make every effort to acknowledge your contributions.
 
 To report a security vulnerability, please email us at [mo7amed4522@gmail.com](mailto:mo7amed4522@gmail.com) with the subject line "[SECURITY] Tourism-FullStack-admin Vulnerability Report". You can also contact us via WhatsApp at [+971 052 537 4187](https://wa.me/971525374187) for urgent matters.
 
